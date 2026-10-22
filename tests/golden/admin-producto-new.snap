@@ -19,22 +19,19 @@
             </div>
         </div>
         <form id="formProducto" method="POST" action="actionProductoCtrl.php" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="CSRF_TOKEN"/>
             <input type="hidden" id="id_producto" name="id_producto" value="0"/>
             <div class="form-row my-2">
                 <div class="col-2"><label for="vehiculo">Tipo veh&iacute;culo</label></div>
                 <div class="col">
                     <select id="vehiculo" name="vehiculo" class="custom-select">
                         <option value="0">[Seleccione]</option>
-                        <br />
-<b>Warning</b>:  mysql_fetch_assoc() expects parameter 1 to be resource, boolean given in <b>/var/www/html/administrator/dao/VehiculoDAO.php</b> on line <b>41</b><br />
-<option  value="1">Motocicletas</option><option  value="2">Mototaxis</option><option  value="3">Furgon</option>                    </select>
+                        <option  value="1">Motocicletas</option><option  value="2">Mototaxis</option><option  value="3">Furgon</option>                    </select>
                 </div>
                 <div class="col">
                     <select id="master" name="master" class="custom-select">
                         <option value="0">[Seleccione]</option>
-                        <br />
-<b>Warning</b>:  mysql_num_rows() expects parameter 1 to be resource, boolean given in <b>/var/www/html/administrator/dao/VehiculoDAO.php</b> on line <b>55</b><br />
-                    </select>
+                                            </select>
                 </div>
             </div>
             <div class="form-row my-2">

@@ -15,6 +15,7 @@ and open the template in the editor.
 <body>
 <div class="container pt-4">
     <form class="form-horizontal" action="bienvenido.php" method="POST">
+        <input type="hidden" name="_token" value="CSRF_TOKEN"/>
                         <div class="alert alert-danger">Usted no tiene permisos para acceder a esta página.<br>
                     Por favor registrese.
                 </div>

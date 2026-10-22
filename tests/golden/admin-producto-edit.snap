@@ -19,6 +19,7 @@
             </div>
         </div>
         <form id="formProducto" method="POST" action="actionProductoCtrl.php" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="CSRF_TOKEN"/>
             <input type="hidden" id="id_producto" name="id_producto" value="1"/>
             <div class="form-row my-2">
                 <div class="col-2"><label for="vehiculo">Tipo veh&iacute;culo</label></div>

@@ -19,6 +19,7 @@
             </div>
         </div>
         <form id="formColores" method="POST" action="actionColor.php" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="CSRF_TOKEN"/>
             <input type="hidden" id="id_producto" name="id_producto" value="5"/>
                             <div class="row my-2">
                     <div class="col-2 tdLabel">

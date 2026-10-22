@@ -1,11 +1,15 @@
 .git
 .gitignore
+.gitattributes
 .idea
 *.iml
 nbproject
 Dockerfile
 .dockerignore
 CLAUDE.md
+README.md
 tests
+database
+bin
 vendor
-Dockerfile.php8
+phpunit.xml.dist

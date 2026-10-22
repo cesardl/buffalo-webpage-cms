@@ -15,6 +15,7 @@ and open the template in the editor.
 <body>
 <div class="container pt-4">
     <form class="form-horizontal" action="bienvenido.php" method="POST">
+        <input type="hidden" name="_token" value="CSRF_TOKEN"/>
                 <div class="form-group">
             <label class="control-label col-sm-2" for="user">Usuario</label>
             <div class="col-sm-10">

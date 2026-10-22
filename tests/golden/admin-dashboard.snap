@@ -89,7 +89,8 @@
                     var href = $(this).attr('href');
                     var id_product = href.substr(1);
                     $.post("VehiculoDelete.php", {
-                        id_producto: id_product
+                        id_producto: id_product,
+                        _token: "CSRF_TOKEN"
                     }, function (data) {
                         $("#result").html(data);
                         $("#fila-" + id_product).remove();
