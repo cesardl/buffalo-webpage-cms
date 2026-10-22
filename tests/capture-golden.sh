@@ -58,7 +58,10 @@ snap() {
   # what matters is that a token is present and in the right place, not
   # which one. No other 64-character hex string appears in the output
   # (the integrity attributes are base64).
-  sed -i -E 's/[a-f0-9]{64}/CSRF_TOKEN/g' "$body"
+  # perl, not sed: under MSYS (Git Bash) sed rewrites the file in text mode
+  # and strips every CR, which silently removed them from the snapshots and
+  # would have made this disagree with a Linux runner, where it does not.
+  perl -pi -e 's/[a-f0-9]{64}/CSRF_TOKEN/g' "$body"
 
   { printf '# %s %s -> %s\n' "$method" "$path" "$result"; cat "$body"; } > "$OUT/$name.snap"
   rm -f "$body"

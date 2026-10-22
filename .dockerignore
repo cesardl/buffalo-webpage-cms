@@ -13,3 +13,4 @@ database
 bin
 vendor
 phpunit.xml.dist
+.github

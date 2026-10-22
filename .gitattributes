@@ -1,2 +1,12 @@
 *.sh text eol=lf
+
+# Everything below is served byte for byte and compared byte for byte, so it
+# must check out identically on every platform. Letting git normalise line
+# endings here makes the golden master fail on a Linux runner for reasons that
+# have nothing to do with the code.
 tests/golden/*.snap -text
+public/*.html -text
+public/css/*.css -text
+public/js/*.js -text
+public/administrator/style/*.css -text
+public/administrator/scritps/*.js -text
