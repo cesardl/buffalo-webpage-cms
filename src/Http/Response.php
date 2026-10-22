@@ -31,7 +31,10 @@ final readonly class Response
 
     public static function forbidden(): self
     {
-        return self::text('Forbidden', 403);
+        // Empty body, as the legacy endpoints produced: they sent the status
+        // header and exited. The callers are XHR handlers that look at the
+        // status, and a body would be injected into the page as content.
+        return self::text('', 403);
     }
 
     public static function notFound(): self

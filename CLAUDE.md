@@ -24,6 +24,23 @@ docker build -f Dockerfile.php8 -t buffalo-webpage-php8:local .
 docker run -d --name buffalo-webpage-php8 -p 8093:80 -e BUFFALO_DB_HOST=... -e BUFFALO_DB_PORT=... -e BUFFALO_DB_NAME=... -e BUFFALO_DB_USER=... -e BUFFALO_DB_PASS=... buffalo-webpage-php8:local
 ```
 
+### Porting status
+
+Every route the golden master covers is now served by the PHP 8 app as well. The legacy app is still the reference and still runs; nothing has been deleted.
+
+`./tests/verify-golden.sh http://localhost:8093` compares the replacement against the snapshots. Ten routes differ, and every differing line is one of three deliberate things:
+
+- a hidden `_token` field on each ported form, and the token added to the dashboard's delete call;
+- on `formProducto.php?action=N` only, the disappearance of two `mysql_fetch_assoc()`/`mysql_num_rows()` warnings. The "Nuevo producto" link passes no `id_master`, so the legacy query runs `WHERE id_master =`, errors, and prints the warnings into the page. The port does not reproduce that.
+
+Nothing else differs. If a fourth category ever appears, it is a regression.
+
+Line endings are normalised before comparing, and the reason and its cost are documented at the top of `verify-golden.sh`.
+
+The three public listings were three files differing by one hardcoded vehicle id; they are one controller, one template and one table of ids now. Output is byte-identical.
+
+Escaping changed: the legacy pages interpolated model names, titles and image paths raw and escaped only two description fields. Everything is escaped now. That makes no difference to the current bytes because no row holds `<`, `>`, `&`, `"` or `'` — the equivalence is a property of the data, not of the two implementations.
+
 ### Routing and auth
 
 `public/index.php` builds a `Container`, hands `RouteTable::all()` to the `Router` and dispatches. Routes carry the legacy URLs (`/administrator/index.php` and friends) so the two applications can be compared route for route at cutover; Apache reaches them with `FallbackResource`, since none exist as files under `public/`.

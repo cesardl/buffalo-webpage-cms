@@ -13,6 +13,7 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 $container = new Container(
     Config::fromEnvironment(),
     dirname(__DIR__) . '/templates',
+    __DIR__,
 );
 
 $router = new Router(

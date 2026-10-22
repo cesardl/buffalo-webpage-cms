@@ -25,10 +25,24 @@ trap 'rm -f "$JAR" "$ANON"' EXIT
 mkdir -p "$OUT"
 rm -f "$OUT"/*.snap
 
+# The PHP 8 app requires a CSRF token on every POST; the legacy app has no
+# such field and ignores the extra parameter. Sending it either way lets one
+# harness drive both, which is the whole point of the comparison.
+csrf_token() {
+  local jar="$1"
+  curl -s -b "$jar" -c "$jar" "$BASE/administrator/index.php"     | grep -oE 'name="_token" value="[^"]+"'     | grep -oE '[A-Za-z0-9]{16,}'     | head -1 || true   # no token on the legacy login page, and that is fine
+}
+
 snap() {
   local name="$1" method="$2" path="$3" data="${4:-}" jar="${5:-$JAR}"
-  local body result
+  local body result token
   body="$(mktemp)"
+  if [ "$method" = POST ]; then
+    token="$(csrf_token "$jar")"
+    if [ -n "$token" ]; then
+      data="${data}&_token=${token}"
+    fi
+  fi
   if [ "$method" = POST ]; then
     result="$(curl -sS -b "$jar" -c "$jar" -o "$body" \
       -w '%{http_code} %{redirect_url}' -X POST -d "$data" "$BASE$path")"
@@ -36,6 +50,9 @@ snap() {
     result="$(curl -sS -b "$jar" -c "$jar" -o "$body" \
       -w '%{http_code} %{redirect_url}' "$BASE$path")"
   fi
+  # Record the redirect relative to the base, so a snapshot taken from one
+  # port can be compared against an app served on another.
+  result="${result//$BASE/}"
   { printf '# %s %s -> %s\n' "$method" "$path" "$result"; cat "$body"; } > "$OUT/$name.snap"
   rm -f "$body"
   printf '  %-34s %s\n' "$name" "$result"

@@ -12,17 +12,25 @@ RUN composer install --no-dev --no-interaction --no-progress \
 
 FROM php:8.3-apache
 
-RUN docker-php-ext-install pdo_mysql
+RUN docker-php-ext-install pdo_mysql && a2enmod rewrite
 
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
       /etc/apache2/sites-available/*.conf /etc/apache2/apache2.conf
 
-# Routes every path that is not a real file to the front controller. The route
-# table uses the legacy URLs (/administrator/index.php and friends), and none
-# of those exist as files under public/. FallbackResource does this without
-# mod_rewrite or .htaccess.
-RUN printf '<Directory /var/www/html/public>\n    FallbackResource /index.php\n</Directory>\n' \
+# Routes anything that is not a real file to the front controller. The route
+# table uses the legacy URLs, which end in .php and do not exist under public/.
+#
+# This has to be mod_rewrite rather than FallbackResource: for a path ending
+# in .php the PHP handler claims the request first and then fails to stat the
+# script, so the fallback never runs. Rewriting happens early enough.
+RUN printf '%s\n' \
+      '<Directory /var/www/html/public>' \
+      '    RewriteEngine On' \
+      '    RewriteCond %{REQUEST_FILENAME} !-f' \
+      '    RewriteCond %{REQUEST_FILENAME} !-d' \
+      '    RewriteRule ^ /index.php [L]' \
+      '</Directory>' \
       > /etc/apache2/conf-available/buffalo.conf \
     && a2enconf buffalo
 
@@ -30,3 +38,19 @@ COPY --from=deps /app/vendor /var/www/html/vendor
 COPY src/       /var/www/html/src/
 COPY templates/ /var/www/html/templates/
 COPY public/    /var/www/html/public/
+
+# The pages that are still plain HTML, plus the assets every page references.
+# They live at the repository root because the legacy image serves from there;
+# the cutover moves them, this copies them.
+COPY index.html quienes_somos.html productos.html ubicanos.html contactanos.html /var/www/html/public/
+COPY css/           /var/www/html/public/css/
+COPY js/            /var/www/html/public/js/
+COPY images/        /var/www/html/public/images/
+COPY ficha_tecnica/ /var/www/html/public/ficha_tecnica/
+
+# The admin forms link to style/style.css and scritps/funciones_producto.js
+# relative to /administrator/, and the uploads land under images/.
+COPY administrator/style/   /var/www/html/public/administrator/style/
+COPY administrator/scritps/ /var/www/html/public/administrator/scritps/
+COPY administrator/images/  /var/www/html/public/administrator/images/
+RUN chown -R www-data:www-data /var/www/html/public/images /var/www/html/public/ficha_tecnica
