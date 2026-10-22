@@ -1,0 +1,56 @@
+# GET /quienes_somos.html -> 200 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BUFFALO</title>
+<link href="css/buffaloestilo.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.scroll.js"></script>
+<script type="text/javascript" src="js/function.js"></script>
+<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
+</head>
+
+<body>
+<div id="index_cabecera">
+  <div id="bg_cabecera">
+  	<div id="index_cabecera_logo"><img src="images/logo_top.png" width="208" height="169" /></div>
+    <div class="botonera">
+      <div class="boton_home btn_cabecera_home"><a href="index.html"></a></div>
+      <div class="boton_quienes"><img src="images/btn_quienes_b.jpg" width="140" height="50" /></div>
+      <div class="boton_productos btn_cabecera_productos"><a href="productos.html"></a></div>
+      <div class="boton_ubicanos btn_cabecera_ubicanos"><a href="ubicanos.html"></a></div>
+      <div class="boton_contactanos btn_cabecera_contactanos"><a href="contactanos.html"></a></div>
+    </div>
+  </div>
+</div>
+<div id="quienes_contenido">
+	<div id="in_quienes">
+	  <div class="quienes_bg">
+	    <div class="quienes_texto">
+	      <p><span class="txt_quietitu_20p">QUIENES SOMOS</span> &nbsp;&nbsp;<span class="txt_quiesubti_17p">Breve historia de Buffalo.</span><br />
+	      <span class="txt_piecom_10p">.................................................................................................................................................</span></p>
+	      <p class="txt_pie_11p" align="justify">Nuestra historia se inicia en el año 2001 , cuando abrimos nuestra primera tienda en la ciudad de Chiclayo para ofrecerles una alternativa de transporte de mejor performance<br />
+          La cálida acogida recibida nos comprometió aún más en mejorar nuestro servicio y estar siempre atentos a satisfacer sus crecientes necesidades.</p>
+	      <p class="txt_pie_11p" align="justify">Nos hemos propuesto desarrollar un modelo corporativo que les permita a ustedes acceder a la mas completa gama de motocicletas y trimóviles , con las mejores condiciones y la más completa garantía existente en el mercado</p>
+	      <p class="txt_pie_11p" align="justify">La experiencia ganada llevó a <span class="txt_quierojitas_11p"><b>BUFFALO</b></span> a otras ciudades , donde , a través de nuestras tiendas y concesionarios , ustedes podrán disfrutar de la experiencia de una motocicleta <span class="txt_quierojitas_11p"><b>BUFFALO</b></span> y todo lo que ello representa.</p>
+	      <p class="txt_pie_11p" align="justify">A nuestros nuevos y futuros clientes , le damos la bienvenida y los invitamos a que nos conozcan un poco más a través de nuestra pagina web y puntos de venta</p>
+	      <p class="txt_pie_11p" align="justify">A nuestros clientes de siempre , nuestro mas sincero agradecimiento por acompañarnos durante todo este tiempo. Renovamos nuestro compromiso de seguir brindándoles el mejor servicio ,con nuestros cada vez más y  mejores modelos y nuestra atención de siempre</p>
+	      <p class="txt_pie_11p">Muchas Gracias </p>
+	      <p class="txt_quierojitas_11p"><b>BUFFALO MOTORS</b>
+          </p>
+	    </div>
+	  </div>
+	</div>
+</div>
+<div id="all_pie_home">
+	<div id="pie_home">
+	  <div class="pie_megusta"></div>
+	  <div class="pie_derechos"><span class="txt_pie_11p">BUFFALO del Perú 2011 - Todos los derechos reservados.</span></div>
+	  <div class="pie_compartir"><span class="txt_piecom_10p">Compartir en:</span></div>
+	  <div class="pie_face"><img src="images/pie_facebook.jpg" width="17" height="27" border="0" /></div>
+      <div class="pie_face"><img src="images/pie_twitter.jpg" width="17" height="27" border="0" /></div>
+	</div>
+</div>
+</body>
+</html>

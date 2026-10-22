@@ -1,0 +1,8 @@
+.git
+.gitignore
+.idea
+*.iml
+nbproject
+Dockerfile
+.dockerignore
+CLAUDE.md

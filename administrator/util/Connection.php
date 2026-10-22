@@ -7,7 +7,7 @@ class Connection
 
     public function __construct()
     {
-        $server = "localhost";
+        $server = "cesardl-desktop:3312";
         $username = "buffalo9_root";
         $password = "r00tr00t";
         $database_name = "buffalo9_portal";

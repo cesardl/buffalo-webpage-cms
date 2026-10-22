@@ -1,0 +1,2 @@
+# POST /administrator/VehiculoSelect.php -> 200 
+<option value="0">[Seleccione]</option><option value="1">DE PASEO</option><option value="2">DE TRABAJO</option><option value="3">TODO TERRENO</option><option value="4">PISTERAS</option>
