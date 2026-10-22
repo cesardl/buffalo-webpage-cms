@@ -1,3 +1,7 @@
+<?php
+include_once 'util/Auth.php';
+require_admin();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +15,7 @@
 <body>
 <div class="container pt-4">
     <?php
+    include_once 'util/Upload.php';
     include_once 'domain/DetalleProducto.php';
     include_once 'bussinessLogic/DetalleProductoBL.php';
 
@@ -37,11 +42,8 @@
 
                 $foto_detalle = $_POST["v_imagen$i"];
                 $nombre_archivo = $_FILES["imagen$i"]['name'];
-                $tipo_archivo = $_FILES["imagen$i"]['type'];
-                $tamano_archivo = $_FILES["imagen$i"]['size'];
-                $imagen_temp = $_FILES["imagen$i"]['tmp_name'];
-                if ($tamano_archivo != 0) {
-                    $foto_detalle = uploadPhoto($tipo_archivo, $tamano_archivo, $nombre_archivo, $imagen_temp);
+                if (!empty($_FILES["imagen$i"]['size'])) {
+                    $foto_detalle = upload_image($_FILES["imagen$i"], 'images/detalle');
                     if (is_numeric($foto_detalle)) {
                         echo "No se ha podido cargar la imagen $nombre_archivo<br>$messages[$foto_detalle]";
                         echo "Intente carga la imagen de nuevo<br>";
@@ -64,32 +66,3 @@
 </div>
 </body>
 </html>
-
-<?php
-function uploadPhoto($tipo_archivo, $tamano_archivo, $nombre_archivo, $imagen_temp)
-{
-    if ($tamano_archivo == 0) {
-        return '';
-    } else {
-        if (!((strpos($tipo_archivo, "gif") || strpos($tipo_archivo, "jpg") ||
-                strpos($tipo_archivo, "jpeg") || strpos($tipo_archivo, "png")) && ($tamano_archivo < 5000000))) {
-            return 0;
-        } else {
-            $ruta = "../images/detalle/" . $nombre_archivo;
-            $path = 'images/detalle/' . $nombre_archivo;
-            if (is_uploaded_file($imagen_temp)) {
-                move_uploaded_file($imagen_temp, $ruta);
-                if (file_exists($ruta)) {
-                    return $path;
-                } else {
-                    return 1;
-                }
-            } else {
-                return 2;
-            }
-        }
-    }
-}
-
-?>
-

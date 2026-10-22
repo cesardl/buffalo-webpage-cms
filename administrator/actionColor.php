@@ -1,3 +1,7 @@
+<?php
+include_once 'util/Auth.php';
+require_admin();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

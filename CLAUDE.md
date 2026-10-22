@@ -37,14 +37,25 @@ DAO/BL files include each other with paths relative to the *entry script's* dire
 
 ### Uploads
 
-`actionProductoCtrl.php` and `actionDetalleProductoCtrl.php` each define their own local `uploadPhoto()` (duplicated, with slightly different signatures) that validates by MIME substring + 5 MB cap and `move_uploaded_file`s into `../images/principal/`, `../images/zoom/` or `../images/detalle/`. PDFs go to `../ficha_tecnica/`. The DB stores the web-relative path; on success the function returns the path string, on failure an integer index into a local `$messages` array — hence the `is_numeric($foto_detalle)` checks in callers. Uploaded media is committed to the repo.
+All uploads go through `administrator/util/Upload.php` (`upload_image()` / `upload_pdf()`). It checks the extension against an allowlist *and* the bytes on disk (`getimagesize()` for images, the `%PDF-` magic for PDFs), caps size at 5 MB, and writes under a generated name — the submitted filename is never reused. Images land in `images/principal/`, `images/zoom/` or `images/detalle/`, PDFs in `ficha_tecnica/`. The DB stores the web-relative path; on success the function returns that path, on failure an integer index into the caller's `$messages` array — hence the `is_numeric($foto_detalle)` checks. Uploaded media is committed to the repo.
 
 ## Known hazards (confirm before "fixing")
 
 These are pervasive and intentional-by-neglect in this legacy code. Don't start a sweeping rewrite unprompted; do not introduce *new* instances.
 
+- **Two guard mechanisms.** `form*.php` still carry their own inline `$_SESSION['user']` check; every other admin entry point calls `require_admin()` or `require_admin_ajax()` from `administrator/util/Auth.php`. Phase 4 collapses both into one router guard. Any new admin endpoint must call a guard — nothing enforces that yet.
 - **SQL injection everywhere.** Every query interpolates request values unescaped, including the login (`UsuarioDAO::getUsuario`) and every `id_producto` in the public pages. Passwords are stored and compared in plaintext.
-- **No auth on the action endpoints.** `form*.php` check `$_SESSION['user']`; `action*.php`, `VehiculoDelete.php` and `VehiculoSelect.php` do not — anyone can POST to them.
 - **Fixed-size forms.** Colors are hardcoded to 4 rows and details to 6, duplicated between the `form*` page and its `action*` handler. Changing the count means editing both.
 - `formProducto.php` reads `$_GET['accion']`, but `bienvenido.php` links "Nuevo producto" as `?action=N` — the new-product path works only because anything other than `'E'` falls through to the insert branch.
 - `mysql_set_charset("UTF-8")` in `Connection.php` is not a valid MySQL charset name (should be `utf8`); the tables are `utf8`.
+
+## Tests
+
+There is no unit-test suite. What exists is a golden master: `tests/golden/*.snap` holds the exact output of all 32 read-only routes, captured from the running container.
+
+- `./tests/capture-golden.sh [base-url]` rewrites the snapshots. Only run it when a change is *meant* to alter output, and review the diff.
+- `./tests/verify-golden.sh [base-url]` recaptures and diffs, exiting non-zero on any drift. Run it after every change.
+
+Snapshots are marked `-text` in `.gitattributes` because the served HTML contains CRLF; letting git normalise them makes every check fail on a fresh clone for reasons unrelated to the code.
+
+The `action*.php` endpoints are covered only signed out, where they exit before touching the database. Their successful write paths are not pinned by anything yet — that needs integration tests.

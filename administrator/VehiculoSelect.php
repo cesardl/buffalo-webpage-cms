@@ -1,6 +1,9 @@
 <?php
 
+include_once 'util/Auth.php';
 include_once 'bussinessLogic/VehiculoBL.php';
+
+require_admin_ajax();
 
 $id_producto = $_POST['veh_id'];
 

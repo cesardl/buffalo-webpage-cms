@@ -61,6 +61,14 @@ snap admin-guard-colores  GET /administrator/formColores.php    '' "$ANON"
 snap admin-guard-home     GET /administrator/bienvenido.php     '' "$ANON"
 snap admin-login-bad      POST /administrator/bienvenido.php 'user=nope&passwd=nope' "$ANON"
 
+# These five were reachable without logging in until the guards landed. They
+# are safe to capture signed out: each one exits before touching the database.
+snap guard-action-producto POST /administrator/actionProductoCtrl.php        'id_producto=1' "$ANON"
+snap guard-action-detalles POST /administrator/actionDetalleProductoCtrl.php 'id_producto=1' "$ANON"
+snap guard-action-color    POST /administrator/actionColor.php               'id_producto=1' "$ANON"
+snap guard-vehiculo-delete POST /administrator/VehiculoDelete.php            'id_producto=1' "$ANON"
+snap guard-vehiculo-select POST /administrator/VehiculoSelect.php            'veh_id=1'      "$ANON"
+
 echo "Admin, signed in"
 # This POST both authenticates and renders the dashboard.
 snap admin-dashboard      POST /administrator/bienvenido.php "user=$ADMIN_USER&passwd=$ADMIN_PASS"

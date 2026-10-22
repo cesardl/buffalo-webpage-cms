@@ -6,3 +6,4 @@ nbproject
 Dockerfile
 .dockerignore
 CLAUDE.md
+tests
