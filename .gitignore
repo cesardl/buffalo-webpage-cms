@@ -3,3 +3,7 @@
 *.iml
 
 nbproject/
+
+/vendor/
+.phpunit.result.cache
+.phpunit.cache/

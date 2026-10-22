@@ -7,3 +7,5 @@ Dockerfile
 .dockerignore
 CLAUDE.md
 tests
+vendor
+Dockerfile.php8

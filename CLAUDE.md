@@ -6,6 +6,26 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Static marketing site plus a PHP product administrator for Buffalo Motors (motorcycles, mototaxis, cargo vans). UI text, domain names and identifiers are Spanish — keep new code Spanish to match (`producto`, `vehiculo`, `clase`, `ficha_tecnica`).
 
+## The port in progress
+
+Two runtimes coexist on purpose. The legacy app (repository root + `administrator/`) still serves everything and is the behavioural reference; the PHP 8.3 app under `src/` + `public/` is being built up beside it and currently serves only a health check. Nothing has been ported yet.
+
+| | legacy | target |
+|---|---|---|
+| Dockerfile | `Dockerfile` | `Dockerfile.php8` |
+| runtime | PHP 5.6 + `ext/mysql` | PHP 8.3 + PDO |
+| docroot | repository root | `public/` only |
+| port used here | 8092 | 8093 |
+
+The target image serves `public/` and nothing else, so no legacy file, `src/` class or `vendor/` path is reachable from it. Database settings come from `BUFFALO_DB_HOST`, `BUFFALO_DB_PORT`, `BUFFALO_DB_NAME`, `BUFFALO_DB_USER` and `BUFFALO_DB_PASS` — `Buffalo\Config` throws naming every missing one rather than falling back to a default.
+
+```
+docker build -f Dockerfile.php8 -t buffalo-webpage-php8:local .
+docker run -d --name buffalo-webpage-php8 -p 8093:80 -e BUFFALO_DB_HOST=... -e BUFFALO_DB_PORT=... -e BUFFALO_DB_NAME=... -e BUFFALO_DB_USER=... -e BUFFALO_DB_PASS=... buffalo-webpage-php8:local
+```
+
+Composer is only there for PSR-4 autoloading and PHPUnit; the application has no runtime dependencies, and adding one should need a reason. There is no PHP or Composer on the host — run both through a container.
+
 ## Stack and running it
 
 No build step, no package manager, no test suite, no CI. Plain PHP files served from the document root; raw SQL via the **removed** `mysql_*` extension, so this runs only on **PHP 5.x** (it will fatal on PHP 7+). Bootstrap 4.4.1 / jQuery 3.4.1 come from CDNs in the admin; the public site uses the vendored jQuery 1.4.2 in `js/`.
@@ -51,7 +71,15 @@ These are pervasive and intentional-by-neglect in this legacy code. Don't start 
 
 ## Tests
 
-There is no unit-test suite. What exists is a golden master: `tests/golden/*.snap` holds the exact output of all 32 read-only routes, captured from the running container.
+Two layers, and they cover different things.
+
+**PHPUnit** covers the new `src/` code only. `tests/Unit` needs nothing; `tests/Integration` skips itself unless `BUFFALO_DB_*` is set, so the suite is runnable with no database.
+
+```
+docker run --rm -v "$(pwd -W):/app" -w /app buffalo-webpage-php8:local vendor/bin/phpunit
+```
+
+**The golden master** covers the legacy app, which has no unit tests and will not get any — it is being replaced, not tested into shape: `tests/golden/*.snap` holds the exact output of all 32 read-only routes, captured from the running container.
 
 - `./tests/capture-golden.sh [base-url]` rewrites the snapshots. Only run it when a change is *meant* to alter output, and review the diff.
 - `./tests/verify-golden.sh [base-url]` recaptures and diffs, exiting non-zero on any drift. Run it after every change.
