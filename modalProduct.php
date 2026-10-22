@@ -17,7 +17,7 @@ function writeModal($dev_modal, $id_producto) {
             </div>";
     echo "<div class=\"product_detalle_1_caract\">";
 
-    $query_detalle = "SELECT titulo, descripcion, foto_detalle FROM detalleproducto WHERE id_producto = $id_producto";
+    $query_detalle = "SELECT titulo, descripcion, foto_detalle FROM detalleproducto WHERE id_producto = $id_producto ORDER BY id_detalle_producto";
     $result_detalle = mysql_query($query_detalle, $connection->getConnection());
 
     while ($row_detalle = mysql_fetch_array($result_detalle)) {

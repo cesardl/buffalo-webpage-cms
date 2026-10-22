@@ -38,12 +38,13 @@
             $query = "SELECT master.id_master, master.clase FROM master 
                 INNER JOIN producto ON producto.id_master = master.id_master
                 WHERE master.id_vehiculo=2
-                GROUP By master.id_master";
+                GROUP By master.id_master
+                ORDER BY master.id_master";
             $result = mysql_query($query, $connection->getConnection());
             
             $row_counter = 1;
              while ($row = mysql_fetch_assoc($result)) {
-                 $query_producto = "SELECT * from producto WHERE producto.id_master = {$row['id_master']}";
+                 $query_producto = "SELECT * from producto WHERE producto.id_master = {$row['id_master']} ORDER BY producto.id_producto";
                  $result_producto = mysql_query($query_producto, $connection->getConnection());
                  
                  $i_prod = 0;
@@ -67,7 +68,8 @@
                         IF(colorproducto.id_color_1 <>0, (SELECT c.codigo FROM color c WHERE c.id_color = colorproducto.id_color_1), 'X') AS color_1,
                         IF(colorproducto.id_color_2 <>0, (SELECT c.codigo FROM color c WHERE c.id_color = colorproducto.id_color_2), 'X') AS color_2
                         FROM colorproducto 
-                        WHERE colorproducto.id_producto=$id_producto";
+                        WHERE colorproducto.id_producto=$id_producto
+                        ORDER BY colorproducto.id";
                         
                 $result_color = mysql_query($query_color, $connection->getConnection());
                 

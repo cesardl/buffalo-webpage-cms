@@ -17,7 +17,7 @@ class VehiculoDAO {
 
     public function getVehiculos() {
         $conexion = new Connection();
-        $query = "SELECT id_vehiculo, nombre FROM vehiculo";
+        $query = "SELECT id_vehiculo, nombre FROM vehiculo ORDER BY id_vehiculo";
         $result = mysql_query($query, $conexion->getConnection());
         $total_registros = mysql_num_rows($result);
 
@@ -50,7 +50,7 @@ class VehiculoDAO {
 
     public function getMastersByVehiculo($id_vehiculo) {
         $conexion = new Connection();
-        $query = "SELECT id_master, clase FROM master WHERE id_vehiculo = $id_vehiculo";
+        $query = "SELECT id_master, clase FROM master WHERE id_vehiculo = $id_vehiculo ORDER BY id_master";
         $result = mysql_query($query, $conexion->getConnection());
         $total_registros = mysql_num_rows($result);
 

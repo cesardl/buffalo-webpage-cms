@@ -17,7 +17,7 @@ class ColorDAO {
 
     public function getColores() {
         $conexion = new Connection();
-        $query = "SELECT id_color, nombre, codigo FROM color";
+        $query = "SELECT id_color, nombre, codigo FROM color ORDER BY id_color";
         $result = mysql_query($query, $conexion->getConnection());
         $total_registros = mysql_num_rows($result);
 
@@ -40,7 +40,8 @@ class ColorDAO {
                 producto.id_producto as p_id, producto.modelo as p_modelo
                 FROM colorproducto 
                 INNER JOIN producto on colorproducto.id_producto = producto.id_producto
-                WHERE producto.id_producto = $id_producto";
+                WHERE producto.id_producto = $id_producto
+                ORDER BY colorproducto.id";
 
         $result = mysql_query($query, $conexion->getConnection());
         $total_registros = mysql_num_rows($result);

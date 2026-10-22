@@ -20,7 +20,8 @@ class ProductoDAO {
         $query = "SELECT id_producto, modelo, foto_principal, descripcion, foto_zoom_1, foto_zoom_2, 
             foto_zoom_3, foto_zoom_4, ficha_tecnica, master.id_master AS id_master, 
             master.clase AS clase, master.id_vehiculo AS id_vehiculo FROM producto
-            INNER JOIN master ON producto.id_master = master.id_master";
+            INNER JOIN master ON producto.id_master = master.id_master
+            ORDER BY producto.id_master, producto.id_producto";
         $result = mysql_query($query, $conexion->getConnection());
         $total_registros = mysql_num_rows($result);
 

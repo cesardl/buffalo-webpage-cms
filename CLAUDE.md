@@ -24,6 +24,17 @@ docker build -f Dockerfile.php8 -t buffalo-webpage-php8:local .
 docker run -d --name buffalo-webpage-php8 -p 8093:80 -e BUFFALO_DB_HOST=... -e BUFFALO_DB_PORT=... -e BUFFALO_DB_NAME=... -e BUFFALO_DB_USER=... -e BUFFALO_DB_PASS=... buffalo-webpage-php8:local
 ```
 
+### What exists in `src/` so far
+
+`Domain/` holds immutable `final readonly` value objects, and `Repository/` holds one interface per aggregate with a `Pdo*` implementation beside it. Callers depend on the interface and receive a `PDO` they did not create, so nothing below the HTTP layer decides where the connection comes from any more.
+
+Two translations live in the repositories on purpose, so nothing above them inherits a database quirk:
+
+- `colorproducto.id_color_1/2` are NOT NULL and store `0` for "no colour". `PdoColorRepository` maps that to `null`, and uses `LEFT JOIN` so a single-colour combination is not dropped entirely.
+- `producto.foto_zoom_1..4` are positional. `Producto::$fotosZoom` always holds exactly four entries, empty ones included, because the admin form edits them by position; `fotosZoomPresentes()` is what a gallery wants.
+
+Every listing query carries an explicit `ORDER BY`, in both the new repositories and the legacy DAOs. None of them used to, and the order they happened to return was not stable — writing to `producto` was enough to reorder the admin dashboard. The order chosen everywhere is the one the pages already displayed, so this pinned existing behaviour rather than changing it.
+
 Composer is only there for PSR-4 autoloading and PHPUnit; the application has no runtime dependencies, and adding one should need a reason. There is no PHP or Composer on the host — run both through a container.
 
 ## Stack and running it

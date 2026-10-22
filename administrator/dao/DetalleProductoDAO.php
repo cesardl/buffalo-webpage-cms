@@ -18,7 +18,8 @@ class DetalleProductoDAO {
     public function getDetallesProductos($id_producto) {
         $conexion = new Connection();
         $query = "SELECT id_detalle_producto, titulo, foto_detalle, descripcion, id_producto
-                FROM detalleproducto WHERE id_producto = $id_producto";
+                FROM detalleproducto WHERE id_producto = $id_producto
+                ORDER BY id_detalle_producto";
         $result = mysql_query($query, $conexion->getConnection());
         $total_registros = mysql_num_rows($result);
 
