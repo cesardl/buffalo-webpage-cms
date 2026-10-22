@@ -24,6 +24,19 @@ docker build -f Dockerfile.php8 -t buffalo-webpage-php8:local .
 docker run -d --name buffalo-webpage-php8 -p 8093:80 -e BUFFALO_DB_HOST=... -e BUFFALO_DB_PORT=... -e BUFFALO_DB_NAME=... -e BUFFALO_DB_USER=... -e BUFFALO_DB_PASS=... buffalo-webpage-php8:local
 ```
 
+### Routing and auth
+
+`public/index.php` builds a `Container`, hands `RouteTable::all()` to the `Router` and dispatches. Routes carry the legacy URLs (`/administrator/index.php` and friends) so the two applications can be compared route for route at cutover; Apache reaches them with `FallbackResource`, since none exist as files under `public/`.
+
+Two things the legacy app got wrong by omission are now structural:
+
+- **Access is a required argument on every `Route`**, with no default, so a route cannot be added without someone choosing `Public`, `Admin` or `AdminApi`. `Admin` redirects to the login page, `AdminApi` returns 403 — a redirect to an HTML form would otherwise be injected into the page that made the XHR call.
+- **Every POST needs a valid CSRF token**, including the public login. No controller performs either check, so no controller can forget one.
+
+`bin/migrate-passwords.php` converts `usuario` to InnoDB, widens `passwd` from varchar(50) (too narrow for bcrypt's 60 characters) to 255, and hashes anything still in clear text. It is idempotent. Both applications share the table, so the legacy `UsuarioDAO` was taught to verify hashes too, with a clear-text fallback so restoring an old dump does not lock the admin out.
+
+**One thing to carry into the cutover:** CSRF means a ported form carries a hidden `_token` field the legacy snapshot does not have, so those routes will not be byte-identical. That diff is intended, and should be reviewed field by field rather than regenerated blindly.
+
 ### What exists in `src/` so far
 
 `Domain/` holds immutable `final readonly` value objects, and `Repository/` holds one interface per aggregate with a `Pdo*` implementation beside it. Callers depend on the interface and receive a `PDO` they did not create, so nothing below the HTTP layer decides where the connection comes from any more.
@@ -75,7 +88,7 @@ All uploads go through `administrator/util/Upload.php` (`upload_image()` / `uplo
 These are pervasive and intentional-by-neglect in this legacy code. Don't start a sweeping rewrite unprompted; do not introduce *new* instances.
 
 - **Two guard mechanisms.** `form*.php` still carry their own inline `$_SESSION['user']` check; every other admin entry point calls `require_admin()` or `require_admin_ajax()` from `administrator/util/Auth.php`. Phase 4 collapses both into one router guard. Any new admin endpoint must call a guard — nothing enforces that yet.
-- **SQL injection everywhere.** Every query interpolates request values unescaped, including the login (`UsuarioDAO::getUsuario`) and every `id_producto` in the public pages. Passwords are stored and compared in plaintext.
+- **SQL injection in the legacy queries.** Every legacy query still interpolates request values unescaped, including every `id_producto` in the public pages. The login is the exception: `UsuarioDAO::getUsuario` escapes the username and verifies the password in PHP. The new `src/Repository` code uses prepared statements throughout.
 - **Fixed-size forms.** Colors are hardcoded to 4 rows and details to 6, duplicated between the `form*` page and its `action*` handler. Changing the count means editing both.
 - `formProducto.php` reads `$_GET['accion']`, but `bienvenido.php` links "Nuevo producto" as `?action=N` — the new-product path works only because anything other than `'E'` falls through to the insert branch.
 - `mysql_set_charset("UTF-8")` in `Connection.php` is not a valid MySQL charset name (should be `utf8`); the tables are `utf8`.

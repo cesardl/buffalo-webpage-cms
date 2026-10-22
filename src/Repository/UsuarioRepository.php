@@ -15,4 +15,7 @@ interface UsuarioRepository
      * nowhere to introduce hashing.
      */
     public function findByUsername(string $usuario): ?Usuario;
+
+    /** Replaces the stored credential, used when upgrading a legacy row. */
+    public function updatePassword(int $id, string $hash): void;
 }

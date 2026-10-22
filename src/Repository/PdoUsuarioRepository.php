@@ -25,6 +25,18 @@ final readonly class PdoUsuarioRepository implements UsuarioRepository
             return null;
         }
 
+        return $this->toUsuario($row);
+    }
+
+    public function updatePassword(int $id, string $hash): void
+    {
+        $statement = $this->pdo->prepare('UPDATE usuario SET passwd = :passwd WHERE id = :id');
+        $statement->execute(['passwd' => $hash, 'id' => $id]);
+    }
+
+    /** @param array<string, mixed> $row */
+    private function toUsuario(array $row): Usuario
+    {
         return new Usuario(
             id: (int) $row['id'],
             usuario: (string) $row['usuario'],

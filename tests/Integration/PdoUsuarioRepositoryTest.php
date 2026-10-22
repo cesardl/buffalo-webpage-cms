@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Buffalo\Tests\Integration;
 
 use Buffalo\Repository\PdoUsuarioRepository;
+use Buffalo\Security\Authenticator;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 #[CoversClass(PdoUsuarioRepository::class)]
@@ -39,14 +40,42 @@ final class PdoUsuarioRepositoryTest extends RepositoryTestCase
         self::assertNull($this->repository->findByUsername("' OR 1=1 -- "));
     }
 
-    public function testTheStoredPasswordIsReturnedUnverified(): void
+    public function testTheStoredPasswordIsAHashNotClearText(): void
     {
-        // Phase 4 replaces this with a hash and an authenticator; the point
-        // here is only that looking a user up and checking their password are
-        // now two separate steps.
         $usuario = $this->repository->findByUsername('root');
 
         self::assertNotNull($usuario);
-        self::assertSame('root', $usuario->storedPassword);
+        self::assertTrue(
+            Authenticator::isHashed($usuario->storedPassword),
+            'Run bin/migrate-passwords.php against this database.',
+        );
+        self::assertNotSame('root', $usuario->storedPassword);
+    }
+
+    public function testTheSeededAdministratorCanStillSignIn(): void
+    {
+        $usuario = (new Authenticator($this->repository))->attempt('root', 'root');
+
+        self::assertNotNull($usuario);
+        self::assertSame(1, $usuario->id);
+    }
+
+    public function testTheWrongPasswordIsRejectedAgainstTheRealRow(): void
+    {
+        self::assertNull((new Authenticator($this->repository))->attempt('root', 'wrong'));
+    }
+
+    public function testUpdatePasswordReplacesTheStoredHash(): void
+    {
+        // usuario is InnoDB after the migration, so this rolls back with the
+        // rest of the test rather than persisting.
+        $nuevo = Authenticator::hash('otra-clave');
+        $this->repository->updatePassword(1, $nuevo);
+
+        $usuario = $this->repository->findByUsername('root');
+
+        self::assertNotNull($usuario);
+        self::assertSame($nuevo, $usuario->storedPassword);
+        self::assertTrue(password_verify('otra-clave', $usuario->storedPassword));
     }
 }
