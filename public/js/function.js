@@ -1,31 +1,29 @@
 // JavaScript Document
 
-var y;
-y = $(document);
-
-y.ready(inicializarEventos);
-
-function inicializarEventos() {
-
-    $('#in_home').cycle({
-
-        fx: 'scrollLeft',
-        timeout: 5000,
-        delay: -1000
-    });
-
-}
-
-/*$(function()
-			{
-				$('.scroll-pane').jScrollPane({showArrows: true});
-			});*/
-
-// append scrollbar to all DOM nodes with class="css-scrollbar"
+// The homepage slideshow. It was the jQuery Cycle plugin, which calls
+// $.browser and $.isFunction -- both long gone from jQuery -- so the one
+// effect this page used of it (fx: 'scrollLeft', timeout: 5000) is inlined.
 $(function () {
 
-    $('.css-scrollbar').scrollbar();
-    $('.fff').scrollbar();
+    const marco = $('#in_home');
+    const fotos = marco.children('img');
+
+    if (fotos.length < 2) {
+        return;
+    }
+
+    const ancho = marco.width();
+
+    fotos.css({position: 'absolute', top: 0, left: ancho}).first().css('left', 0);
+
+    let actual = 0;
+
+    setInterval(function () {
+        const siguiente = (actual + 1) % fotos.length;
+
+        fotos.eq(siguiente).css('left', ancho).animate({left: 0}, 600);
+        fotos.eq(actual).animate({left: -ancho}, 600);
+
+        actual = siguiente;
+    }, 5000);
 });
-
-

@@ -40,6 +40,8 @@ templates/         plain PHP templates
 
 **URLs still end in `.php`** (`/productos_furgon.php`, `/administrator/index.php`). They are what is linked and bookmarked, and keeping them is what let the port be compared against the old application route for route. None exist as files, so Apache reaches them with `mod_rewrite` — `FallbackResource` does not work here, because for a path ending in `.php` the PHP handler claims the request and then fails to stat the script.
 
+`/` and `/administrator` are directories, so that fallback never sees them: `/` would be answered by `DirectoryIndex`, which finds the front controller, and `/administrator` holds no index file at all. Both redirect (302) to the page itself, `/index.html` and `/administrator/index.php`, which are what the site links to anyway. The readiness probe is `/health.php`; it answers 503 when the database is unreachable, which is what makes it worth probing.
+
 ### Decisions worth not undoing
 
 - **`Access` is a required argument on every `Route`**, with no default. The old application decided this per file and got it wrong on five endpoints, which were reachable with no session at all. `Admin` redirects to the login page; `AdminApi` returns 403, because redirecting an XHR call to an HTML form injects that form into the calling page as data.
@@ -47,6 +49,18 @@ templates/         plain PHP templates
 - **Every listing query has an explicit `ORDER BY`.** None used to. The order they happened to return was not stable — writing to `producto` was enough to reorder the admin dashboard, which is how the golden master first caught it.
 - **Uploads are checked by extension *and* by the bytes on disk, and stored under a generated name.** The old gate read the declared content type, which the caller picks, and kept the submitted filename; a script announced as an image landed in the web root executable.
 - **The three public listings are one controller, one template and one table of vehicle ids.** They used to be three files differing by one hardcoded id.
+
+### Front-end dependencies
+
+jQuery **4.0.0** everywhere: vendored under `public/js/` for the public pages, loaded from `code.jquery.com` with an SRI hash in the administrator. Bootstrap **5.3.8** in the administrator, from jsDelivr. The Bootstrap bundle carries Popper, which the pages used to load separately *after* Bootstrap, where it was no use to it. Four of them were on the jQuery slim build, which has no `$.ajax`, so the dashboard's delete button was calling an undefined `$.post`.
+
+The three plugins the public site had carried since 2011 are gone. Each one calls something jQuery has since removed — `$.browser`, `$.isFunction`, `$.trim` — so none of them could survive the upgrade:
+
+- **jQuery Cycle** ran one slide transition between two images on the homepage. That is ten lines of `public/js/function.js` now.
+- **SimpleModal** ran the product zoom. It is a `<dialog>` (`public/js/basic.js`), which brings the backdrop, Escape and the focus trap with it. `showDevModal(id)` keeps its name because the markup calls it from inline `onclick` attributes.
+- **jquery.scroll.js** drew a scrollbar out of `<div>`s. It was never called: the only page with a `.css-scrollbar` element is the one page that does not load the file calling `.scrollbar()`. That panel is `overflow:auto`, so the browser draws the scrollbar.
+
+`public/js/basic.js` needs no library, so the product listing loads none at all.
 
 ### Database quirks translated at the repository boundary
 
@@ -66,15 +80,19 @@ docker run --rm -v "$(pwd -W):/app" -w /app --network <net> -e BUFFALO_DB_... bu
 
 **PHPUnit** covers `src/`. `tests/Unit` needs nothing; `tests/Integration` skips itself without `BUFFALO_DB_*`, and its write tests run inside a transaction that is rolled back.
 
-**The golden master** (`tests/golden/*.snap`) holds the exact output of all 32 read-only routes, captured from the PHP 5.6 application before it was retired and updated once, at the cutover, for three reviewed differences. `verify-golden.sh` recaptures and diffs byte for byte, exiting non-zero on drift; `capture-golden.sh` rewrites the snapshots and should only be run when a change is *meant* to alter output.
+**The golden master** (`tests/golden/*.snap`) holds the exact output of all 34 read-only routes, captured from the PHP 5.6 application before it was retired, and updated deliberately twice since: at the cutover, for three reviewed differences, and for the jQuery 4 / Bootstrap 5 upgrade, which rewrote every `<script>` tag and renamed the Bootstrap classes in the administrator. `verify-golden.sh` recaptures and diffs byte for byte, exiting non-zero on drift; `capture-golden.sh` rewrites the snapshots and should only be run when a change is *meant* to alter output.
 
-Two values are normalised at capture time because they vary per run and would otherwise make every comparison fail: the CSRF token becomes `CSRF_TOKEN`, and redirects are recorded relative to the base URL. Snapshots are marked `-text` in `.gitattributes` so git stores them byte for byte.
+Values that vary per run are normalised at capture time, or every comparison would fail: the CSRF token becomes `CSRF_TOKEN`, redirects are recorded relative to the base URL, and Apache's own redirect body — which names the host, the port and the server version — loses the base URL and has its `<address>` line replaced. A capture taken from `http://127.0.0.1:8093` has to match one taken from `http://localhost:8092`, because CI serves the application on port 80. Snapshots are marked `-text` in `.gitattributes` so git stores them byte for byte.
+
+`.github/workflows/ci.yml` runs both of these on every push, against a MySQL 8 service and the image that actually ships.
+
+What the harness cannot see: it adds a CSRF token to every POST it sends, so a page whose own JavaScript forgets one still looks right in the snapshots. That is how the administrator's vehicle-class dropdown came to answer 403 for a while with all 32 routes still matching.
 
 The `action*.php` endpoints are covered only signed out, where they exit before touching the database. Their successful write paths are exercised by hand, not pinned — that still wants integration tests.
 
 ## Known gaps
 
-- **No CI.** Nothing runs the suite or the golden master automatically; both only run when someone runs them.
+- The new-product form's JavaScript compares `.val()` against `0`, so none of its validation alerts can fire. It behaved that way before the port, and making them fire changes what the administrator does.
 - **SQL injection is gone** (everything is a prepared statement) and **passwords are hashed**, but the admin password in the seed is still `root`/`root`. Change it outside the repository.
 - The successful write paths of the three `Guardar*` controllers have no automated coverage.
 - **Four image paths in the data point at files that do not exist**, so B15, B12, B10 and B9 show broken zoom thumbnails, as do B15's three detail bullets. The rows name `images/zoom/productos_img1_small.jpg` and `_img2_small.jpg`, and the same two names under `images/detalle/`.

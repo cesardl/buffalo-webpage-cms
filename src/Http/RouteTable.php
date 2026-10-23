@@ -33,7 +33,10 @@ final class RouteTable
     public static function all(): array
     {
         return [
-            new Route('GET', '/', Access::Public, HealthController::class),
+            // Apache redirects / to index.html, so the probe has a path of
+            // its own. It answers 503 when the database is unreachable, which
+            // is what makes it usable as a readiness check.
+            new Route('GET', '/health.php', Access::Public, HealthController::class),
 
             ...array_map(
                 static fn (string $path): Route => new Route(

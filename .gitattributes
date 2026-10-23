@@ -10,3 +10,7 @@ public/css/*.css -text
 public/js/*.js -text
 public/administrator/style/*.css -text
 public/administrator/scritps/*.js -text
+
+# PHP sources stay LF everywhere, or a fresh checkout on Windows would
+# render CRLF into the HTML and every golden snapshot would differ.
+*.php text eol=lf

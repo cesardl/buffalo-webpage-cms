@@ -21,8 +21,8 @@ use function Buffalo\View\e;
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
         <link type="text/css" href="style/style.css" rel="stylesheet" media="screen"/>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+              integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
               crossorigin="anonymous">
         <title>Formulario de detalles</title>
     </head>
@@ -46,14 +46,14 @@ use function Buffalo\View\e;
                 <div class="col">
                     <input type="hidden" name="id_det_prod<?= $i ?>"
                            value="<?= e((string) ($detalle->id ?? 0)) ?>"/>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="titulo<?= $i ?>">T&iacute;tulo</label></div>
                         <div class="col"><input type="text" id="titulo<?= $i ?>" name="titulo<?= $i ?>"
                                                 class="form-control"
                                                 value="<?= e($detalle->titulo) ?>"/>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label
                                     for="descripcion<?= $i ?>">Descripci&oacute;n</label>
                         </div>
@@ -62,7 +62,7 @@ use function Buffalo\View\e;
                                                    rows="3"><?= e($detalle->descripcion) ?></textarea>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel">Im&aacute;gen</div>
                         <div class="col">
                             <input type="hidden" name="v_imagen<?= $i ?>"
@@ -76,7 +76,7 @@ use function Buffalo\View\e;
                             ?>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="delete<?= $i ?>">Eliminar</label></div>
                         <div class="col">
                             <input type="checkbox" id="delete<?= $i ?>" name="delete<?= $i ?>[]"/>
@@ -96,14 +96,11 @@ use function Buffalo\View\e;
             </div>
         </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"
+            integrity="sha384-fgGyf7Mo7DURSOMnOy7ed+dkq5Job205Gnzu6QIg0BOHKaqt4D76Dt8VlDCzcMHV"
             crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
             crossorigin="anonymous"></script>
     </body>
     </html>

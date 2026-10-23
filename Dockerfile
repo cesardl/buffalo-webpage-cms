@@ -24,6 +24,15 @@ RUN sed -ri 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
 RUN printf '%s\n' \
       '<Directory /var/www/html/public>' \
       '    RewriteEngine On' \
+      '' \
+      '    # / and /administrator are directories, so the fallback below never' \
+      '    # sees them: / would be answered by DirectoryIndex, which finds the' \
+      '    # front controller, and /administrator has no index file at all.' \
+      '    # The site is linked and bookmarked by filename, so both bare paths' \
+      '    # redirect to the page itself rather than serving it at a second URL.' \
+      '    RewriteRule ^$ /index.html [R=302,L]' \
+      '    RewriteRule ^administrator/?$ /administrator/index.php [R=302,L]' \
+      '' \
       '    RewriteCond %{REQUEST_FILENAME} !-f' \
       '    RewriteCond %{REQUEST_FILENAME} !-d' \
       '    RewriteRule ^ /index.php [L]' \

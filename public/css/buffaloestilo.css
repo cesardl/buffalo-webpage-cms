@@ -199,6 +199,7 @@ body {
 	margin-right: auto;
 	margin-left: auto;
 	position:relative;
+	overflow:hidden;
 }
 #all_pie_home {
 	height: 38px;
@@ -444,15 +445,14 @@ body {
 #basic-modal-content {display:none;}
 
 /* Overlay */
-#simplemodal-overlay {background-color:#000; cursor:wait;}
+#basic-modal-dialog::backdrop {background-color:#000; opacity:0.6;}
 
-/* Container */
-#simplemodal-container { min-height:464px; width:832px; color:#bbb; background-color:#202021; border:1px solid #353536; padding:12px;}
-#simplemodal-container .simplemodal-data {padding:8px;}
-#simplemodal-container code {background:#141414; border-left:3px solid #65B43D; color:#bbb; display:block; font-size:12px; margin-bottom:12px; padding:4px 6px 6px;}
-#simplemodal-container a {color:#ddd;}
-#simplemodal-container a.modalCloseImg {background:url(../images/x.png) no-repeat; width:25px; height:29px; display:inline; z-index:3200; position:absolute; top:-15px; right:-16px; cursor:pointer;}
-#simplemodal-container h3 {color:#84b8d9;}
+/* Container. The content keeps the id it has in the page, so the rule above
+   that hides it there has to be undone inside the dialog. */
+#basic-modal-dialog { min-height:464px; width:832px; color:#bbb; background-color:#202021; border:1px solid #353536; padding:12px;}
+#basic-modal-dialog #basic-modal-content {display:block;}
+#basic-modal-dialog a {color:#ddd;}
+#basic-modal-dialog a.modalCloseImg {background:url(../images/x.png) no-repeat; width:25px; height:29px; display:block; float:right; cursor:pointer;}
 /*------------------------*/
 .product_detalle_1_tituclase {
 	float: left;

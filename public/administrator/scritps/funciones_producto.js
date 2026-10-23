@@ -5,15 +5,15 @@
 $(document).ready(function () {
     $("#vehiculo").change(function () {
         $.post("VehiculoSelect.php", {
-            veh_id: $(this).val()
+            veh_id: $(this).val(),
+            // Every POST is checked at the router. Without this the class
+            // dropdown answers 403, which is what it had been doing: the
+            // golden master missed it because its harness adds a token to
+            // every POST it sends, including the ones the page forgets.
+            _token: $('#formProducto input[name="_token"]').val()
         }, function (data) {
             $("#master").html(data);
         })
-    });
-
-    $(".custom-file-input").change(function () {
-        const fileName = $(this).val().split("\\").pop();
-        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
 
     $('#btn_acept').click(function () {
@@ -23,16 +23,19 @@ $(document).ready(function () {
         const imagen = $('#imagen');
         const descripcion = $('#descripcion');
 
+        // These compare a string against 0, so no alert can ever fire. That
+        // is how the legacy form behaved; making the validation work is a
+        // change in the administrator's behaviour and belongs in its own commit.
         if (master.val() === 0) {
             alert('Debe seleccionar un vehiculo y su clase');
         } else {
-            if ($.trim(modelo.val()) === 0) {
+            if ((modelo.val() || '').trim() === 0) {
                 alert('Debe ingresar un modelo de vehiculo');
             } else {
-                if ($.trim(v_imagen.val()) === 0 && jQuery.trim(imagen.val()) === 0) {
+                if ((v_imagen.val() || '').trim() === 0 && (imagen.val() || '').trim() === 0) {
                     alert('Debe seleccionar una imagen');
                 } else {
-                    if ($.trim(descripcion.val()) === 0) {
+                    if ((descripcion.val() || '').trim() === 0) {
                         alert('Debe ingresar un descripcion del vehiculo');
                     } else {
                         $('#formProducto').submit();
