@@ -85,7 +85,7 @@ jobs:
           echo "the application never became ready"; exit 1
 
       - name: Verify the golden master
-        run: ./tests/verify-golden.sh http://127.0.0.1
+        run: bash ./tests/verify-golden.sh http://127.0.0.1
 
       - name: Application log
         if: failure()

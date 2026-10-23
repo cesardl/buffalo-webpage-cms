@@ -16,7 +16,7 @@ HERE="$(cd "$(dirname "$0")" && pwd)"
 ACTUAL="$(mktemp -d)"
 trap 'rm -rf "$ACTUAL"' EXIT
 
-"$HERE/capture-golden.sh" "$BASE" "$ACTUAL" >/dev/null
+bash "$HERE/capture-golden.sh" "$BASE" "$ACTUAL" >/dev/null
 
 if diff -ru "$HERE/golden" "$ACTUAL"; then
   echo "OK  $(ls -1 "$HERE/golden"/*.snap | wc -l) routes match the golden master."
