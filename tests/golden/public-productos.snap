@@ -1,0 +1,45 @@
+# GET /productos.html -> 200 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BUFFALO</title>
+<link href="css/buffaloestilo.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.scroll.js"></script>
+<script type="text/javascript" src="js/function.js"></script>
+<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
+</head>
+
+<body>
+<div id="index_cabecera">
+  <div id="bg_cabecera">
+  	<div id="index_cabecera_logo"><img src="images/logo_top.png" width="208" height="169" /></div>
+    <div class="botonera">
+      <div class="boton_home btn_cabecera_home"><a href="index.html"></a></div>
+      <div class="boton_quienes btn_cabecera_quienes"><a href="quienes_somos.html"></a></div>
+      <div class="boton_productos"><img src="images/btn_productos_b.jpg" width="105" height="50" /></div>
+      <div class="boton_ubicanos btn_cabecera_ubicanos"><a href="ubicanos.html"></a></div>
+      <div class="boton_contactanos btn_cabecera_contactanos"><a href="contactanos.html"></a></div>
+    </div>
+  </div>
+</div>
+<div id="quienes_contenido">
+	<div id="in_quienes">
+	  <div class="productos_texto_top"><span class="txt_prodtitu_17p">Escoge el producto que estas buscando en cualquiera de nuestros modelos:</span></div>
+	  <div class="prod_motocicletas"><a href="productos_motocicleta.php"><img src="images/prod_motocicletas.jpg" width="242" height="417" border="0" /></a></div>
+	  <div class="prod_furgones"><a href="productos_furgon.php"><img src="images/prod_furgones.jpg" width="239" height="417" border="0" /></a></div>
+	  <div class="prod_mototaxis"><a href="productos_mototaxis.php"><img src="images/prod_mototaxis.jpg" width="296" height="417" border="0" /></a></div>
+	</div>
+</div>
+<div id="all_pie_home">
+	<div id="pie_home">
+	  <div class="pie_megusta"></div>
+	  <div class="pie_derechos"><span class="txt_pie_11p">BUFFALO del Perú 2011 - Todos los derechos reservados.</span></div>
+	  <div class="pie_compartir"><span class="txt_piecom_10p">Compartir en:</span></div>
+	  <div class="pie_face"><img src="images/pie_facebook.jpg" width="17" height="27" border="0" /></div>
+      <div class="pie_face"><img src="images/pie_twitter.jpg" width="17" height="27" border="0" /></div>
+	</div>
+</div>
+</body>
+</html>

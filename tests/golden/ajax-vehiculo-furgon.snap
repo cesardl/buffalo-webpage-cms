@@ -1,0 +1,2 @@
+# POST /administrator/VehiculoSelect.php -> 200 
+<option value="0">[Seleccione]</option><option value="6">DE CARGA</option><option value="7">DE PASAJEROS</option>

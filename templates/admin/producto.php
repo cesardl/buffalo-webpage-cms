@@ -1,0 +1,157 @@
+<?php
+
+declare(strict_types=1);
+
+use Buffalo\Domain\Master;
+use Buffalo\Domain\Producto;
+use Buffalo\Domain\Vehiculo;
+
+use function Buffalo\View\e;
+
+/** @var string $titulo */
+/** @var Producto|null $producto */
+/** @var int $masterId */
+/** @var int $vehiculoId */
+/** @var list<Vehiculo> $vehiculos */
+/** @var list<Master> $masters */
+/** @var int $zoomSlots */
+/** @var string $token */
+
+// Four extra spaces on every line, from the else block the legacy page
+// rendered inside.
+$zoom = static fn (int $slot): string => $producto?->fotosZoom[$slot - 1] ?? '';
+?>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
+        <link type="text/css" href="style/style.css" rel="stylesheet" media="screen"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <title>Formulario de producto</title>
+    </head>
+    <body>
+    <div class="container pt-4">
+        <div class="row">
+            <div class="col"><h3><?= e($titulo) ?></h3></div>
+            <div class="col-2 tdLabel">
+                <a href="bienvenido.php">&lt;&lt; Volver</a>
+            </div>
+        </div>
+        <form id="formProducto" method="POST" action="actionProductoCtrl.php" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="<?= e($token) ?>"/>
+            <input type="hidden" id="id_producto" name="id_producto" value="<?= e((string) ($producto->id ?? 0)) ?>"/>
+            <div class="form-row my-2">
+                <div class="col-2"><label for="vehiculo">Tipo veh&iacute;culo</label></div>
+                <div class="col">
+                    <select id="vehiculo" name="vehiculo" class="custom-select">
+                        <option value="0">[Seleccione]</option>
+                        <?php
+                        foreach ($vehiculos as $vehiculo) {
+                            $selected = $vehiculo->id === $vehiculoId ? 'selected' : '';
+                            echo "<option {$selected} value=\"" . e((string) $vehiculo->id) . '">'
+                                . e($vehiculo->nombre) . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="col">
+                    <select id="master" name="master" class="custom-select">
+                        <option value="0">[Seleccione]</option>
+                        <?php
+                        foreach ($masters as $master) {
+                            $selected = $master->id === $masterId ? 'selected' : '';
+                            echo "<option {$selected} value=\"" . e((string) $master->id) . '">'
+                                . e($master->clase) . '</option>';
+                        }
+                        ?>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row my-2">
+                <div class="col-2"><label for="modelo">Modelo</label></div>
+                <div class="col">
+                    <input type="text" id="modelo" name="modelo"
+                           class="form-control"
+                           value="<?= e($producto->modelo ?? '') ?>"/>
+                </div>
+            </div>
+            <div class="form-row my-2">
+                <div class="col-2">Foto principal</div>
+                <div class="col">
+                    <input type="hidden" id="v_imagen" name="v_imagen"
+                           value="<?= e($producto->fotoPrincipal ?? '') ?>"/>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="imagen" name="imagen">
+                        <label class="custom-file-label" for="imagen">Choose file</label>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <?php
+                    if (($producto->fotoPrincipal ?? '') !== '') {
+                        echo '<img src="../' . e($producto->fotoPrincipal)
+                            . '" class="img-thumbnail" alt="Foto principal"/>';
+                    }
+                    ?>
+                </div>
+            </div>
+<?php for ($slot = 1; $slot <= $zoomSlots; $slot++) { ?>
+            <div class="form-row my-2">
+                <div class="col-2">Foto Zoom <?= $slot ?></div>
+                <div class="col">
+                    <input type="hidden" id="v_zoom<?= $slot ?>" name="v_zoom<?= $slot ?>"
+                           value="<?= e($zoom($slot)) ?>"/>
+                    <input type="file" id="zoom<?= $slot ?>" name="zoom<?= $slot ?>"/>
+                </div>
+                <div class="col-1">
+                    <?php
+                    if ($zoom($slot) !== '') {
+                        echo '<img src="../' . e($zoom($slot))
+                            . "\" class=\"img-thumbnail\" alt=\"Zoom {$slot}\"/>";
+                    }
+                    ?>
+                </div>
+            </div>
+<?php } ?>
+            <div class="form-row my-2">
+                <div class="col-2">Ficha t&eacute;cnica</div>
+                <div class="col">
+                    <input type="hidden" name="v_fichtec" value="<?= e($producto->fichaTecnica ?? '') ?>"/>
+                    <input type="file" id="fichtec" name="fichtec"/>
+                </div>
+                <div class="col-1">
+                    <?php
+                    if (($producto->fichaTecnica ?? '') !== '') {
+                        echo '<img src="images/pdf.png" alt="Ficha tecnica"/>';
+                    }
+                    ?>
+                </div>
+            </div>
+            <div class="form-row my-2">
+                <div class="col-2"><label for="descripcion">Descripci&oacute;n</label></div>
+                <div class="col">
+                    <textarea id="descripcion" name="descripcion" rows="5"
+                              class="form-control"><?= e($producto->descripcion ?? '') ?></textarea>
+                </div>
+            </div>
+            <div class="row my-4">
+                <div class="col" style="text-align: center;">
+                    <input id="btn_acept" type="button" name="name" value="Aceptar" class="btn btn-primary"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha384-vk5WoKIaW/vJyUAd9n/wmopsmNhiy+L2Z+SBxGYnUkunIxVxAv/UtMOhba/xskxh"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scritps/funciones_producto.js"></script>
+    </body>
+    </html>

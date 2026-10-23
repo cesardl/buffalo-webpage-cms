@@ -1,0 +1,92 @@
+name: CI
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    # The golden master compares HTTP output, so it has to run against the
+    # image that actually ships -- Apache, mod_rewrite and all -- not against
+    # a stand-in server that routes differently.
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: rootroot
+          MYSQL_DATABASE: buffalo9_portal
+        ports: ['3306:3306']
+        options: >-
+          --health-cmd="mysqladmin ping -h 127.0.0.1 -uroot -prootroot"
+          --health-interval=5s
+          --health-timeout=5s
+          --health-retries=20
+
+    env:
+      BUFFALO_DB_HOST: 127.0.0.1
+      BUFFALO_DB_PORT: '3306'
+      BUFFALO_DB_NAME: buffalo9_portal
+      BUFFALO_DB_USER: buffalo9_root
+      BUFFALO_DB_PASS: r00tr00t
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create the application user
+        run: |
+          mysql -h 127.0.0.1 -uroot -prootroot -e "
+            CREATE USER '${BUFFALO_DB_USER}'@'%' IDENTIFIED BY '${BUFFALO_DB_PASS}';
+            GRANT ALL PRIVILEGES ON ${BUFFALO_DB_NAME}.* TO '${BUFFALO_DB_USER}'@'%';"
+
+      - name: Load the schema and seed data
+        # utf8mb4 on the client, or the Spanish accents double-encode on the
+        # way in and every assertion about them passes for the wrong reason.
+        run: |
+          mysql -h 127.0.0.1 -uroot -prootroot --default-character-set=utf8mb4 \
+            "${BUFFALO_DB_NAME}" < database/buffalo_data.sql
+
+      - name: Install dependencies
+        run: |
+          docker run --rm -v "$PWD:/app" -w /app composer:2 \
+            composer install --no-interaction --no-progress --ignore-platform-reqs
+
+      - name: Build the image
+        run: docker build -t buffalo-webpage:ci .
+
+      - name: Migrate passwords
+        run: |
+          docker run --rm --network host -v "$PWD:/app" -w /app \
+            -e BUFFALO_DB_HOST -e BUFFALO_DB_PORT -e BUFFALO_DB_NAME \
+            -e BUFFALO_DB_USER -e BUFFALO_DB_PASS \
+            buffalo-webpage:ci php bin/migrate-passwords.php
+
+      - name: Run the test suite
+        run: |
+          docker run --rm --network host -v "$PWD:/app" -w /app \
+            -e BUFFALO_DB_HOST -e BUFFALO_DB_PORT -e BUFFALO_DB_NAME \
+            -e BUFFALO_DB_USER -e BUFFALO_DB_PASS \
+            buffalo-webpage:ci vendor/bin/phpunit
+
+      - name: Start the application
+        run: |
+          docker run -d --name buffalo-webpage --network host \
+            -e BUFFALO_DB_HOST -e BUFFALO_DB_PORT -e BUFFALO_DB_NAME \
+            -e BUFFALO_DB_USER -e BUFFALO_DB_PASS \
+            buffalo-webpage:ci
+          for _ in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1/ >/dev/null 2>&1; then
+              echo "up"; exit 0
+            fi
+            sleep 1
+          done
+          echo "the application never became ready"; exit 1
+
+      - name: Verify the golden master
+        run: bash ./tests/verify-golden.sh http://127.0.0.1
+
+      - name: Application log
+        if: failure()
+        run: docker logs buffalo-webpage

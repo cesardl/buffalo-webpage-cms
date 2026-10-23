@@ -1,0 +1,246 @@
+# GET /administrator/formDetalles.php?id_producto=4&mod_prod=B12 -> 200 
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
+        <link type="text/css" href="style/style.css" rel="stylesheet" media="screen"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+              crossorigin="anonymous">
+        <title>Formulario de detalles</title>
+    </head>
+    <body>
+    <div class="container pt-4">
+        <div class="row">
+            <div class="col"><h3>Detalles del Vehiculo B12</div>
+            <div class="col-2 tdLabel">
+                <a href="bienvenido.php">&lt;&lt; Volver</a>
+            </div>
+        </div>
+        <form method="POST" action="actionDetalleProductoCtrl.php" enctype="multipart/form-data">
+            <input type="hidden" name="_token" value="CSRF_TOKEN"/>
+            <input type="hidden" id="id_producto" name="id_producto" value="4"/>
+            <div class="row my-2">                <div class="col">
+                    <input type="hidden" name="id_det_prod0"
+                           value="0"/>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="titulo0">T&iacute;tulo</label></div>
+                        <div class="col"><input type="text" id="titulo0" name="titulo0"
+                                                class="form-control"
+                                                value=""/>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label
+                                    for="descripcion0">Descripci&oacute;n</label>
+                        </div>
+                        <div class="col"><textarea id="descripcion0" name="descripcion0"
+                                                   class="form-control"
+                                                   rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel">Im&aacute;gen</div>
+                        <div class="col">
+                            <input type="hidden" name="v_imagen0"
+                                   value=""/>
+                            <input type="file" id="imagen0" name="imagen0"/>
+                                                    </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="delete0">Eliminar</label></div>
+                        <div class="col">
+                            <input type="checkbox" id="delete0" name="delete0[]"/>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col">
+                    <input type="hidden" name="id_det_prod1"
+                           value="0"/>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="titulo1">T&iacute;tulo</label></div>
+                        <div class="col"><input type="text" id="titulo1" name="titulo1"
+                                                class="form-control"
+                                                value=""/>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label
+                                    for="descripcion1">Descripci&oacute;n</label>
+                        </div>
+                        <div class="col"><textarea id="descripcion1" name="descripcion1"
+                                                   class="form-control"
+                                                   rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel">Im&aacute;gen</div>
+                        <div class="col">
+                            <input type="hidden" name="v_imagen1"
+                                   value=""/>
+                            <input type="file" id="imagen1" name="imagen1"/>
+                                                    </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="delete1">Eliminar</label></div>
+                        <div class="col">
+                            <input type="checkbox" id="delete1" name="delete1[]"/>
+                        </div>
+                    </div>
+                </div>
+                </div><div class="row my-2">                <div class="col">
+                    <input type="hidden" name="id_det_prod2"
+                           value="0"/>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="titulo2">T&iacute;tulo</label></div>
+                        <div class="col"><input type="text" id="titulo2" name="titulo2"
+                                                class="form-control"
+                                                value=""/>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label
+                                    for="descripcion2">Descripci&oacute;n</label>
+                        </div>
+                        <div class="col"><textarea id="descripcion2" name="descripcion2"
+                                                   class="form-control"
+                                                   rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel">Im&aacute;gen</div>
+                        <div class="col">
+                            <input type="hidden" name="v_imagen2"
+                                   value=""/>
+                            <input type="file" id="imagen2" name="imagen2"/>
+                                                    </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="delete2">Eliminar</label></div>
+                        <div class="col">
+                            <input type="checkbox" id="delete2" name="delete2[]"/>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col">
+                    <input type="hidden" name="id_det_prod3"
+                           value="0"/>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="titulo3">T&iacute;tulo</label></div>
+                        <div class="col"><input type="text" id="titulo3" name="titulo3"
+                                                class="form-control"
+                                                value=""/>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label
+                                    for="descripcion3">Descripci&oacute;n</label>
+                        </div>
+                        <div class="col"><textarea id="descripcion3" name="descripcion3"
+                                                   class="form-control"
+                                                   rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel">Im&aacute;gen</div>
+                        <div class="col">
+                            <input type="hidden" name="v_imagen3"
+                                   value=""/>
+                            <input type="file" id="imagen3" name="imagen3"/>
+                                                    </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="delete3">Eliminar</label></div>
+                        <div class="col">
+                            <input type="checkbox" id="delete3" name="delete3[]"/>
+                        </div>
+                    </div>
+                </div>
+                </div><div class="row my-2">                <div class="col">
+                    <input type="hidden" name="id_det_prod4"
+                           value="0"/>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="titulo4">T&iacute;tulo</label></div>
+                        <div class="col"><input type="text" id="titulo4" name="titulo4"
+                                                class="form-control"
+                                                value=""/>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label
+                                    for="descripcion4">Descripci&oacute;n</label>
+                        </div>
+                        <div class="col"><textarea id="descripcion4" name="descripcion4"
+                                                   class="form-control"
+                                                   rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel">Im&aacute;gen</div>
+                        <div class="col">
+                            <input type="hidden" name="v_imagen4"
+                                   value=""/>
+                            <input type="file" id="imagen4" name="imagen4"/>
+                                                    </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="delete4">Eliminar</label></div>
+                        <div class="col">
+                            <input type="checkbox" id="delete4" name="delete4[]"/>
+                        </div>
+                    </div>
+                </div>
+                                <div class="col">
+                    <input type="hidden" name="id_det_prod5"
+                           value="0"/>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="titulo5">T&iacute;tulo</label></div>
+                        <div class="col"><input type="text" id="titulo5" name="titulo5"
+                                                class="form-control"
+                                                value=""/>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label
+                                    for="descripcion5">Descripci&oacute;n</label>
+                        </div>
+                        <div class="col"><textarea id="descripcion5" name="descripcion5"
+                                                   class="form-control"
+                                                   rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel">Im&aacute;gen</div>
+                        <div class="col">
+                            <input type="hidden" name="v_imagen5"
+                                   value=""/>
+                            <input type="file" id="imagen5" name="imagen5"/>
+                                                    </div>
+                    </div>
+                    <div class="form-row my-2">
+                        <div class="col-2 tdLabel"><label for="delete5">Eliminar</label></div>
+                        <div class="col">
+                            <input type="checkbox" id="delete5" name="delete5[]"/>
+                        </div>
+                    </div>
+                </div>
+                </div>            <div class="row my-2">
+                <div class="col" style="text-align: center;">
+                    <input type="submit" value="Aceptar" name="aceptar" class="btn btn-primary"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+    </body>
+    </html>
+    

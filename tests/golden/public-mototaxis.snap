@@ -1,0 +1,274 @@
+# GET /productos_mototaxis.php -> 200 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BUFFALO</title>
+<link href="css/buffaloestilo.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/scrollbar.css" />
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<!--<script type="text/javascript" src="js/function.js"></script>-->
+<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
+<script type="text/javascript" src="js/jquery.scroll.js"></script>
+</head>
+
+<body>
+<div id="index_cabecera">
+  <div id="bg_cabecera">
+  	<div id="index_cabecera_logo"><img src="images/logo_top.png" width="208" height="169" /></div>
+    <div class="botonera">
+      <div class="boton_home btn_cabecera_home"><a href="index.html"></a></div>
+      <div class="boton_quienes btn_cabecera_quienes"><a href="quienes_somos.html"></a></div>
+      <div class="boton_productos"><a href="productos.html"><img src="images/btn_productos_b.jpg" width="105" height="50" border="0" /></a></div>
+      <div class="boton_ubicanos btn_cabecera_ubicanos"><a href="ubicanos.html"></a></div>
+      <div class="boton_contactanos btn_cabecera_contactanos"><a href="contactanos.html"></a></div>
+    </div>
+  </div>
+</div>
+<div id="quienes_contenido">
+	<div id="in_quienes">
+	  <div class="ubicanos_bg">
+      <div class="css-scrollbar simple">
+                
+      <div class="productos_in_titu txt_quietitu_20p">>&nbsp;&nbsp;Mototaxis</div>
+      <!--aki empieza-->
+	        <div class="productos_in_1">
+        <div class="productos_in_1_datos">
+        	<div class="productos_in_1_icono">
+                                            <img src="images/ico_product.png" width="19" height="19" />
+                                     </div>
+                            <div class="product_in_1_subti_clase"><span class="txt_contacsubti_12p"><b>MODELO DE MOTOTAXI Y COLORES</b></span></div>
+                        <div class="product_in_serie"><span class="txt_contacsubti_12p">>&nbsp;&nbsp; BF300</span></div>
+            <div class="product_in_colores">
+                                        <div class="product_in_color2">
+                                <div class="product_in_colortop" style="background-color:#1500ff;"></div>
+                                <div class="product_in_colorbottom" style="background-color:#777676;"></div>
+                        </div>
+                                        <div class="product_in_color2">
+                                <div class="product_in_colortop" style="background-color:#1500ff;"></div>
+                                <div class="product_in_colorbottom" style="background-color:#ff992b;"></div>
+                        </div>
+                                        <div class="product_in_color2">
+                                <div class="product_in_colortop" style="background-color:#ff001e;"></div>
+                                <div class="product_in_colorbottom" style="background-color:#777676;"></div>
+                        </div>
+                                        <div class="product_in_color2">
+                                <div class="product_in_colortop" style="background-color:#ff001e;"></div>
+                                <div class="product_in_colorbottom" style="background-color:#ff992b;"></div>
+                        </div>
+                            </div>
+            <div class="product_in_btndescarga"><a href="ficha_tecnica/ficha.pdf" target="_blank"><img src="images/btn_descarga_ficha.png" width="243" height="17" border="0" /></a></div>
+        </div>
+        <div class="product_in_1_fotos">
+                            <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_11')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_11">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">BF300</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_mototaxi_bf300.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">El BF300 cuenta con una estructura reforzada, carenado con parabrisas panorámico, asientos mas confortables y un nuevo faro cuadrado que hace este vehículo lider en su categoría , además de la calidad de su motor , que garantiza un uso eficiente.
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Estructura con chasis reforzado
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Timón con rodaje cónico
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Diseño moderno
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/bf300_small1.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_12')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_12">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">BF300</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_mototaxi_bf300.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">El BF300 cuenta con una estructura reforzada, carenado con parabrisas panorámico, asientos mas confortables y un nuevo faro cuadrado que hace este vehículo lider en su categoría , además de la calidad de su motor , que garantiza un uso eficiente.
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Estructura con chasis reforzado
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Timón con rodaje cónico
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Diseño moderno
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/bf300_small2.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_13')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_13">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">BF300</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_mototaxi_bf300.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">El BF300 cuenta con una estructura reforzada, carenado con parabrisas panorámico, asientos mas confortables y un nuevo faro cuadrado que hace este vehículo lider en su categoría , además de la calidad de su motor , que garantiza un uso eficiente.
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Estructura con chasis reforzado
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Timón con rodaje cónico
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Diseño moderno
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/bf300_small3.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_14')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_14">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">BF300</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_mototaxi_bf300.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">El BF300 cuenta con una estructura reforzada, carenado con parabrisas panorámico, asientos mas confortables y un nuevo faro cuadrado que hace este vehículo lider en su categoría , además de la calidad de su motor , que garantiza un uso eficiente.
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Estructura con chasis reforzado
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Timón con rodaje cónico
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf300_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Diseño moderno
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/bf300_small1.jpg" width="88" height="89" />
+                </div>
+                        </div>
+      </div>
+            <!--aki se acaba-->
+      
+      </div>
+      
+      </div>
+	</div>
+</div>
+<div id="all_pie_home">
+	<div id="pie_home">
+	  <div class="pie_megusta"></div>
+	  <div class="pie_derechos"><span class="txt_pie_11p">BUFFALO del Perú 2011 - Todos los derechos reservados.</span></div>
+	  <div class="pie_compartir"><span class="txt_piecom_10p">Compartir en:</span></div>
+	  <div class="pie_face"><img src="images/pie_facebook.jpg" width="17" height="27" border="0" /></div>
+      <div class="pie_face"><img src="images/pie_twitter.jpg" width="17" height="27" border="0" /></div>
+	</div>
+</div>
+<!-- Load jQuery, SimpleModal and Basic JS files -->
+<script type='text/javascript' src='js/jquery-1.4.2.min.js'></script>
+<script type='text/javascript' src='js/jquery.simplemodal.js'></script>
+<script type='text/javascript' src='js/basic.js'></script>
+</body>
+</html>

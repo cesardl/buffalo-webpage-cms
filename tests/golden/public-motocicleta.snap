@@ -1,0 +1,666 @@
+# GET /productos_motocicleta.php -> 200 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BUFFALO</title>
+<link href="css/buffaloestilo.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/scrollbar.css" />
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<!--<script type="text/javascript" src="js/function.js"></script>-->
+<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
+<script type="text/javascript" src="js/jquery.scroll.js"></script>
+</head>
+
+<body>
+<div id="index_cabecera">
+  <div id="bg_cabecera">
+  	<div id="index_cabecera_logo"><img src="images/logo_top.png" width="208" height="169" /></div>
+    <div class="botonera">
+      <div class="boton_home btn_cabecera_home"><a href="index.html"></a></div>
+      <div class="boton_quienes btn_cabecera_quienes"><a href="quienes_somos.html"></a></div>
+      <div class="boton_productos"><a href="productos.html"><img src="images/btn_productos_b.jpg" width="105" height="50" border="0" /></a></div>
+      <div class="boton_ubicanos btn_cabecera_ubicanos"><a href="ubicanos.html"></a></div>
+      <div class="boton_contactanos btn_cabecera_contactanos"><a href="contactanos.html"></a></div>
+    </div>
+  </div>
+</div>
+<div id="quienes_contenido">
+	<div id="in_quienes">
+	  <div class="ubicanos_bg">
+      <div class="css-scrollbar simple">
+                
+      <div class="productos_in_titu txt_quietitu_20p">>&nbsp;&nbsp;Motocicletas</div>
+      <!--aki empieza-->
+	        <div class="productos_in_1">
+        <div class="productos_in_1_datos">
+        	<div class="productos_in_1_icono">
+                                            <img src="images/ico_product.png" width="19" height="19" />
+                                     </div>
+                            <div class="product_in_1_subti_clase"><span class="txt_contacsubti_12p"><b>DE PASEO</b></span></div>
+                        <div class="product_in_serie"><span class="txt_contacsubti_12p">>&nbsp;&nbsp; B5</span></div>
+            <div class="product_in_colores">
+                                        <div class="product_in_color1" style="background-color:#ff001e;"></div>
+                            </div>
+            <div class="product_in_btndescarga"><a href="ficha_tecnica/ficha.pdf" target="_blank"><img src="images/btn_descarga_ficha.png" width="243" height="17" border="0" /></a></div>
+        </div>
+        <div class="product_in_1_fotos">
+                            <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_11')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_11">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B5</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b5.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">Para quienes buscan algo mas que solo motos de paseo, la B5 se distingue por su acabado, modernas lÍneas de diseño, chapa de seguridad antirobos, pintura acrilica antirayadura, económica y de fácil manejo, hacen de la B5 una motocicleta lider en su categoría
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b5_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Chapa  de encendido con seguridad antirrobo
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b5_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Espacioso portaequipaje 
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b5_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Moderno y cómodo posapies
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/b5_small1.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_12')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_12">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B5</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b5.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">Para quienes buscan algo mas que solo motos de paseo, la B5 se distingue por su acabado, modernas lÍneas de diseño, chapa de seguridad antirobos, pintura acrilica antirayadura, económica y de fácil manejo, hacen de la B5 una motocicleta lider en su categoría
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b5_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Chapa  de encendido con seguridad antirrobo
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b5_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Espacioso portaequipaje 
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b5_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Moderno y cómodo posapies
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/b5_small2.jpg" width="88" height="89" />
+                </div>
+                        </div>
+      </div>
+            <div class="productos_in_1">
+        <div class="productos_in_1_datos">
+        	<div class="productos_in_1_icono">
+                                            <img src="images/ico_product.png" width="19" height="19" />
+                                     </div>
+                            <div class="product_in_1_subti_clase"><span class="txt_contacsubti_12p"><b>DE TRABAJO</b></span></div>
+                        <div class="product_in_serie"><span class="txt_contacsubti_12p">>&nbsp;&nbsp; B3CH</span></div>
+            <div class="product_in_colores">
+                                        <div class="product_in_color1" style="background-color:#1500ff;"></div>
+                                        <div class="product_in_color1" style="background-color:#ff001e;"></div>
+                            </div>
+            <div class="product_in_btndescarga"><a href="ficha_tecnica/ficha.pdf" target="_blank"><img src="images/btn_descarga_ficha.png" width="243" height="17" border="0" /></a></div>
+        </div>
+        <div class="product_in_1_fotos">
+                            <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_21')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_21">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B3CH</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b3ch.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">La B3CH cuenta con un motor de 150cc , que nos garantiza potencia para el trabajo de la ciudad y el campo. Esta versión BUFFALO viene con timón de rodaje cónico , garantizando un bajo costo de mantenimiento. Asi mismo cuenta con protectores originales que  proporcionan mayor seguridad al conductor
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b3ch_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p">KIT CHACARERO ORIGINAL
+</div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Sólidos y originales . Protectores que brindan seguridad ante posibles choques
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b3ch_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p">PARILLA POSTERIOR PROTECTORA
+</div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Para mayor comodidad y espacio.
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/b3ch_small1.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_22')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_22">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B3CH</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b3ch.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">La B3CH cuenta con un motor de 150cc , que nos garantiza potencia para el trabajo de la ciudad y el campo. Esta versión BUFFALO viene con timón de rodaje cónico , garantizando un bajo costo de mantenimiento. Asi mismo cuenta con protectores originales que  proporcionan mayor seguridad al conductor
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b3ch_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p">KIT CHACARERO ORIGINAL
+</div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Sólidos y originales . Protectores que brindan seguridad ante posibles choques
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b3ch_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p">PARILLA POSTERIOR PROTECTORA
+</div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Para mayor comodidad y espacio.
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/b3ch_small2.jpg" width="88" height="89" />
+                </div>
+                        </div>
+      </div>
+            <div class="productos_in_1">
+        <div class="productos_in_1_datos">
+        	<div class="productos_in_1_icono">
+                                            <img src="images/ico_product.png" width="19" height="19" />
+                                     </div>
+                            <div class="product_in_1_subti_clase"><span class="txt_contacsubti_12p"><b>TODO TERRENO</b></span></div>
+                        <div class="product_in_serie"><span class="txt_contacsubti_12p">>&nbsp;&nbsp; B15</span></div>
+            <div class="product_in_colores">
+                                        <div class="product_in_color1" style="background-color:#1500ff;"></div>
+                                        <div class="product_in_color1" style="background-color:#ff001e;"></div>
+                            </div>
+            <div class="product_in_btndescarga"><a href="ficha_tecnica/ficha.pdf" target="_blank"><img src="images/btn_descarga_ficha.png" width="243" height="17" border="0" /></a></div>
+        </div>
+        <div class="product_in_1_fotos">
+                            <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_31')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_31">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B15</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b15.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">La B15, una motocicleta diseñada para todo terreno y superar todas las exigencias de su conductor tanto para la ciudad y el campo, su alta performance y resistencia hacen de la B15 única y especial en su categoría
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/productos_img1_small.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p">TANQUE DE CARBONO</div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Mayor durabilidad de tanque, además con este material en el tanque se impide la emisión de partículas de metal que sí se dan en los tanques convencionales acortando la vida del motor
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/productos_img2_small.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p">PLANCHA DE ACERO PROTECTORA DE MOTOR</div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Protección al motor contra choques, piedras, etc. en caminos de dificil acceso.
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/productos_img2_small.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p">SUSPENSION MONOSHOCK</div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Sistema de suspensión que permite mayor estabilidad y suavidad al conducir
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/productos_img1_small.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_32')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_32">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B15</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b15.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">La B15, una motocicleta diseñada para todo terreno y superar todas las exigencias de su conductor tanto para la ciudad y el campo, su alta performance y resistencia hacen de la B15 única y especial en su categoría
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/productos_img1_small.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p">TANQUE DE CARBONO</div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Mayor durabilidad de tanque, además con este material en el tanque se impide la emisión de partículas de metal que sí se dan en los tanques convencionales acortando la vida del motor
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/productos_img2_small.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p">PLANCHA DE ACERO PROTECTORA DE MOTOR</div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Protección al motor contra choques, piedras, etc. en caminos de dificil acceso.
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/productos_img2_small.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p">SUSPENSION MONOSHOCK</div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Sistema de suspensión que permite mayor estabilidad y suavidad al conducir
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/productos_img2_small.jpg" width="88" height="89" />
+                </div>
+                        </div>
+      </div>
+            <div class="productos_in_1">
+        <div class="productos_in_1_datos">
+        	<div class="productos_in_1_icono">
+                                    </div>
+                        <div class="product_in_serie"><span class="txt_contacsubti_12p">>&nbsp;&nbsp; B12</span></div>
+            <div class="product_in_colores">
+                                        <div class="product_in_color1" style="background-color:#ff001e;"></div>
+                            </div>
+            <div class="product_in_btndescarga"><a href="ficha_tecnica/ficha.pdf" target="_blank"><img src="images/btn_descarga_ficha.png" width="243" height="17" border="0" /></a></div>
+        </div>
+        <div class="product_in_1_fotos">
+                            <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_41')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_41">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B12</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b12.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">La B12, tiene un potente motor de 200 cc para todo terreno, posee un sistema de motor con balanceador  que hace que reduzca al mínimo las vibraciones a altas velocidades, ideal para aquellos que buscan un diseño moderno con un potente motor
+</div>
+            </div><div class="product_detalle_1_caract"></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/productos_img1_small.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_42')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_42">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B12</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b12.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">La B12, tiene un potente motor de 200 cc para todo terreno, posee un sistema de motor con balanceador  que hace que reduzca al mínimo las vibraciones a altas velocidades, ideal para aquellos que buscan un diseño moderno con un potente motor
+</div>
+            </div><div class="product_detalle_1_caract"></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/productos_img2_small.jpg" width="88" height="89" />
+                </div>
+                        </div>
+      </div>
+            <div class="productos_in_1">
+        <div class="productos_in_1_datos">
+        	<div class="productos_in_1_icono">
+                                            <img src="images/ico_product.png" width="19" height="19" />
+                                     </div>
+                            <div class="product_in_1_subti_clase"><span class="txt_contacsubti_12p"><b>PISTERAS</b></span></div>
+                        <div class="product_in_serie"><span class="txt_contacsubti_12p">>&nbsp;&nbsp; B10</span></div>
+            <div class="product_in_colores">
+                                        <div class="product_in_color2">
+                                <div class="product_in_colortop" style="background-color:#ff992b;"></div>
+                                <div class="product_in_colorbottom" style="background-color:#000000;"></div>
+                        </div>
+                                        <div class="product_in_color2">
+                                <div class="product_in_colortop" style="background-color:#777676;"></div>
+                                <div class="product_in_colorbottom" style="background-color:#000000;"></div>
+                        </div>
+                            </div>
+            <div class="product_in_btndescarga"><a href="ficha_tecnica/ficha.pdf" target="_blank"><img src="images/btn_descarga_ficha.png" width="243" height="17" border="0" /></a></div>
+        </div>
+        <div class="product_in_1_fotos">
+                            <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_51')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_51">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B10</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b10.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">Nuestra B10 posee un diseño futurista, aerodinámico , moderno y por la calidad de su motor nos garantiza velocidad y potencia. Este modelo es exclusivo de BUFFALO MOTORS
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b10_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Sistema de suspensión con gas nitrógeno
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b10_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tablero digital de batería, combustible y cambios
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b10_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tubo de escape con resonador y complemento protegido
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b10_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tanque con 21 lts de capacidad y diseño exclusivo.
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/productos_img1_small.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_52')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_52">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B10</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b10.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">Nuestra B10 posee un diseño futurista, aerodinámico , moderno y por la calidad de su motor nos garantiza velocidad y potencia. Este modelo es exclusivo de BUFFALO MOTORS
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b10_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Sistema de suspensión con gas nitrógeno
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b10_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tablero digital de batería, combustible y cambios
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b10_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tubo de escape con resonador y complemento protegido
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b10_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tanque con 21 lts de capacidad y diseño exclusivo.
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/productos_img2_small.jpg" width="88" height="89" />
+                </div>
+                        </div>
+      </div>
+            <div class="productos_in_1">
+        <div class="productos_in_1_datos">
+        	<div class="productos_in_1_icono">
+                                    </div>
+                        <div class="product_in_serie"><span class="txt_contacsubti_12p">>&nbsp;&nbsp; B9</span></div>
+            <div class="product_in_colores">
+                                        <div class="product_in_color1" style="background-color:#000000;"></div>
+                                        <div class="product_in_color1" style="background-color:#1500ff;"></div>
+                            </div>
+            <div class="product_in_btndescarga"><a href="ficha_tecnica/ficha.pdf" target="_blank"><img src="images/btn_descarga_ficha.png" width="243" height="17" border="0" /></a></div>
+        </div>
+        <div class="product_in_1_fotos">
+                            <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_61')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_61">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B9</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b9.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">Este modelo posee un diseño innovador y versátil que la hace especial y atractiva, la tecnología desarrollada en su motor nos asegura el mayor rendimiento , tanto en ciudad como pista , además de tener un cómodo asiento que permite un manejo mas placentero
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b9_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Motor con sistema de inyección
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b9_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Asiento ergonómico con diseño moderno
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b9_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Luces oscilantes por 5 segundos al frenar
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/productos_img1_small.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_62')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_62">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">B9</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_b9.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">Este modelo posee un diseño innovador y versátil que la hace especial y atractiva, la tecnología desarrollada en su motor nos asegura el mayor rendimiento , tanto en ciudad como pista , además de tener un cómodo asiento que permite un manejo mas placentero
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b9_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Motor con sistema de inyección
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b9_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Asiento ergonómico con diseño moderno
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/b9_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Luces oscilantes por 5 segundos al frenar
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/productos_img2_small.jpg" width="88" height="89" />
+                </div>
+                        </div>
+      </div>
+            <!--aki se acaba-->
+      
+      </div>
+      
+      </div>
+	</div>
+</div>
+<div id="all_pie_home">
+	<div id="pie_home">
+	  <div class="pie_megusta"></div>
+	  <div class="pie_derechos"><span class="txt_pie_11p">BUFFALO del Perú 2011 - Todos los derechos reservados.</span></div>
+	  <div class="pie_compartir"><span class="txt_piecom_10p">Compartir en:</span></div>
+	  <div class="pie_face"><img src="images/pie_facebook.jpg" width="17" height="27" border="0" /></div>
+      <div class="pie_face"><img src="images/pie_twitter.jpg" width="17" height="27" border="0" /></div>
+	</div>
+</div>
+<!-- Load jQuery, SimpleModal and Basic JS files -->
+<script type='text/javascript' src='js/jquery-1.4.2.min.js'></script>
+<script type='text/javascript' src='js/jquery.simplemodal.js'></script>
+<script type='text/javascript' src='js/basic.js'></script>
+</body>
+</html>

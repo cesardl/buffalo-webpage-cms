@@ -1,0 +1,437 @@
+# GET /productos_furgon.php -> 200 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BUFFALO</title>
+<link href="css/buffaloestilo.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="css/scrollbar.css" />
+<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+<!--<script type="text/javascript" src="js/function.js"></script>-->
+<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
+<script type="text/javascript" src="js/jquery.scroll.js"></script>
+</head>
+
+<body>
+<div id="index_cabecera">
+  <div id="bg_cabecera">
+  	<div id="index_cabecera_logo"><img src="images/logo_top.png" width="208" height="169" /></div>
+    <div class="botonera">
+      <div class="boton_home btn_cabecera_home"><a href="index.html"></a></div>
+      <div class="boton_quienes btn_cabecera_quienes"><a href="quienes_somos.html"></a></div>
+      <div class="boton_productos"><a href="productos.html"><img src="images/btn_productos_b.jpg" width="105" height="50" border="0" /></a></div>
+      <div class="boton_ubicanos btn_cabecera_ubicanos"><a href="ubicanos.html"></a></div>
+      <div class="boton_contactanos btn_cabecera_contactanos"><a href="contactanos.html"></a></div>
+    </div>
+  </div>
+</div>
+<div id="quienes_contenido">
+	<div id="in_quienes">
+	  <div class="ubicanos_bg">
+      <div class="css-scrollbar simple">
+                
+      <div class="productos_in_titu txt_quietitu_20p">>&nbsp;&nbsp;Furgones</div>
+      <!--aki empieza-->
+	        <div class="productos_in_1">
+        <div class="productos_in_1_datos">
+        	<div class="productos_in_1_icono">
+                                            <img src="images/ico_product.png" width="19" height="19" />
+                                     </div>
+                            <div class="product_in_1_subti_clase"><span class="txt_contacsubti_12p"><b>DE CARGA</b></span></div>
+                        <div class="product_in_serie"><span class="txt_contacsubti_12p">>&nbsp;&nbsp; BF500</span></div>
+            <div class="product_in_colores">
+                                        <div class="product_in_color1" style="background-color:#1500ff;"></div>
+                                        <div class="product_in_color1" style="background-color:#ff001e;"></div>
+                            </div>
+            <div class="product_in_btndescarga"><a href="ficha_tecnica/ficha.pdf" target="_blank"><img src="images/btn_descarga_ficha.png" width="243" height="17" border="0" /></a></div>
+        </div>
+        <div class="product_in_1_fotos">
+                            <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_11')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_11">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">BF500</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_furgon_bf500.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">El BF500 de carga es un vehículo ideal para  el transporte de productos, su estructura de doble plancha de acero y estriada permite maximizar su capacidad de carga sin perder potencia , además cuenta con sistema de inyectores para una mayor fuerza  y un moderno sistema de suspensión de 7 hojas de muelle y resortes especiales, que lo hace único en su categoría.
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Corona de una sola pieza mas grande  y reforzada
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tolva de una sola pieza , estriada y de doble plancha
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Llanta mas grande 12/500
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Sistema de amortiguación con 7 hojas de muelle y resortes especiales
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/bf500_small1.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_12')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_12">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">BF500</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_furgon_bf500.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">El BF500 de carga es un vehículo ideal para  el transporte de productos, su estructura de doble plancha de acero y estriada permite maximizar su capacidad de carga sin perder potencia , además cuenta con sistema de inyectores para una mayor fuerza  y un moderno sistema de suspensión de 7 hojas de muelle y resortes especiales, que lo hace único en su categoría.
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Corona de una sola pieza mas grande  y reforzada
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tolva de una sola pieza , estriada y de doble plancha
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Llanta mas grande 12/500
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Sistema de amortiguación con 7 hojas de muelle y resortes especiales
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/bf500_small2.jpg" width="88" height="89" />
+                </div>
+                        </div>
+      </div>
+            <div class="productos_in_1">
+        <div class="productos_in_1_datos">
+        	<div class="productos_in_1_icono">
+                                    </div>
+                        <div class="product_in_serie"><span class="txt_contacsubti_12p">>&nbsp;&nbsp; BF600</span></div>
+            <div class="product_in_colores">
+                                        <div class="product_in_color1" style="background-color:#1500ff;"></div>
+                                        <div class="product_in_color1" style="background-color:#ff001e;"></div>
+                            </div>
+            <div class="product_in_btndescarga"><a href="ficha_tecnica/ficha.pdf" target="_blank"><img src="images/btn_descarga_ficha.png" width="243" height="17" border="0" /></a></div>
+        </div>
+        <div class="product_in_1_fotos">
+                            <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_21')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_21">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">BF600</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_furgon_bf600.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">El BF600 de carga, es un vehículo ideal para el transporte de productos, su estructura de doble plancha de acero y estriada permite maximizar su capacidad de carga sin perder potencia, ademas cuenta con un moderno sistema de suspensión de 7 hojas de muelle y resortes especiales que hace de este vehículo único en su categoría . Este modelo  de furgón cuenta con un moderno panel de lectura de indicadores en el tanque de combustible
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Corona de una sola pieza mas grande  y reforzada
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tolva de una sola pieza , estriada y de doble plancha
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Llanta mas grande 12/500
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Sistema de amortiguación con 7 hojas de muelle y resortes especiales
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/bf600_small1.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_22')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_22">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">BF600</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_furgon_bf600.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">El BF600 de carga, es un vehículo ideal para el transporte de productos, su estructura de doble plancha de acero y estriada permite maximizar su capacidad de carga sin perder potencia, ademas cuenta con un moderno sistema de suspensión de 7 hojas de muelle y resortes especiales que hace de este vehículo único en su categoría . Este modelo  de furgón cuenta con un moderno panel de lectura de indicadores en el tanque de combustible
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Corona de una sola pieza mas grande  y reforzada
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tolva de una sola pieza , estriada y de doble plancha
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Llanta mas grande 12/500
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Sistema de amortiguación con 7 hojas de muelle y resortes especiales
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/bf600_small2.jpg" width="88" height="89" />
+                </div>
+                        </div>
+      </div>
+            <div class="productos_in_1">
+        <div class="productos_in_1_datos">
+        	<div class="productos_in_1_icono">
+                                            <img src="images/ico_product.png" width="19" height="19" />
+                                     </div>
+                            <div class="product_in_1_subti_clase"><span class="txt_contacsubti_12p"><b>DE PASAJEROS</b></span></div>
+                        <div class="product_in_serie"><span class="txt_contacsubti_12p">>&nbsp;&nbsp; BF500 PASAJEROS</span></div>
+            <div class="product_in_colores">
+                                        <div class="product_in_color1" style="background-color:#1500ff;"></div>
+                            </div>
+            <div class="product_in_btndescarga"><a href="ficha_tecnica/ficha.pdf" target="_blank"><img src="images/btn_descarga_ficha.png" width="243" height="17" border="0" /></a></div>
+        </div>
+        <div class="product_in_1_fotos">
+                            <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_31')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_31">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">BF500 PASAJEROS</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_furgon_bf500pasajeros.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">El BF500 Pasajeros es el vehículo ideal para aquellos emprendedores que quieran maximizar su inversión. Su innovador diseño permite utilizarlo tanto para la carga de productos como para el transporte de pasajeros
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Corona de una sola pieza mas grande  y reforzada
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tolva de una sola pieza mas grande  y refozada
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Llanta mas grande 12/500
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Muelle con 7 hojas y resortes especiales
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/bf500pasajero_small1.jpg" width="88" height="89" />
+                </div>
+                                <div class="product_in_1_foto1">
+                     <div id="product_btn_zoom">
+                         <div id="basic-modal"><a href='#' class="basic" onclick="showDevModal('dev_modal_32')"><img src="images/btn_zoom.gif" width="60" height="18" border="0"  /></a></div>
+                        <!-- modal content -->
+                        <div id="dev_modal_32">
+        <div id="basic-modal-content">
+                <div class="product_detalle_1_tituclase txt_prodtitu_40p">BF500 PASAJEROS</div>
+                <div class="product_detalle_1_master">
+                <div class="product_detalle_1_masterimg"><img src="images/principal/productos_img_master_furgon_bf500pasajeros.jpg" width="369" height="252" /></div>
+                <div class="product_detalle_1_masterdetalle txt_prod_12p">El BF500 Pasajeros es el vehículo ideal para aquellos emprendedores que quieran maximizar su inversión. Su innovador diseño permite utilizarlo tanto para la carga de productos como para el transporte de pasajeros
+</div>
+            </div><div class="product_detalle_1_caract"><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small3_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Corona de una sola pieza mas grande  y reforzada
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small4_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Tolva de una sola pieza mas grande  y refozada
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small5_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Llanta mas grande 12/500
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------><!-----empieza detalle------>
+                <div class="product_detalle_1_caract1">
+                        <div class="product_detalle_1_foto1"><img src="images/detalle/bf500_small6_detalle.jpg" width="88" height="89" /></div>
+                    <div class="product_detalle_1_detalle1">
+                        <div class="product_detalle_1_det_subti1 txt_prod_12p"></div>
+                        <div class="product_detalle_1_det_descrip1 txt_prod_12p">Muelle con 7 hojas y resortes especiales
+</div>
+                    </div>
+                </div>
+                <!-----termina detalle------></div>
+        </div>
+
+        <!-- preload the images -->
+        <div style='display:none'>
+            <img src='images/x.png' alt='x' />
+        </div> </div>                    </div>
+                    <img src="images/zoom/bf500pasajero_small2.jpg" width="88" height="89" />
+                </div>
+                        </div>
+      </div>
+            <!--aki se acaba-->
+      
+      </div>
+      
+      </div>
+	</div>
+</div>
+<div id="all_pie_home">
+	<div id="pie_home">
+	  <div class="pie_megusta"></div>
+	  <div class="pie_derechos"><span class="txt_pie_11p">BUFFALO del Perú 2011 - Todos los derechos reservados.</span></div>
+	  <div class="pie_compartir"><span class="txt_piecom_10p">Compartir en:</span></div>
+	  <div class="pie_face"><img src="images/pie_facebook.jpg" width="17" height="27" border="0" /></div>
+      <div class="pie_face"><img src="images/pie_twitter.jpg" width="17" height="27" border="0" /></div>
+	</div>
+</div>
+<!-- Load jQuery, SimpleModal and Basic JS files -->
+<script type='text/javascript' src='js/jquery-1.4.2.min.js'></script>
+<script type='text/javascript' src='js/jquery.simplemodal.js'></script>
+<script type='text/javascript' src='js/basic.js'></script>
+</body>
+</html>
