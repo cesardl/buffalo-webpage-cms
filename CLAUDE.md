@@ -77,3 +77,6 @@ The `action*.php` endpoints are covered only signed out, where they exit before 
 - **No CI.** Nothing runs the suite or the golden master automatically; both only run when someone runs them.
 - **SQL injection is gone** (everything is a prepared statement) and **passwords are hashed**, but the admin password in the seed is still `root`/`root`. Change it outside the repository.
 - The successful write paths of the three `Guardar*` controllers have no automated coverage.
+- **Four image paths in the data point at files that do not exist**, so B15, B12, B10 and B9 show broken zoom thumbnails, as do B15's three detail bullets. The rows name `images/zoom/productos_img1_small.jpg` and `_img2_small.jpg`, and the same two names under `images/detalle/`.
+
+  Do not fix this by copying `public/images/productos_img1_small.jpg` and `_img2_small.jpg` into those directories. It was tried, and it works in the sense that every path resolves — but those two files are photographs of a blue cargo furgon, and all four models are motorcycles. A broken image is a visible defect; a van in the motorcycle listing is a confident lie. It needs real photographs for those four models, which is a content decision, or the rows repointed at images that already exist.
