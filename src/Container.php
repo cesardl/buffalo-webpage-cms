@@ -5,13 +5,16 @@ declare(strict_types=1);
 namespace Buffalo;
 
 use Buffalo\Catalogo\Catalogo;
+use Buffalo\Contacto\ContactoValidator;
 use Buffalo\Database\ConnectionFactory;
 use Buffalo\Http\Controller;
 use Buffalo\Http\Controller\BienvenidoController;
+use Buffalo\Http\Controller\ContactanosController;
 use Buffalo\Http\Controller\FormColoresController;
 use Buffalo\Http\Controller\FormDetallesController;
 use Buffalo\Http\Controller\FormProductoController;
 use Buffalo\Http\Controller\GuardarColoresController;
+use Buffalo\Http\Controller\GuardarContactoController;
 use Buffalo\Http\Controller\GuardarDetallesController;
 use Buffalo\Http\Controller\GuardarProductoController;
 use Buffalo\Http\Controller\HealthController;
@@ -22,9 +25,11 @@ use Buffalo\Http\Controller\VehiculoSelectController;
 use Buffalo\Http\PhpSession;
 use Buffalo\Http\Session;
 use Buffalo\Repository\ColorRepository;
+use Buffalo\Repository\ContactoRepository;
 use Buffalo\Repository\DetalleProductoRepository;
 use Buffalo\Repository\MasterRepository;
 use Buffalo\Repository\PdoColorRepository;
+use Buffalo\Repository\PdoContactoRepository;
 use Buffalo\Repository\PdoDetalleProductoRepository;
 use Buffalo\Repository\PdoMasterRepository;
 use Buffalo\Repository\PdoProductoRepository;
@@ -119,6 +124,11 @@ final class Container
         return new PdoUsuarioRepository($this->pdo());
     }
 
+    public function contactos(): ContactoRepository
+    {
+        return new PdoContactoRepository($this->pdo());
+    }
+
     /** @param class-string<Controller> $class */
     public function controller(string $class): Controller
     {
@@ -126,6 +136,14 @@ final class Container
             HealthController::class => new HealthController($this->pdo()),
             ProductosController::class => new ProductosController($this->template(), $this->catalogo()),
             LoginController::class => new LoginController($this->template(), $this->session()),
+            ContactanosController::class => new ContactanosController(
+                $this->template(),
+                $this->session(),
+            ),
+            GuardarContactoController::class => new GuardarContactoController(
+                new ContactoValidator(),
+                $this->contactos(),
+            ),
             BienvenidoController::class => new BienvenidoController(
                 $this->template(),
                 $this->session(),

@@ -5,10 +5,12 @@ declare(strict_types=1);
 namespace Buffalo\Http;
 
 use Buffalo\Http\Controller\BienvenidoController;
+use Buffalo\Http\Controller\ContactanosController;
 use Buffalo\Http\Controller\FormColoresController;
 use Buffalo\Http\Controller\FormDetallesController;
 use Buffalo\Http\Controller\FormProductoController;
 use Buffalo\Http\Controller\GuardarColoresController;
+use Buffalo\Http\Controller\GuardarContactoController;
 use Buffalo\Http\Controller\GuardarDetallesController;
 use Buffalo\Http\Controller\GuardarProductoController;
 use Buffalo\Http\Controller\HealthController;
@@ -47,6 +49,12 @@ final class RouteTable
                 ),
                 ProductosController::paths(),
             ),
+
+            // The contact page carries a CSRF token, so it cannot be a file
+            // on disk any more. The form posts to its own endpoint, which
+            // answers JSON: the page reports the result without navigating.
+            new Route('GET', '/contactanos.html', Access::Public, ContactanosController::class),
+            new Route('POST', '/contactanos.php', Access::Public, GuardarContactoController::class),
 
             new Route('GET', self::LOGIN, Access::Public, LoginController::class),
             new Route('POST', '/administrator/bienvenido.php', Access::Public, BienvenidoController::class),

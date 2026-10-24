@@ -35,6 +35,23 @@ CREATE TABLE `colorproducto` (
 ) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
+-- Table structure for contacto
+-- ----------------------------
+DROP TABLE IF EXISTS `contacto`;
+CREATE TABLE `contacto` (
+  `id_contacto` int(11) NOT NULL auto_increment,
+  `nombre` varchar(100) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `telefono` varchar(30) NOT NULL,
+  `direccion` varchar(150) NOT NULL,
+  `ciudad` varchar(80) NOT NULL,
+  `comentarios` varchar(1000) NOT NULL,
+  `fecha_registro` datetime NOT NULL,
+  PRIMARY KEY  (`id_contacto`),
+  KEY `contacto_fecha` (`fecha_registro`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
 -- Table structure for detalleproducto
 -- ----------------------------
 DROP TABLE IF EXISTS `detalleproducto`;

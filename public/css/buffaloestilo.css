@@ -536,3 +536,20 @@ body {
     height: 7px;
     width: 13px;
 }
+
+/*----------CONTACTO----------*/
+/* Off the page rather than display:none, because a bot that reads the
+   stylesheet skips hidden fields; one it cannot see, it fills in. */
+.campo_trampa {position:absolute; left:-9999px; top:-9999px; height:0; overflow:hidden;}
+.campo_error {display:none; color:#b00000; font-size:11px; font-family:Arial, Helvetica, sans-serif; padding:2px 0 0 2px;}
+.btn_imagen {background:none; border:0; padding:0; margin:0; cursor:pointer;}
+
+#contacto-dialog {width:420px; color:#333; background-color:#FFF; border:1px solid #B2B2B2; padding:16px; font-family:Arial, Helvetica, sans-serif; font-size:12px;}
+#contacto-dialog::backdrop {background-color:#000; opacity:0.6;}
+#contacto-dialog h3 {margin:0 0 8px 0; color:#000;}
+#contacto-dialog p {margin:0 0 10px 0;}
+#contacto-dialog table {width:100%; border-collapse:collapse; margin-bottom:12px;}
+#contacto-dialog th {width:110px; padding:3px 8px 3px 0; color:#666; font-weight:normal; text-align:right; vertical-align:top;}
+#contacto-dialog td {padding:3px 0; text-align:left;}
+#contacto-dialog .btn_cerrar {cursor:pointer; padding:3px 14px;}
+/*------------------------*/
