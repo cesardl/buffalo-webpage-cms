@@ -6,10 +6,6 @@
 <title>BUFFALO</title>
 <link href="css/buffaloestilo.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="css/scrollbar.css" />
-<script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
-<!--<script type="text/javascript" src="js/function.js"></script>-->
-<script type="text/javascript" src="js/jquery.cycle.all.min.js"></script>
-<script type="text/javascript" src="js/jquery.scroll.js"></script>
 </head>
 
 <body>
@@ -658,9 +654,7 @@
       <div class="pie_face"><img src="images/pie_twitter.jpg" width="17" height="27" border="0" /></div>
 	</div>
 </div>
-<!-- Load jQuery, SimpleModal and Basic JS files -->
-<script type='text/javascript' src='js/jquery-1.4.2.min.js'></script>
-<script type='text/javascript' src='js/jquery.simplemodal.js'></script>
+<!-- The zoom dialog, which needs no library of its own -->
 <script type='text/javascript' src='js/basic.js'></script>
 </body>
 </html>

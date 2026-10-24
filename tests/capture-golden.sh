@@ -62,11 +62,20 @@ snap() {
   # and strips every CR, which silently removed them from the snapshots and
   # would have made this disagree with a Linux runner, where it does not.
   perl -pi -e 's/[a-f0-9]{64}/CSRF_TOKEN/g' "$body"
+  # Apache writes its own body for a redirect, naming the host it is serving
+  # and the version it is running. The status line above already records
+  # where the redirect points, so the body only has to show that Apache
+  # answered: anything identifying this particular server is normalised out.
+  BASE="$BASE" perl -pi -e 's/\Q$ENV{BASE}\E//g; s{<address>[^<]*</address>}{<address>APACHE</address>}g' "$body"
 
   { printf '# %s %s -> %s\n' "$method" "$path" "$result"; cat "$body"; } > "$OUT/$name.snap"
   rm -f "$body"
   printf '  %-34s %s\n' "$name" "$result"
 }
+
+echo "Entry points"
+snap entry-root           GET /                      '' "$ANON"
+snap entry-administrator  GET /administrator         '' "$ANON"
 
 echo "Public pages"
 snap public-index         GET /index.html            '' "$ANON"

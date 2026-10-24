@@ -5,8 +5,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
         <link type="text/css" href="style/style.css" rel="stylesheet" media="screen"/>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-              integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+              integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
               crossorigin="anonymous">
         <title>Formulario de detalles</title>
     </head>
@@ -24,14 +24,14 @@
             <div class="row my-2">                <div class="col">
                     <input type="hidden" name="id_det_prod0"
                            value="0"/>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="titulo0">T&iacute;tulo</label></div>
                         <div class="col"><input type="text" id="titulo0" name="titulo0"
                                                 class="form-control"
                                                 value=""/>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label
                                     for="descripcion0">Descripci&oacute;n</label>
                         </div>
@@ -40,7 +40,7 @@
                                                    rows="3"></textarea>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel">Im&aacute;gen</div>
                         <div class="col">
                             <input type="hidden" name="v_imagen0"
@@ -48,7 +48,7 @@
                             <input type="file" id="imagen0" name="imagen0"/>
                                                     </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="delete0">Eliminar</label></div>
                         <div class="col">
                             <input type="checkbox" id="delete0" name="delete0[]"/>
@@ -58,14 +58,14 @@
                                 <div class="col">
                     <input type="hidden" name="id_det_prod1"
                            value="0"/>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="titulo1">T&iacute;tulo</label></div>
                         <div class="col"><input type="text" id="titulo1" name="titulo1"
                                                 class="form-control"
                                                 value=""/>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label
                                     for="descripcion1">Descripci&oacute;n</label>
                         </div>
@@ -74,7 +74,7 @@
                                                    rows="3"></textarea>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel">Im&aacute;gen</div>
                         <div class="col">
                             <input type="hidden" name="v_imagen1"
@@ -82,7 +82,7 @@
                             <input type="file" id="imagen1" name="imagen1"/>
                                                     </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="delete1">Eliminar</label></div>
                         <div class="col">
                             <input type="checkbox" id="delete1" name="delete1[]"/>
@@ -92,14 +92,14 @@
                 </div><div class="row my-2">                <div class="col">
                     <input type="hidden" name="id_det_prod2"
                            value="0"/>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="titulo2">T&iacute;tulo</label></div>
                         <div class="col"><input type="text" id="titulo2" name="titulo2"
                                                 class="form-control"
                                                 value=""/>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label
                                     for="descripcion2">Descripci&oacute;n</label>
                         </div>
@@ -108,7 +108,7 @@
                                                    rows="3"></textarea>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel">Im&aacute;gen</div>
                         <div class="col">
                             <input type="hidden" name="v_imagen2"
@@ -116,7 +116,7 @@
                             <input type="file" id="imagen2" name="imagen2"/>
                                                     </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="delete2">Eliminar</label></div>
                         <div class="col">
                             <input type="checkbox" id="delete2" name="delete2[]"/>
@@ -126,14 +126,14 @@
                                 <div class="col">
                     <input type="hidden" name="id_det_prod3"
                            value="0"/>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="titulo3">T&iacute;tulo</label></div>
                         <div class="col"><input type="text" id="titulo3" name="titulo3"
                                                 class="form-control"
                                                 value=""/>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label
                                     for="descripcion3">Descripci&oacute;n</label>
                         </div>
@@ -142,7 +142,7 @@
                                                    rows="3"></textarea>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel">Im&aacute;gen</div>
                         <div class="col">
                             <input type="hidden" name="v_imagen3"
@@ -150,7 +150,7 @@
                             <input type="file" id="imagen3" name="imagen3"/>
                                                     </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="delete3">Eliminar</label></div>
                         <div class="col">
                             <input type="checkbox" id="delete3" name="delete3[]"/>
@@ -160,14 +160,14 @@
                 </div><div class="row my-2">                <div class="col">
                     <input type="hidden" name="id_det_prod4"
                            value="0"/>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="titulo4">T&iacute;tulo</label></div>
                         <div class="col"><input type="text" id="titulo4" name="titulo4"
                                                 class="form-control"
                                                 value=""/>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label
                                     for="descripcion4">Descripci&oacute;n</label>
                         </div>
@@ -176,7 +176,7 @@
                                                    rows="3"></textarea>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel">Im&aacute;gen</div>
                         <div class="col">
                             <input type="hidden" name="v_imagen4"
@@ -184,7 +184,7 @@
                             <input type="file" id="imagen4" name="imagen4"/>
                                                     </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="delete4">Eliminar</label></div>
                         <div class="col">
                             <input type="checkbox" id="delete4" name="delete4[]"/>
@@ -194,14 +194,14 @@
                                 <div class="col">
                     <input type="hidden" name="id_det_prod5"
                            value="0"/>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="titulo5">T&iacute;tulo</label></div>
                         <div class="col"><input type="text" id="titulo5" name="titulo5"
                                                 class="form-control"
                                                 value=""/>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label
                                     for="descripcion5">Descripci&oacute;n</label>
                         </div>
@@ -210,7 +210,7 @@
                                                    rows="3"></textarea>
                         </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel">Im&aacute;gen</div>
                         <div class="col">
                             <input type="hidden" name="v_imagen5"
@@ -218,7 +218,7 @@
                             <input type="file" id="imagen5" name="imagen5"/>
                                                     </div>
                     </div>
-                    <div class="form-row my-2">
+                    <div class="row my-2">
                         <div class="col-2 tdLabel"><label for="delete5">Eliminar</label></div>
                         <div class="col">
                             <input type="checkbox" id="delete5" name="delete5[]"/>
@@ -232,14 +232,11 @@
             </div>
         </form>
     </div>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    <script src="https://code.jquery.com/jquery-4.0.0.min.js"
+            integrity="sha384-fgGyf7Mo7DURSOMnOy7ed+dkq5Job205Gnzu6QIg0BOHKaqt4D76Dt8VlDCzcMHV"
             crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
             crossorigin="anonymous"></script>
     </body>
     </html>
