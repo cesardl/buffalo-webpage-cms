@@ -110,7 +110,7 @@ body {
 #index_cabecera_logo {
 	position: absolute;
 	left:0;
-	top:264px;
+	top:65px;
 	/*width:300px;
 	height:65px;*/
 	width:208px;
@@ -139,13 +139,13 @@ body {
 }
 /*----------------------------------*/
 #index_cabecera {
-	height: 319px;
+	height: 120px;
 	width: 100%;
-	background:url(../images/bg_cabecera_top.jpg) center repeat-x;
+	background:url(../images/bg_cabecera_top.jpg) center bottom repeat-x;
 }
 #bg_cabecera {
-	background-image: url(../images/bg_cabecera_contenido.jpg);
-	height: 319px;
+	background: url(../images/bg_cabecera_contenido.jpg) center bottom no-repeat;
+	height: 120px;
 	width: 982px;
 	margin-right: auto;
 	margin-left: auto;
@@ -155,7 +155,7 @@ body {
 	float: left;
 	height: 50px;
 	width: 630px;
-	padding-top:269px;
+	padding-top:70px;
 	padding-left:236px;
 }
 .boton_home {
