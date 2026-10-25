@@ -1,0 +1,89 @@
+# POST /administrator/bienvenido.php -> 200 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+    <title>Panel · Buffalo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="style/consola.css">
+</head>
+<body class="consola">
+<header class="barra">
+    <a class="marca" href="bienvenido.php">
+        <img src="../favicon.ico" width="20" height="20" alt="">
+        <strong>Buffalo</strong> <span>Administración</span>
+    </a>
+    <div class="sesion">
+        root        <a href="index.php?param=1">Salir</a>
+    </div>
+</header>
+<nav class="menu" aria-label="Secciones">
+    <a class="menu-item" href="vehiculos.php">Vehículos</a>
+    <a class="menu-item" href="contactos.php">
+        Solicitudes de contacto
+            </a>
+</nav>
+<main class="lienzo">
+<h1 class="titulo-pagina">Panel</h1>
+<p class="bajada">El estado del catálogo y de las solicitudes que llegan por el formulario.</p>
+
+<div class="rejilla">
+    <section class="tarjeta">
+        <h2 class="tarjeta-titulo">Vehículos por tipo y clase</h2>
+        <p class="tarjeta-nota">
+            10 modelos            en 7 clases        </p>
+        <div class="lienzo-grafico">
+            <canvas id="grafico-vehiculos"></canvas>
+        </div>
+    </section>
+
+    <div class="columna">
+        <div class="kpis">
+            <section class="tarjeta kpi es-nuevas">
+                <div class="kpi-cifra">0</div>
+                <div class="kpi-etiqueta">Nuevas</div>
+                <div class="kpi-detalle">Esperan respuesta</div>
+            </section>
+            <section class="tarjeta kpi">
+                <div class="kpi-cifra">0</div>
+                <div class="kpi-etiqueta">Atendidas</div>
+                <div class="kpi-detalle">Ya respondidas</div>
+            </section>
+        </div>
+
+        <section class="tarjeta">
+            <h2 class="tarjeta-titulo">Solicitudes de contacto</h2>
+            <p class="tarjeta-nota">
+                                    Todavía no llega ninguna.
+                            </p>
+            <div class="lienzo-grafico es-donut">
+                <canvas id="grafico-contactos"></canvas>
+                <div class="donut-centro">
+                    <span class="donut-total">0</span>
+                    <span class="donut-pie">en total</span>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script type="application/json" id="datos-panel">{"vehiculos":{"etiquetas":["Motocicletas","Mototaxis","Furgon"],"series":[{"label":"DE PASEO","data":[1,0,0],"backgroundColor":"#C5221F"},{"label":"DE TRABAJO","data":[1,0,0],"backgroundColor":"#E8554F"},{"label":"TODO TERRENO","data":[2,0,0],"backgroundColor":"#F08A86"},{"label":"PISTERAS","data":[2,0,0],"backgroundColor":"#F6B8B5"},{"label":"MODELO DE MOTOTAXI Y COLORES","data":[0,1,0],"backgroundColor":"#B06000"},{"label":"DE CARGA","data":[0,0,2],"backgroundColor":"#3C4043"},{"label":"DE PASAJEROS","data":[0,0,1],"backgroundColor":"#80868B"}],"totales":[6,1,3]},"contactos":{"nuevas":0,"atendidas":0}}</script>
+</main>
+<script src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha384-fgGyf7Mo7DURSOMnOy7ed+dkq5Job205Gnzu6QIg0BOHKaqt4D76Dt8VlDCzcMHV"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.6.1/dist/chart.umd.min.js"
+        integrity="sha384-Emf5ZVIUiarAdhkgtqK+5/Z5qIvM6QoVrS+qAVtfyZVuD5lIHrac0me485+Antp0"
+        crossorigin="anonymous"></script>
+<script src="scritps/panel.js"></script></body>
+</html>

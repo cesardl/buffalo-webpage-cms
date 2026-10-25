@@ -24,6 +24,13 @@ final class PhpSession implements Session
         return is_string($usuario) && $usuario !== '' ? $usuario : null;
     }
 
+    public function usuarioId(): ?int
+    {
+        $id = $_SESSION[self::ID_KEY] ?? null;
+
+        return is_int($id) ? $id : null;
+    }
+
     public function logIn(int $id, string $usuario): void
     {
         // A fresh id on privilege change, so a token an attacker planted

@@ -10,11 +10,14 @@ use Buffalo\Database\ConnectionFactory;
 use Buffalo\Http\Controller;
 use Buffalo\Http\Controller\BienvenidoController;
 use Buffalo\Http\Controller\ContactanosController;
+use Buffalo\Http\Controller\ContactoDetalleController;
+use Buffalo\Http\Controller\ContactosController;
 use Buffalo\Http\Controller\FormColoresController;
 use Buffalo\Http\Controller\FormDetallesController;
 use Buffalo\Http\Controller\FormProductoController;
 use Buffalo\Http\Controller\GuardarColoresController;
 use Buffalo\Http\Controller\GuardarContactoController;
+use Buffalo\Http\Controller\GuardarEstadoContactoController;
 use Buffalo\Http\Controller\GuardarDetallesController;
 use Buffalo\Http\Controller\GuardarProductoController;
 use Buffalo\Http\Controller\HealthController;
@@ -22,6 +25,7 @@ use Buffalo\Http\Controller\LoginController;
 use Buffalo\Http\Controller\ProductosController;
 use Buffalo\Http\Controller\VehiculoDeleteController;
 use Buffalo\Http\Controller\VehiculoSelectController;
+use Buffalo\Http\Controller\VehiculosController;
 use Buffalo\Http\PhpSession;
 use Buffalo\Http\Session;
 use Buffalo\Repository\ColorRepository;
@@ -33,13 +37,16 @@ use Buffalo\Repository\PdoContactoRepository;
 use Buffalo\Repository\PdoDetalleProductoRepository;
 use Buffalo\Repository\PdoMasterRepository;
 use Buffalo\Repository\PdoProductoRepository;
+use Buffalo\Repository\PdoResumenRepository;
 use Buffalo\Repository\PdoUsuarioRepository;
 use Buffalo\Repository\PdoVehiculoRepository;
 use Buffalo\Repository\ProductoRepository;
+use Buffalo\Repository\ResumenRepository;
 use Buffalo\Repository\UsuarioRepository;
 use Buffalo\Repository\VehiculoRepository;
 use Buffalo\Security\Authenticator;
 use Buffalo\Upload\Uploader;
+use Buffalo\View\Consola;
 use Buffalo\View\Template;
 use PDO;
 use RuntimeException;
@@ -56,6 +63,7 @@ final class Container
     private ?PDO $pdo = null;
     private ?Session $session = null;
     private ?Template $template = null;
+    private ?Consola $consola = null;
 
     public function __construct(
         private readonly Config $config,
@@ -129,6 +137,20 @@ final class Container
         return new PdoContactoRepository($this->pdo());
     }
 
+    public function resumen(): ResumenRepository
+    {
+        return new PdoResumenRepository($this->pdo());
+    }
+
+    /**
+     * Shared, so the counts behind the menu badge are read once per request
+     * however many times a page asks for them.
+     */
+    public function consola(): Consola
+    {
+        return $this->consola ??= new Consola($this->session(), $this->resumen());
+    }
+
     /** @param class-string<Controller> $class */
     public function controller(string $class): Controller
     {
@@ -148,38 +170,63 @@ final class Container
                 $this->template(),
                 $this->session(),
                 new Authenticator($this->usuarios()),
+                $this->consola(),
+                $this->resumen(),
+            ),
+            VehiculosController::class => new VehiculosController(
+                $this->template(),
+                $this->consola(),
                 $this->productos(),
                 $this->masters(),
             ),
+            ContactosController::class => new ContactosController(
+                $this->template(),
+                $this->consola(),
+                $this->contactos(),
+            ),
+            ContactoDetalleController::class => new ContactoDetalleController(
+                $this->template(),
+                $this->consola(),
+                $this->contactos(),
+            ),
+            GuardarEstadoContactoController::class => new GuardarEstadoContactoController(
+                $this->template(),
+                $this->consola(),
+                $this->session(),
+                $this->contactos(),
+            ),
             FormProductoController::class => new FormProductoController(
                 $this->template(),
-                $this->session(),
+                $this->consola(),
                 $this->productos(),
                 $this->masters(),
                 $this->vehiculos(),
             ),
             FormDetallesController::class => new FormDetallesController(
                 $this->template(),
-                $this->session(),
+                $this->consola(),
                 $this->detalles(),
             ),
             FormColoresController::class => new FormColoresController(
                 $this->template(),
-                $this->session(),
+                $this->consola(),
                 $this->colores(),
             ),
             GuardarProductoController::class => new GuardarProductoController(
                 $this->template(),
+                $this->consola(),
                 $this->productos(),
                 $this->uploader(),
             ),
             GuardarDetallesController::class => new GuardarDetallesController(
                 $this->template(),
+                $this->consola(),
                 $this->detalles(),
                 $this->uploader(),
             ),
             GuardarColoresController::class => new GuardarColoresController(
                 $this->template(),
+                $this->consola(),
                 $this->colores(),
             ),
             VehiculoSelectController::class => new VehiculoSelectController($this->masters()),

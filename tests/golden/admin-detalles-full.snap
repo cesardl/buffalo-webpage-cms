@@ -1,246 +1,242 @@
 # GET /administrator/formDetalles.php?id_producto=1&mod_prod=B5 -> 200 
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
-        <link type="text/css" href="style/style.css" rel="stylesheet" media="screen"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-              integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-              crossorigin="anonymous">
-        <title>Formulario de detalles</title>
-    </head>
-    <body>
-    <div class="container pt-4">
-        <div class="row">
-            <div class="col"><h3>Detalles del Vehiculo B5</div>
-            <div class="col-2 tdLabel">
-                <a href="bienvenido.php">&lt;&lt; Volver</a>
-            </div>
-        </div>
-        <form method="POST" action="actionDetalleProductoCtrl.php" enctype="multipart/form-data">
-            <input type="hidden" name="_token" value="CSRF_TOKEN"/>
-            <input type="hidden" id="id_producto" name="id_producto" value="1"/>
-            <div class="row my-2">                <div class="col">
-                    <input type="hidden" name="id_det_prod0"
-                           value="7"/>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="titulo0">T&iacute;tulo</label></div>
-                        <div class="col"><input type="text" id="titulo0" name="titulo0"
-                                                class="form-control"
-                                                value=""/>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label
-                                    for="descripcion0">Descripci&oacute;n</label>
-                        </div>
-                        <div class="col"><textarea id="descripcion0" name="descripcion0"
-                                                   class="form-control"
-                                                   rows="3">Chapa  de encendido con seguridad antirrobo
-</textarea>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel">Im&aacute;gen</div>
-                        <div class="col">
-                            <input type="hidden" name="v_imagen0"
-                                   value="images/detalle/b5_small3_detalle.jpg"/>
-                            <input type="file" id="imagen0" name="imagen0"/>
-                            <img src="../images/detalle/b5_small3_detalle.jpg" alt="Foto principal" style="width: 5%;" />                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="delete0">Eliminar</label></div>
-                        <div class="col">
-                            <input type="checkbox" id="delete0" name="delete0[]"/>
-                        </div>
-                    </div>
-                </div>
-                                <div class="col">
-                    <input type="hidden" name="id_det_prod1"
-                           value="8"/>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="titulo1">T&iacute;tulo</label></div>
-                        <div class="col"><input type="text" id="titulo1" name="titulo1"
-                                                class="form-control"
-                                                value=""/>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label
-                                    for="descripcion1">Descripci&oacute;n</label>
-                        </div>
-                        <div class="col"><textarea id="descripcion1" name="descripcion1"
-                                                   class="form-control"
-                                                   rows="3">Espacioso portaequipaje 
-</textarea>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel">Im&aacute;gen</div>
-                        <div class="col">
-                            <input type="hidden" name="v_imagen1"
-                                   value="images/detalle/b5_small4_detalle.jpg"/>
-                            <input type="file" id="imagen1" name="imagen1"/>
-                            <img src="../images/detalle/b5_small4_detalle.jpg" alt="Foto principal" style="width: 5%;" />                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="delete1">Eliminar</label></div>
-                        <div class="col">
-                            <input type="checkbox" id="delete1" name="delete1[]"/>
-                        </div>
-                    </div>
-                </div>
-                </div><div class="row my-2">                <div class="col">
-                    <input type="hidden" name="id_det_prod2"
-                           value="9"/>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="titulo2">T&iacute;tulo</label></div>
-                        <div class="col"><input type="text" id="titulo2" name="titulo2"
-                                                class="form-control"
-                                                value=""/>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label
-                                    for="descripcion2">Descripci&oacute;n</label>
-                        </div>
-                        <div class="col"><textarea id="descripcion2" name="descripcion2"
-                                                   class="form-control"
-                                                   rows="3">Moderno y cómodo posapies
-</textarea>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel">Im&aacute;gen</div>
-                        <div class="col">
-                            <input type="hidden" name="v_imagen2"
-                                   value="images/detalle/b5_small5_detalle.jpg"/>
-                            <input type="file" id="imagen2" name="imagen2"/>
-                            <img src="../images/detalle/b5_small5_detalle.jpg" alt="Foto principal" style="width: 5%;" />                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="delete2">Eliminar</label></div>
-                        <div class="col">
-                            <input type="checkbox" id="delete2" name="delete2[]"/>
-                        </div>
-                    </div>
-                </div>
-                                <div class="col">
-                    <input type="hidden" name="id_det_prod3"
-                           value="0"/>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="titulo3">T&iacute;tulo</label></div>
-                        <div class="col"><input type="text" id="titulo3" name="titulo3"
-                                                class="form-control"
-                                                value=""/>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label
-                                    for="descripcion3">Descripci&oacute;n</label>
-                        </div>
-                        <div class="col"><textarea id="descripcion3" name="descripcion3"
-                                                   class="form-control"
-                                                   rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel">Im&aacute;gen</div>
-                        <div class="col">
-                            <input type="hidden" name="v_imagen3"
-                                   value=""/>
-                            <input type="file" id="imagen3" name="imagen3"/>
-                                                    </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="delete3">Eliminar</label></div>
-                        <div class="col">
-                            <input type="checkbox" id="delete3" name="delete3[]"/>
-                        </div>
-                    </div>
-                </div>
-                </div><div class="row my-2">                <div class="col">
-                    <input type="hidden" name="id_det_prod4"
-                           value="0"/>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="titulo4">T&iacute;tulo</label></div>
-                        <div class="col"><input type="text" id="titulo4" name="titulo4"
-                                                class="form-control"
-                                                value=""/>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label
-                                    for="descripcion4">Descripci&oacute;n</label>
-                        </div>
-                        <div class="col"><textarea id="descripcion4" name="descripcion4"
-                                                   class="form-control"
-                                                   rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel">Im&aacute;gen</div>
-                        <div class="col">
-                            <input type="hidden" name="v_imagen4"
-                                   value=""/>
-                            <input type="file" id="imagen4" name="imagen4"/>
-                                                    </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="delete4">Eliminar</label></div>
-                        <div class="col">
-                            <input type="checkbox" id="delete4" name="delete4[]"/>
-                        </div>
-                    </div>
-                </div>
-                                <div class="col">
-                    <input type="hidden" name="id_det_prod5"
-                           value="0"/>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="titulo5">T&iacute;tulo</label></div>
-                        <div class="col"><input type="text" id="titulo5" name="titulo5"
-                                                class="form-control"
-                                                value=""/>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label
-                                    for="descripcion5">Descripci&oacute;n</label>
-                        </div>
-                        <div class="col"><textarea id="descripcion5" name="descripcion5"
-                                                   class="form-control"
-                                                   rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel">Im&aacute;gen</div>
-                        <div class="col">
-                            <input type="hidden" name="v_imagen5"
-                                   value=""/>
-                            <input type="file" id="imagen5" name="imagen5"/>
-                                                    </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="delete5">Eliminar</label></div>
-                        <div class="col">
-                            <input type="checkbox" id="delete5" name="delete5[]"/>
-                        </div>
-                    </div>
-                </div>
-                </div>            <div class="row my-2">
-                <div class="col" style="text-align: center;">
-                    <input type="submit" value="Aceptar" name="aceptar" class="btn btn-primary"/>
-                </div>
-            </div>
-        </form>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+    <title>Detalles de B5 · Buffalo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="style/consola.css">
+</head>
+<body class="consola">
+<header class="barra">
+    <a class="marca" href="bienvenido.php">
+        <img src="../favicon.ico" width="20" height="20" alt="">
+        <strong>Buffalo</strong> <span>Administración</span>
+    </a>
+    <div class="sesion">
+        root        <a href="index.php?param=1">Salir</a>
     </div>
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js"
-            integrity="sha384-fgGyf7Mo7DURSOMnOy7ed+dkq5Job205Gnzu6QIg0BOHKaqt4D76Dt8VlDCzcMHV"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"></script>
-    </body>
-    </html>
-    
+</header>
+<nav class="menu" aria-label="Secciones">
+    <a class="menu-item is-active" href="vehiculos.php">Vehículos</a>
+    <a class="menu-item" href="contactos.php">
+        Solicitudes de contacto
+            </a>
+</nav>
+<main class="lienzo">
+<h1 class="titulo-pagina">Detalles de B5</h1>
+<p class="bajada">
+    Las viñetas que acompañan al modelo en el sitio.
+    <a href="vehiculos.php">Volver a vehículos</a>
+</p>
+
+<section class="tarjeta">
+    <form method="POST" action="actionDetalleProductoCtrl.php" enctype="multipart/form-data">
+        <input type="hidden" name="_token" value="CSRF_TOKEN"/>
+        <input type="hidden" id="id_producto" name="id_producto" value="1"/>
+
+        <div class="row">
+                            <div class="col-lg-6">
+                    <fieldset class="grupo">
+                        <legend>Detalle 1</legend>
+                        <input type="hidden" name="id_det_prod0" value="7"/>
+
+                        <div class="mb-3">
+                            <label for="titulo0">Título</label>
+                            <input type="text" id="titulo0" name="titulo0" class="form-control"
+                                   value=""/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion0">Descripción</label>
+                            <textarea id="descripcion0" name="descripcion0" rows="3"
+                                      class="form-control">Chapa  de encendido con seguridad antirrobo
+</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imagen0">Imagen</label>
+                            <input type="hidden" name="v_imagen0" value="images/detalle/b5_small3_detalle.jpg"/>
+                            <input type="file" id="imagen0" name="imagen0" class="form-control"/>
+                                                            <img src="../images/detalle/b5_small3_detalle.jpg" class="miniatura mt-2" alt="Imagen del detalle"/>
+                                                    </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="delete0" name="delete0[]"/>
+                            <label class="form-check-label" for="delete0">Eliminar este detalle</label>
+                        </div>
+                    </fieldset>
+                </div>
+                            <div class="col-lg-6">
+                    <fieldset class="grupo">
+                        <legend>Detalle 2</legend>
+                        <input type="hidden" name="id_det_prod1" value="8"/>
+
+                        <div class="mb-3">
+                            <label for="titulo1">Título</label>
+                            <input type="text" id="titulo1" name="titulo1" class="form-control"
+                                   value=""/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion1">Descripción</label>
+                            <textarea id="descripcion1" name="descripcion1" rows="3"
+                                      class="form-control">Espacioso portaequipaje 
+</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imagen1">Imagen</label>
+                            <input type="hidden" name="v_imagen1" value="images/detalle/b5_small4_detalle.jpg"/>
+                            <input type="file" id="imagen1" name="imagen1" class="form-control"/>
+                                                            <img src="../images/detalle/b5_small4_detalle.jpg" class="miniatura mt-2" alt="Imagen del detalle"/>
+                                                    </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="delete1" name="delete1[]"/>
+                            <label class="form-check-label" for="delete1">Eliminar este detalle</label>
+                        </div>
+                    </fieldset>
+                </div>
+                            <div class="col-lg-6">
+                    <fieldset class="grupo">
+                        <legend>Detalle 3</legend>
+                        <input type="hidden" name="id_det_prod2" value="9"/>
+
+                        <div class="mb-3">
+                            <label for="titulo2">Título</label>
+                            <input type="text" id="titulo2" name="titulo2" class="form-control"
+                                   value=""/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion2">Descripción</label>
+                            <textarea id="descripcion2" name="descripcion2" rows="3"
+                                      class="form-control">Moderno y cómodo posapies
+</textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imagen2">Imagen</label>
+                            <input type="hidden" name="v_imagen2" value="images/detalle/b5_small5_detalle.jpg"/>
+                            <input type="file" id="imagen2" name="imagen2" class="form-control"/>
+                                                            <img src="../images/detalle/b5_small5_detalle.jpg" class="miniatura mt-2" alt="Imagen del detalle"/>
+                                                    </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="delete2" name="delete2[]"/>
+                            <label class="form-check-label" for="delete2">Eliminar este detalle</label>
+                        </div>
+                    </fieldset>
+                </div>
+                            <div class="col-lg-6">
+                    <fieldset class="grupo">
+                        <legend>Detalle 4</legend>
+                        <input type="hidden" name="id_det_prod3" value="0"/>
+
+                        <div class="mb-3">
+                            <label for="titulo3">Título</label>
+                            <input type="text" id="titulo3" name="titulo3" class="form-control"
+                                   value=""/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion3">Descripción</label>
+                            <textarea id="descripcion3" name="descripcion3" rows="3"
+                                      class="form-control"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imagen3">Imagen</label>
+                            <input type="hidden" name="v_imagen3" value=""/>
+                            <input type="file" id="imagen3" name="imagen3" class="form-control"/>
+                                                    </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="delete3" name="delete3[]"/>
+                            <label class="form-check-label" for="delete3">Eliminar este detalle</label>
+                        </div>
+                    </fieldset>
+                </div>
+                            <div class="col-lg-6">
+                    <fieldset class="grupo">
+                        <legend>Detalle 5</legend>
+                        <input type="hidden" name="id_det_prod4" value="0"/>
+
+                        <div class="mb-3">
+                            <label for="titulo4">Título</label>
+                            <input type="text" id="titulo4" name="titulo4" class="form-control"
+                                   value=""/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion4">Descripción</label>
+                            <textarea id="descripcion4" name="descripcion4" rows="3"
+                                      class="form-control"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imagen4">Imagen</label>
+                            <input type="hidden" name="v_imagen4" value=""/>
+                            <input type="file" id="imagen4" name="imagen4" class="form-control"/>
+                                                    </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="delete4" name="delete4[]"/>
+                            <label class="form-check-label" for="delete4">Eliminar este detalle</label>
+                        </div>
+                    </fieldset>
+                </div>
+                            <div class="col-lg-6">
+                    <fieldset class="grupo">
+                        <legend>Detalle 6</legend>
+                        <input type="hidden" name="id_det_prod5" value="0"/>
+
+                        <div class="mb-3">
+                            <label for="titulo5">Título</label>
+                            <input type="text" id="titulo5" name="titulo5" class="form-control"
+                                   value=""/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion5">Descripción</label>
+                            <textarea id="descripcion5" name="descripcion5" rows="3"
+                                      class="form-control"></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imagen5">Imagen</label>
+                            <input type="hidden" name="v_imagen5" value=""/>
+                            <input type="file" id="imagen5" name="imagen5" class="form-control"/>
+                                                    </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="delete5" name="delete5[]"/>
+                            <label class="form-check-label" for="delete5">Eliminar este detalle</label>
+                        </div>
+                    </fieldset>
+                </div>
+                    </div>
+
+        <div class="barra-acciones">
+            <input type="submit" value="Guardar detalles" name="aceptar" class="btn btn-primary"/>
+            <a class="btn btn-link" href="vehiculos.php">Cancelar</a>
+        </div>
+    </form>
+</section>
+</main>
+<script src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha384-fgGyf7Mo7DURSOMnOy7ed+dkq5Job205Gnzu6QIg0BOHKaqt4D76Dt8VlDCzcMHV"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+</html>

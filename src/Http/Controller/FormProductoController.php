@@ -8,17 +8,17 @@ use Buffalo\Domain\Producto;
 use Buffalo\Http\Controller;
 use Buffalo\Http\Request;
 use Buffalo\Http\Response;
-use Buffalo\Http\Session;
 use Buffalo\Repository\MasterRepository;
 use Buffalo\Repository\ProductoRepository;
 use Buffalo\Repository\VehiculoRepository;
+use Buffalo\View\Consola;
 use Buffalo\View\Template;
 
 final readonly class FormProductoController implements Controller
 {
     public function __construct(
         private Template $template,
-        private Session $session,
+        private Consola $consola,
         private ProductoRepository $productos,
         private MasterRepository $masters,
         private VehiculoRepository $vehiculos,
@@ -42,15 +42,20 @@ final readonly class FormProductoController implements Controller
 
         $master = $masterId !== 0 ? $this->masters->find($masterId) : null;
 
-        return Response::html($this->template->render('admin/producto', [
-            'titulo' => ($accion === 'E' ? 'Editar producto ' : 'Registrar producto ') . $modelo,
-            'producto' => $producto,
-            'masterId' => $masterId,
-            'vehiculoId' => $master?->vehiculoId ?? 0,
-            'vehiculos' => $this->vehiculos->findAll(),
-            'masters' => $master !== null ? $this->masters->findByVehiculo($master->vehiculoId) : [],
-            'zoomSlots' => Producto::ZOOM_SLOTS,
-            'token' => $this->session->csrfToken(),
-        ]));
+        $encabezado = ($accion === 'E' ? 'Editar producto ' : 'Registrar producto ') . $modelo;
+
+        return Response::html($this->template->render('admin/producto', $this->consola->pagina(
+            'vehiculos',
+            $encabezado,
+            [
+                'encabezado' => $encabezado,
+                'producto' => $producto,
+                'masterId' => $masterId,
+                'vehiculoId' => $master?->vehiculoId ?? 0,
+                'vehiculos' => $this->vehiculos->findAll(),
+                'masters' => $master !== null ? $this->masters->findByVehiculo($master->vehiculoId) : [],
+                'zoomSlots' => Producto::ZOOM_SLOTS,
+            ],
+        )));
     }
 }

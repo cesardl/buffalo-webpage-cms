@@ -8,8 +8,8 @@ use Buffalo\Domain\ColorProducto;
 use Buffalo\Http\Controller;
 use Buffalo\Http\Request;
 use Buffalo\Http\Response;
-use Buffalo\Http\Session;
 use Buffalo\Repository\ColorRepository;
+use Buffalo\View\Consola;
 use Buffalo\View\Template;
 
 final readonly class FormColoresController implements Controller
@@ -22,7 +22,7 @@ final readonly class FormColoresController implements Controller
 
     public function __construct(
         private Template $template,
-        private Session $session,
+        private Consola $consola,
         private ColorRepository $colores,
     ) {
     }
@@ -42,12 +42,17 @@ final readonly class FormColoresController implements Controller
             );
         }
 
-        return Response::html($this->template->render('admin/colores', [
-            'modelo' => $request->queryString('mod_prod'),
-            'productoId' => $productoId,
-            'filas' => $filas,
-            'palette' => $this->colores->findAll(),
-            'token' => $this->session->csrfToken(),
-        ]));
+        $modelo = $request->queryString('mod_prod');
+
+        return Response::html($this->template->render('admin/colores', $this->consola->pagina(
+            'vehiculos',
+            'Colores de ' . $modelo,
+            [
+                'modelo' => $modelo,
+                'productoId' => $productoId,
+                'filas' => $filas,
+                'palette' => $this->colores->findAll(),
+            ],
+        )));
     }
 }

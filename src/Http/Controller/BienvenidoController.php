@@ -8,16 +8,20 @@ use Buffalo\Http\Controller;
 use Buffalo\Http\Request;
 use Buffalo\Http\Response;
 use Buffalo\Http\Session;
-use Buffalo\Repository\MasterRepository;
-use Buffalo\Repository\ProductoRepository;
+use Buffalo\Panel\Resumen;
+use Buffalo\Repository\ResumenRepository;
 use Buffalo\Security\Authenticator;
+use Buffalo\View\Consola;
 use Buffalo\View\Template;
 
 /**
  * One endpoint for two jobs, as the legacy bienvenido.php had it: a POST is
- * the sign-in attempt, a GET is the dashboard. The routing table declares the
- * POST public and the GET admin-only, so the distinction lives there rather
- * than in a chain of isset() checks here.
+ * the sign-in attempt, a GET is what you land on. The routing table declares
+ * the POST public and the GET admin-only, so the distinction lives there
+ * rather than in a chain of isset() checks here.
+ *
+ * What you land on is the panel now, not the product table; that moved to
+ * vehiculos.php and into the menu.
  */
 final readonly class BienvenidoController implements Controller
 {
@@ -25,8 +29,8 @@ final readonly class BienvenidoController implements Controller
         private Template $template,
         private Session $session,
         private Authenticator $authenticator,
-        private ProductoRepository $productos,
-        private MasterRepository $masters,
+        private Consola $consola,
+        private ResumenRepository $resumen,
     ) {
     }
 
@@ -45,22 +49,19 @@ final readonly class BienvenidoController implements Controller
             $this->session->logIn($usuario->id, $usuario->usuario);
         }
 
-        return Response::html($this->template->render('admin/dashboard', [
-            'productos' => $this->productos->findAll(),
-            'clases' => $this->clasesPorId(),
-            'token' => $this->session->csrfToken(),
-        ]));
-    }
+        // The same counts the menu badge uses, asked for once.
+        $solicitudes = $this->consola->solicitudes();
 
-    /** @return array<int, string> */
-    private function clasesPorId(): array
-    {
-        $clases = [];
-
-        foreach ($this->masters->findAll() as $master) {
-            $clases[$master->id] = $master->clase;
-        }
-
-        return $clases;
+        return Response::html($this->template->render('admin/panel', $this->consola->pagina(
+            '',
+            'Panel',
+            [
+                'resumen' => new Resumen(
+                    tipos: $this->resumen->vehiculosPorTipo(),
+                    nuevas: $solicitudes['nuevas'],
+                    atendidas: $solicitudes['atendidas'],
+                ),
+            ],
+        )));
     }
 }

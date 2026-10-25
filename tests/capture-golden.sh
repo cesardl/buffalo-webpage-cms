@@ -95,6 +95,10 @@ snap admin-guard-form     GET /administrator/formProducto.php   '' "$ANON"
 snap admin-guard-detalles GET /administrator/formDetalles.php   '' "$ANON"
 snap admin-guard-colores  GET /administrator/formColores.php    '' "$ANON"
 snap admin-guard-home     GET /administrator/bienvenido.php     '' "$ANON"
+snap admin-guard-vehiculos GET /administrator/vehiculos.php      '' "$ANON"
+snap admin-guard-contactos GET /administrator/contactos.php      '' "$ANON"
+snap admin-guard-contacto  GET '/administrator/contacto.php?id=1' '' "$ANON"
+snap admin-guard-estado   POST /administrator/actionContacto.php 'id_contacto=1&estado=atendida' "$ANON"
 snap admin-login-bad      POST /administrator/bienvenido.php 'user=nope&passwd=nope' "$ANON"
 
 # These five were reachable without logging in until the guards landed. They
@@ -106,8 +110,18 @@ snap guard-vehiculo-delete POST /administrator/VehiculoDelete.php            'id
 snap guard-vehiculo-select POST /administrator/VehiculoSelect.php            'veh_id=1'      "$ANON"
 
 echo "Admin, signed in"
-# This POST both authenticates and renders the dashboard.
-snap admin-dashboard      POST /administrator/bienvenido.php "user=$ADMIN_USER&passwd=$ADMIN_PASS"
+# This POST both authenticates and renders the panel, which is what the
+# administrator now opens on.
+snap admin-panel          POST /administrator/bienvenido.php "user=$ADMIN_USER&passwd=$ADMIN_PASS"
+snap admin-vehiculos      GET /administrator/vehiculos.php
+# A freshly seeded database carries no contact requests, so these three pin
+# the empty states -- the copy that tells somebody what the screen is for
+# when there is nothing on it. A request with content is covered by
+# PdoContactoRepositoryTest instead.
+snap admin-contactos      GET '/administrator/contactos.php?estado=nuevas'
+snap admin-contactos-ok   GET '/administrator/contactos.php?estado=atendidas'
+snap admin-contactos-all  GET '/administrator/contactos.php?estado=todas'
+snap admin-contacto-404   GET '/administrator/contacto.php?id=999999'
 snap admin-producto-edit  GET '/administrator/formProducto.php?accion=E&id_producto=1&id_master=1&mod_prod=B5'
 snap admin-producto-new   GET '/administrator/formProducto.php?action=N'
 snap admin-detalles-full  GET '/administrator/formDetalles.php?id_producto=1&mod_prod=B5'

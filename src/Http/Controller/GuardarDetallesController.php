@@ -10,12 +10,14 @@ use Buffalo\Http\Request;
 use Buffalo\Http\Response;
 use Buffalo\Repository\DetalleProductoRepository;
 use Buffalo\Upload\Uploader;
+use Buffalo\View\Consola;
 use Buffalo\View\Template;
 
 final readonly class GuardarDetallesController implements Controller
 {
     public function __construct(
         private Template $template,
+        private Consola $consola,
         private DetalleProductoRepository $detalles,
         private Uploader $uploader,
     ) {
@@ -62,11 +64,16 @@ final readonly class GuardarDetallesController implements Controller
             ++$guardados;
         }
 
-        $mensajes[] = "Total procesado: {$guardados} detalle(s)";
+        $mensajes[] = "Se guardaron {$guardados} detalle(s).";
 
-        return Response::html($this->template->render('admin/resultado', [
-            'encabezado' => 'Detalles del vehiculo',
-            'mensajes' => $mensajes,
-        ]));
+        return Response::html($this->template->render('admin/resultado', $this->consola->pagina(
+            'vehiculos',
+            'Detalles guardados',
+            [
+                'encabezado' => 'Detalles guardados',
+                'mensajes' => $mensajes,
+                'volver' => 'vehiculos.php',
+            ],
+        )));
     }
 }

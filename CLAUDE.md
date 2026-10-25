@@ -38,6 +38,7 @@ src/Domain/        immutable final readonly value objects
 src/Repository/    one interface per aggregate, with a Pdo* implementation beside it
 src/Catalogo/      assembles what a public listing needs
 src/Contacto/      the contact form's rules, as a pure validator
+src/Panel/         what the panel's charts are made of, as value objects
 src/Http/          Request, Response, Route, Router, Session, controllers
 src/Security/      Authenticator
 src/Upload/        FileValidator (pure, tested) + Uploader (needs a live request)
@@ -77,7 +78,42 @@ The three plugins the public site had carried since 2011 are gone. Each one call
 - `ContactoValidator` is pure and holds `LIMITES`, which is both the column widths and the `maxlength` the template renders, so the form and the table cannot drift apart. Nombre, email and comentarios are required — without them there is nobody to answer and nothing to answer about. The browser is asked first (`required`, `type="email"`), and the server asks again, because the browser is not the only thing that can post here.
 - A hidden `web` field is a honeypot. Anything that fills it gets an ordinary success back and nothing is written; saying what gave it away is how a bot learns not to do it again. **This is not a captcha**, and it stops only the laziest spam.
 - `contacto` is the one table in `utf8mb4`. The others are `utf8`, which cannot hold anything outside the basic plane — an emoji in a comment would fail the insert outright.
-- `fecha_registro` is `NOW()`, which is the *database* server's clock. Here that container runs five hours behind the application container, so the stamps are Lima time while PHP thinks in UTC. It matters the day somebody reads these rows back.
+- `fecha_registro` is `NOW()`, which is the *database* server's clock. Here that container runs five hours behind the application container, so the stamps are Lima time while PHP thinks in UTC. The dates are carried as the strings MySQL returns, never parsed into PHP's timezone, which would quietly shift every one of them.
+- **A request is new until somebody attends it.** `estado` is `nueva` or `atendida`; attending one records `fecha_atencion` and `atendido_por`, and reopening clears both, so a waiting row never still claims it was handled. `atendido_por` holds a `usuario` id but declares no foreign key: `usuario` is MyISAM until `bin/migrate-passwords.php` converts it, and InnoDB cannot point a constraint at a MyISAM table. The inbox reads the name through a `LEFT JOIN`, because the name is what the screen shows.
+- Requests are never edited and never deleted. The screen reads and resolves; the message is somebody's and the record of it is the point.
+
+### The administrator console
+
+Six standalone pages became one console: a 56px bar, a menu of two
+maintenances, and a canvas. `templates/admin/_consola.php` is the shell;
+every page buffers its own body with `ob_start()` and `require`s it, which is
+the idiom `resultado.php` already used. `public/administrator/style/consola.css`
+holds the tokens.
+
+- **Google Cloud Console's grammar, Buffalo's accent.** Borders rather than
+  shadows, 14px Roboto, dense tables, a tinted pill on the selected menu item.
+  The accent is `#C5221F`, the logo's red pulled down to a weight that can sit
+  under text; Google's blue would have made it a clone of the reference.
+- **`bienvenido.php` answers the panel**, which is what sign-in lands on. The
+  product table it used to show is `vehiculos.php`, in the menu beside the
+  inbox. The menu holds exactly the two maintenances; the panel is reached
+  through the title in the bar.
+- **`View\Consola` supplies the chrome** — who is signed in, the menu's
+  badge count, the CSRF token — so a controller asks in one line rather than
+  passing four values to the shell. It is the one non-readonly service: the
+  badge and the panel's own figures are the same two numbers, read once.
+- **The charts are Chart.js 4.6.1**, loaded only on the panel, fed from a
+  `<script type="application/json">` block the page renders and `panel.js`
+  parses. Nothing is interpolated into executable JavaScript.
+- **The bar chart is one stacked row per type, segmented by class**, so the
+  hierarchy is the chart. Hue is the type and tint is the class — reds for
+  motorcycles, amber for mototaxis, slate for vans. A ten-model catalogue
+  makes short bars, so a plugin draws each row's total past the end of its
+  stack; it hangs off the last dataset's bar, which in a stacked chart always
+  ends at the total even where its own value is zero.
+- **`PdoResumenRepository` holds the only `GROUP BY` in `src/`.** Everywhere
+  else reads whole rows and counts them in PHP, which is right when the rows
+  are then displayed and wrong when only the totals are wanted.
 
 ### Database quirks translated at the repository boundary
 
@@ -97,7 +133,7 @@ docker run --rm -v "$(pwd -W):/app" -w /app --network <net> -e BUFFALO_DB_... bu
 
 **PHPUnit** covers `src/`. `tests/Unit` needs nothing; `tests/Integration` skips itself without `BUFFALO_DB_*`, and its write tests run inside a transaction that is rolled back.
 
-**The golden master** (`tests/golden/*.snap`) holds the exact output of all 34 read-only routes, captured from the PHP 5.6 application before it was retired, and updated deliberately twice since: at the cutover, for three reviewed differences, and for the jQuery 4 / Bootstrap 5 upgrade, which rewrote every `<script>` tag and renamed the Bootstrap classes in the administrator. `verify-golden.sh` recaptures and diffs byte for byte, exiting non-zero on drift; `capture-golden.sh` rewrites the snapshots and should only be run when a change is *meant* to alter output.
+**The golden master** (`tests/golden/*.snap`) holds the exact output of all 43 read-only routes, captured from the PHP 5.6 application before it was retired, and updated deliberately twice since: at the cutover, for three reviewed differences, and for the jQuery 4 / Bootstrap 5 upgrade, which rewrote every `<script>` tag and renamed the Bootstrap classes in the administrator. `verify-golden.sh` recaptures and diffs byte for byte, exiting non-zero on drift; `capture-golden.sh` rewrites the snapshots and should only be run when a change is *meant* to alter output.
 
 Values that vary per run are normalised at capture time, or every comparison would fail: the CSRF token becomes `CSRF_TOKEN`, redirects are recorded relative to the base URL, and Apache's own redirect body — which names the host, the port and the server version — loses the base URL and has its `<address>` line replaced. A capture taken from `http://127.0.0.1:8093` has to match one taken from `http://localhost:8092`, because CI serves the application on port 80. Snapshots are marked `-text` in `.gitattributes` so git stores them byte for byte.
 
@@ -109,14 +145,16 @@ The `action*.php` endpoints are covered only signed out, where they exit before 
 
 `POST /contactanos.php` is deliberately **not** in the golden master for the same reason, only more so: the harness adds a token to every POST it sends, so capturing that route would store a contact message every time anyone ran it. Its rules live in `ContactoValidatorTest`, and the row it writes in `PdoContactoRepositoryTest`.
 
-A failing `verify-golden.sh` on a developer machine usually means the database has moved, not the code: the snapshots render live data, so one product edited through the administrator is drift. It only matches a freshly seeded database, which is what CI gives it. Re-capturing to make the red go away writes that test data into the reference.
+A failing `verify-golden.sh` on a developer machine usually means the database has moved, not the code: the snapshots render live data, so one product edited through the administrator is drift, and so is one contact request, since three admin snapshots pin the empty inbox.
+
+**So capture against a throwaway database, never against the one you are working in.** Start `mysql:8.0` and an application container on a private network, load `database/buffalo_data.sql` with `--default-character-set=utf8mb4`, create `buffalo9_root`, run both `bin/migrate-*.php`, and point `capture-golden.sh` at that port. Every public snapshot comes back byte-identical that way, which is how the long-running local drift was shown to be data and nothing else. Re-capturing against a working database writes its test rows into the reference.
 
 ## Known gaps
 
 - The new-product form's JavaScript compares `.val()` against `0`, so none of its validation alerts can fire. It behaved that way before the port, and making them fire changes what the administrator does.
 - **SQL injection is gone** (everything is a prepared statement) and **passwords are hashed**, but the admin password in the seed is still `root`/`root`. Change it outside the repository.
 - The successful write paths of the three `Guardar*` controllers have no automated coverage.
-- **Nothing reads the `contacto` table.** The messages are stored and nobody is told: no administrator screen, no email, no notification. Reading them means `SELECT * FROM contacto` by hand.
+- **Nobody is told when a request arrives.** The inbox shows it and the menu counts it, but there is no email and no notification: somebody has to open the console to find out.
 - **The contact form has no captcha and no rate limit.** The honeypot is a speed bump; anything deliberate will walk past it and can write rows as fast as it can post.
 - **Four image paths in the data point at files that do not exist**, so B15, B12, B10 and B9 show broken zoom thumbnails, as do B15's three detail bullets. The rows name `images/zoom/productos_img1_small.jpg` and `_img2_small.jpg`, and the same two names under `images/detalle/`.
 

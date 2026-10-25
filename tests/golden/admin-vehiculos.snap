@@ -1,0 +1,185 @@
+# GET /administrator/vehiculos.php -> 200 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+    <title>Vehículos · Buffalo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+    <link rel="stylesheet" href="style/consola.css">
+</head>
+<body class="consola">
+<header class="barra">
+    <a class="marca" href="bienvenido.php">
+        <img src="../favicon.ico" width="20" height="20" alt="">
+        <strong>Buffalo</strong> <span>Administración</span>
+    </a>
+    <div class="sesion">
+        root        <a href="index.php?param=1">Salir</a>
+    </div>
+</header>
+<nav class="menu" aria-label="Secciones">
+    <a class="menu-item is-active" href="vehiculos.php">Vehículos</a>
+    <a class="menu-item" href="contactos.php">
+        Solicitudes de contacto
+            </a>
+</nav>
+<main class="lienzo">
+<h1 class="titulo-pagina">Vehículos</h1>
+<p class="bajada">Los modelos publicados en el sitio.</p>
+
+<section class="tarjeta">
+    <div class="barra-acciones es-cabecera">
+        <a class="btn btn-primary" href="formProducto.php?action=N">Nuevo producto</a>
+    </div>
+
+    <div id="result"></div>
+
+            <table class="tabla" id="tabla-vehiculos" data-token="CSRF_TOKEN">
+            <thead>
+            <tr>
+                <th>Clase</th>
+                <th>Modelo</th>
+                <th>Descripción</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+                            <tr id="fila-1">
+                    <td>DE PASEO</td>
+                    <td>B5</td>
+                    <td>Para quienes buscan algo mas que solo motos de paseo, la B5 se distingue por su acabado, modernas lÍneas de diseño, chapa de seguridad antirobos, pintura acrilica antirayadura, económica y de fácil manejo, hacen de la B5 una motocicleta lider en su categoría
+</td>
+                    <td class="acciones">
+                        <a href="formProducto.php?accion=E&id_producto=1&id_master=1&mod_prod=B5">Editar</a>
+                        <a href="formDetalles.php?id_producto=1&mod_prod=B5">Detalles</a>
+                        <a href="formColores.php?id_producto=1&mod_prod=B5">Colores</a>
+                        <a href="#1" class="a_delete">Eliminar</a>
+                    </td>
+                </tr>
+                            <tr id="fila-2">
+                    <td>DE TRABAJO</td>
+                    <td>B3CH</td>
+                    <td>La B3CH cuenta con un motor de 150cc , que nos garantiza potencia para el trabajo de la ciudad y el campo. Esta versión BUFFALO viene con timón de rodaje cónico , garantizando un bajo costo de mantenimiento. Asi mismo cuenta con protectores originales que  proporcionan mayor seguridad al conductor
+</td>
+                    <td class="acciones">
+                        <a href="formProducto.php?accion=E&id_producto=2&id_master=2&mod_prod=B3CH">Editar</a>
+                        <a href="formDetalles.php?id_producto=2&mod_prod=B3CH">Detalles</a>
+                        <a href="formColores.php?id_producto=2&mod_prod=B3CH">Colores</a>
+                        <a href="#2" class="a_delete">Eliminar</a>
+                    </td>
+                </tr>
+                            <tr id="fila-3">
+                    <td>TODO TERRENO</td>
+                    <td>B15</td>
+                    <td>La B15, una motocicleta diseñada para todo terreno y superar todas las exigencias de su conductor tanto para la ciudad y el campo, su alta performance y resistencia hacen de la B15 única y especial en su categoría
+</td>
+                    <td class="acciones">
+                        <a href="formProducto.php?accion=E&id_producto=3&id_master=3&mod_prod=B15">Editar</a>
+                        <a href="formDetalles.php?id_producto=3&mod_prod=B15">Detalles</a>
+                        <a href="formColores.php?id_producto=3&mod_prod=B15">Colores</a>
+                        <a href="#3" class="a_delete">Eliminar</a>
+                    </td>
+                </tr>
+                            <tr id="fila-4">
+                    <td>TODO TERRENO</td>
+                    <td>B12</td>
+                    <td>La B12, tiene un potente motor de 200 cc para todo terreno, posee un sistema de motor con balanceador  que hace que reduzca al mínimo las vibraciones a altas velocidades, ideal para aquellos que buscan un diseño moderno con un potente motor
+</td>
+                    <td class="acciones">
+                        <a href="formProducto.php?accion=E&id_producto=4&id_master=3&mod_prod=B12">Editar</a>
+                        <a href="formDetalles.php?id_producto=4&mod_prod=B12">Detalles</a>
+                        <a href="formColores.php?id_producto=4&mod_prod=B12">Colores</a>
+                        <a href="#4" class="a_delete">Eliminar</a>
+                    </td>
+                </tr>
+                            <tr id="fila-9">
+                    <td>PISTERAS</td>
+                    <td>B10</td>
+                    <td>Nuestra B10 posee un diseño futurista, aerodinámico , moderno y por la calidad de su motor nos garantiza velocidad y potencia. Este modelo es exclusivo de BUFFALO MOTORS
+</td>
+                    <td class="acciones">
+                        <a href="formProducto.php?accion=E&id_producto=9&id_master=4&mod_prod=B10">Editar</a>
+                        <a href="formDetalles.php?id_producto=9&mod_prod=B10">Detalles</a>
+                        <a href="formColores.php?id_producto=9&mod_prod=B10">Colores</a>
+                        <a href="#9" class="a_delete">Eliminar</a>
+                    </td>
+                </tr>
+                            <tr id="fila-10">
+                    <td>PISTERAS</td>
+                    <td>B9</td>
+                    <td>Este modelo posee un diseño innovador y versátil que la hace especial y atractiva, la tecnología desarrollada en su motor nos asegura el mayor rendimiento , tanto en ciudad como pista , además de tener un cómodo asiento que permite un manejo mas placentero
+</td>
+                    <td class="acciones">
+                        <a href="formProducto.php?accion=E&id_producto=10&id_master=4&mod_prod=B9">Editar</a>
+                        <a href="formDetalles.php?id_producto=10&mod_prod=B9">Detalles</a>
+                        <a href="formColores.php?id_producto=10&mod_prod=B9">Colores</a>
+                        <a href="#10" class="a_delete">Eliminar</a>
+                    </td>
+                </tr>
+                            <tr id="fila-5">
+                    <td>MODELO DE MOTOTAXI Y COLORES</td>
+                    <td>BF300</td>
+                    <td>El BF300 cuenta con una estructura reforzada, carenado con parabrisas panorámico, asientos mas confortables y un nuevo faro cuadrado que hace este vehículo lider en su categoría , además de la calidad de su motor , que garantiza un uso eficiente.
+</td>
+                    <td class="acciones">
+                        <a href="formProducto.php?accion=E&id_producto=5&id_master=5&mod_prod=BF300">Editar</a>
+                        <a href="formDetalles.php?id_producto=5&mod_prod=BF300">Detalles</a>
+                        <a href="formColores.php?id_producto=5&mod_prod=BF300">Colores</a>
+                        <a href="#5" class="a_delete">Eliminar</a>
+                    </td>
+                </tr>
+                            <tr id="fila-6">
+                    <td>DE CARGA</td>
+                    <td>BF500</td>
+                    <td>El BF500 de carga es un vehículo ideal para  el transporte de productos, su estructura de doble plancha de acero y estriada permite maximizar su capacidad de carga sin perder potencia , además cuenta con sistema de inyectores para una mayor fuerza  y un moderno sistema de suspensión de 7 hojas de muelle y resortes especiales, que lo hace único en su categoría.
+</td>
+                    <td class="acciones">
+                        <a href="formProducto.php?accion=E&id_producto=6&id_master=6&mod_prod=BF500">Editar</a>
+                        <a href="formDetalles.php?id_producto=6&mod_prod=BF500">Detalles</a>
+                        <a href="formColores.php?id_producto=6&mod_prod=BF500">Colores</a>
+                        <a href="#6" class="a_delete">Eliminar</a>
+                    </td>
+                </tr>
+                            <tr id="fila-7">
+                    <td>DE CARGA</td>
+                    <td>BF600</td>
+                    <td>El BF600 de carga, es un vehículo ideal para el transporte de productos, su estructura de doble plancha de acero y estriada permite maximizar su capacidad de carga sin perder potencia, ademas cuenta con un moderno sistema de suspensión de 7 hojas de muelle y resortes especiales que hace de este vehículo único en su categoría . Este modelo  de furgón cuenta con un moderno panel de lectura de indicadores en el tanque de combustible
+</td>
+                    <td class="acciones">
+                        <a href="formProducto.php?accion=E&id_producto=7&id_master=6&mod_prod=BF600">Editar</a>
+                        <a href="formDetalles.php?id_producto=7&mod_prod=BF600">Detalles</a>
+                        <a href="formColores.php?id_producto=7&mod_prod=BF600">Colores</a>
+                        <a href="#7" class="a_delete">Eliminar</a>
+                    </td>
+                </tr>
+                            <tr id="fila-8">
+                    <td>DE PASAJEROS</td>
+                    <td>BF500 PASAJEROS</td>
+                    <td>El BF500 Pasajeros es el vehículo ideal para aquellos emprendedores que quieran maximizar su inversión. Su innovador diseño permite utilizarlo tanto para la carga de productos como para el transporte de pasajeros
+</td>
+                    <td class="acciones">
+                        <a href="formProducto.php?accion=E&id_producto=8&id_master=7&mod_prod=BF500 PASAJEROS">Editar</a>
+                        <a href="formDetalles.php?id_producto=8&mod_prod=BF500 PASAJEROS">Detalles</a>
+                        <a href="formColores.php?id_producto=8&mod_prod=BF500 PASAJEROS">Colores</a>
+                        <a href="#8" class="a_delete">Eliminar</a>
+                    </td>
+                </tr>
+                        </tbody>
+        </table>
+    </section>
+</main>
+<script src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha384-fgGyf7Mo7DURSOMnOy7ed+dkq5Job205Gnzu6QIg0BOHKaqt4D76Dt8VlDCzcMHV"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+<script src="scritps/vehiculos.js"></script></body>
+</html>
