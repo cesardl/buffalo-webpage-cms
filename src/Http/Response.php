@@ -24,6 +24,16 @@ final readonly class Response
         return new self($status, ['Content-Type' => 'text/plain; charset=UTF-8'], $body);
     }
 
+    /** @param array<string, mixed> $datos */
+    public static function json(array $datos, int $status = 200): self
+    {
+        return new self(
+            $status,
+            ['Content-Type' => 'application/json; charset=UTF-8'],
+            json_encode($datos, JSON_THROW_ON_ERROR | JSON_UNESCAPED_UNICODE),
+        );
+    }
+
     public static function redirect(string $location): self
     {
         return new self(302, ['Location' => $location], '');

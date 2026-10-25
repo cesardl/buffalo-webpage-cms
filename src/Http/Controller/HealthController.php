@@ -25,16 +25,13 @@ final readonly class HealthController implements Controller
             // rather than returned.
             error_log('Health check failed: ' . $e->getMessage());
 
-            return Response::text(
-                json_encode(['php' => PHP_VERSION, 'database' => 'unavailable'], JSON_THROW_ON_ERROR),
-                503,
-            );
+            return Response::json(['php' => PHP_VERSION, 'database' => 'unavailable'], 503);
         }
 
-        return Response::text(json_encode([
+        return Response::json([
             'php' => PHP_VERSION,
             'database' => 'ok',
             'productos' => $productos,
-        ], JSON_THROW_ON_ERROR));
+        ]);
     }
 }

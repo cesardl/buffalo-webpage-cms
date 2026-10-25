@@ -1,0 +1,142 @@
+<?php
+
+declare(strict_types=1);
+
+use function Buffalo\View\e;
+
+/** @var string $token */
+/** @var array<string, int> $limites */
+
+/*
+ * The page the static contactanos.html used to be, with the form it never
+ * had: every input was named "textfield", there was no <form> around them,
+ * and the two buttons were images with nothing behind them.
+ *
+ * The layout is the original table, down to the background images the
+ * fields sit on, so the page still looks like the rest of the site. What is
+ * new is the form element, a name per field, the token, the limits the
+ * columns impose, and somewhere to put an error.
+ */
+$campo = static function (
+    string $nombre,
+    array $limites,
+    string $tipo = 'text',
+    bool $obligatorio = false,
+): string {
+    // required and type="email" let the browser say so before anything is
+    // sent. The server repeats both checks, because the browser is not the
+    // only thing that can post to this form.
+    return sprintf(
+        '<input name="%s" type="%s" class="txt_pie_11p" id="%s" maxlength="%d"%s'
+        . ' style="border:0px; border-style:none; background-color:transparent;" size="40" />',
+        e($nombre),
+        e($tipo),
+        e($nombre),
+        $limites[$nombre],
+        $obligatorio ? ' required="required"' : '',
+    );
+};
+?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>BUFFALO</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+<link href="css/buffaloestilo.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-4.0.0.min.js"></script>
+<script type="text/javascript" src="js/function.js"></script>
+<script type="text/javascript" src="js/contacto.js"></script>
+</head>
+
+<body>
+<div id="index_cabecera">
+  <div id="bg_cabecera">
+  	<div id="index_cabecera_logo"><img src="images/logo_top.png" alt="logo" width="208" height="169" /></div>
+    <div class="botonera">
+      <div class="boton_home btn_cabecera_home"><a href="index.html"></a></div>
+      <div class="boton_quienes btn_cabecera_quienes"><a href="quienes_somos.html"></a></div>
+      <div class="boton_productos btn_cabecera_productos"><a href="productos.html"></a></div>
+      <div class="boton_ubicanos btn_cabecera_ubicanos"><a href="ubicanos.html"></a></div>
+      <div class="boton_contactanos"><img src="images/btn_contactanos_b.jpg" alt="contactanos" width="121" height="50" /></div>
+    </div>
+  </div>
+</div>
+<div id="quienes_contenido">
+	<div id="in_quienes">
+	  <div class="contact_bg">
+	    <div class="quienes_texto">
+	      <p><span class="txt_quietitu_20p">CONTÁCTANOS</span> &nbsp;&nbsp;<br />
+	      <span class="txt_piecom_10p">.................................................................................................................................................</span></p>
+	      <p align="justify"><span class="txt_contacsubti_12p">Si desea realizar un pedido o desea mayor información, llene el siguiente formulario que nuestro departamentos de Ventas se comunicará con UD.</span></p>
+	      <form id="formContacto" method="post" action="contactanos.php">
+	      <input type="hidden" name="_token" value="<?= e($token) ?>" />
+	      <!-- Left empty by anyone who can see the page; see GuardarContactoController. -->
+	      <div class="campo_trampa"><label>No llenar<input type="text" name="web" tabindex="-1" autocomplete="off" /></label></div>
+	      <table width="430" border="0" cellspacing="0" cellpadding="0">
+	        <tr>
+	          <td width="92" height="35" align="right" class="txt_pie_11p">Nombre:</td>
+	          <td width="26" align="right" class="txt_pie_11p">&nbsp;</td>
+	          <td width="312" style="background-image:url(images/bg_campo.gif); background-repeat:no-repeat; background-position:left top; padding-left:5px;"><?= $campo('nombre', $limites, obligatorio: true) ?><div class="campo_error" id="error_nombre"></div></td>
+            </tr>
+	        <tr>
+	          <td height="35" align="right" class="txt_pie_11p">Email:</td>
+	          <td align="right" class="txt_pie_11p">&nbsp;</td>
+	          <td style="background-image:url(images/bg_campo.gif); background-repeat:no-repeat; background-position:left top; padding-left:5px;"><?= $campo('email', $limites, tipo: 'email', obligatorio: true) ?><div class="campo_error" id="error_email"></div></td>
+            </tr>
+	        <tr>
+	          <td height="35" align="right" class="txt_pie_11p">Teléfono:</td>
+	          <td align="right" class="txt_pie_11p">&nbsp;</td>
+	          <td style="background-image:url(images/bg_campo.gif); background-repeat:no-repeat; background-position:left top; padding-left:5px;"><?= $campo('telefono', $limites, tipo: 'tel') ?><div class="campo_error" id="error_telefono"></div></td>
+            </tr>
+	        <tr>
+	          <td height="35" align="right" class="txt_pie_11p">Dirección:</td>
+	          <td align="right" class="txt_pie_11p">&nbsp;</td>
+	          <td style="background-image:url(images/bg_campo.gif); background-repeat:no-repeat; background-position:left top; padding-left:5px;"><?= $campo('direccion', $limites) ?><div class="campo_error" id="error_direccion"></div></td>
+            </tr>
+	        <tr>
+	          <td height="35" align="right" class="txt_pie_11p">Ciudad:</td>
+	          <td align="right" class="txt_pie_11p">&nbsp;</td>
+	          <td style="background-image:url(images/bg_campo.gif); background-repeat:no-repeat; background-position:left top; padding-left:5px;"><?= $campo('ciudad', $limites) ?><div class="campo_error" id="error_ciudad"></div></td>
+            </tr>
+	        <tr>
+	          <td align="right" valign="top" class="txt_pie_11p">Comentarios<br />
+              o Pedidos:</td>
+	          <td height="83" align="right" class="txt_pie_11p">&nbsp;</td>
+	          <td style="background-image:url(images/bg_campotexto.jpg); background-position:left top; background-repeat:no-repeat; padding-left:5px; padding-top:4px;">
+	            <textarea name="comentarios" cols="50" rows="4" class="txt_pie_11p" id="comentarios" maxlength="<?= e((string) $limites['comentarios']) ?>" required="required" style="border:0px; border-style:none; background-color:transparent;"></textarea>
+	            <div class="campo_error" id="error_comentarios"></div>
+	          </td>
+            </tr>
+	        <tr>
+	          <td>&nbsp;</td>
+	          <td>&nbsp;</td>
+	          <td><div class="campo_error" id="error_formulario"></div></td>
+            </tr>
+	        <tr>
+	          <td>&nbsp;</td>
+	          <td>&nbsp;</td>
+	          <td><table width="290" border="0" cellspacing="0" cellpadding="0">
+	            <tr>
+	              <td width="68">&nbsp;</td>
+	              <td width="129"><button type="submit" class="btn_imagen" id="btn_enviar"><img src="images/btn_enviar.gif" width="93" height="21" border="0" alt="Enviar" /></button></td>
+	              <td width="93"><button type="reset" class="btn_imagen" id="btn_cancelar"><img src="images/btn_cancelar.gif" width="93" height="21" border="0" alt="Cancelar" /></button></td>
+                </tr>
+              </table></td>
+            </tr>
+          </table>
+          </form>
+        </div>
+	  </div>
+	</div>
+</div>
+<div id="all_pie_home">
+	<div id="pie_home">
+	  <div class="pie_megusta"></div>
+	  <div class="pie_derechos"><span class="txt_pie_11p">BUFFALO del Perú 2011 - Todos los derechos reservados.</span></div>
+	  <div class="pie_compartir"><span class="txt_piecom_10p">Compartir en:</span></div>
+	  <div class="pie_face"><img src="images/pie_facebook.jpg" width="17" height="27" border="0" /></div>
+      <div class="pie_face"><img src="images/pie_twitter.jpg" width="17" height="27" border="0" /></div>
+	</div>
+</div>
+</body>
+</html>

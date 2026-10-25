@@ -56,12 +56,16 @@ jobs:
       - name: Build the image
         run: docker build -t buffalo-webpage:ci .
 
-      - name: Migrate passwords
+      - name: Run the migrations
+        # Both are idempotent, and the seed already carries the contacto
+        # table, so this also proves they are safe to re-run.
         run: |
-          docker run --rm --network host -v "$PWD:/app" -w /app \
-            -e BUFFALO_DB_HOST -e BUFFALO_DB_PORT -e BUFFALO_DB_NAME \
-            -e BUFFALO_DB_USER -e BUFFALO_DB_PASS \
-            buffalo-webpage:ci php bin/migrate-passwords.php
+          for script in migrate-passwords migrate-contacto; do
+            docker run --rm --network host -v "$PWD:/app" -w /app \
+              -e BUFFALO_DB_HOST -e BUFFALO_DB_PORT -e BUFFALO_DB_NAME \
+              -e BUFFALO_DB_USER -e BUFFALO_DB_PASS \
+              buffalo-webpage:ci php "bin/$script.php"
+          done
 
       - name: Run the test suite
         run: |

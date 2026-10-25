@@ -19,7 +19,10 @@ docker run -d --name buffalo-webpage -p 8092:80 -e BUFFALO_DB_HOST=... -e BUFFAL
 
 `Buffalo\Config` throws naming every missing variable rather than defaulting, so a half-configured container fails at once instead of connecting somewhere unexpected.
 
-`database/buffalo_data.sql` is the schema and seed. Import it with `--default-character-set=utf8mb4`, or the Spanish accents get double-encoded on the way in. Then run `bin/migrate-passwords.php`, which converts `usuario` to InnoDB, widens `passwd` to 255 (bcrypt needs 60) and hashes anything still in clear text. It is idempotent.
+`database/buffalo_data.sql` is the schema and seed. Import it with `--default-character-set=utf8mb4`, or the Spanish accents get double-encoded on the way in. Then run the two migrations, both idempotent:
+
+- `bin/migrate-passwords.php` converts `usuario` to InnoDB, widens `passwd` to 255 (bcrypt needs 60) and hashes anything still in clear text.
+- `bin/migrate-contacto.php` adds the `contacto` table to a database that predates the contact form. A database loaded from the seed already has it and the script says so.
 
 A PHP 5.6 client cannot complete a `caching_sha2_password` handshake, which mattered before the port and no longer does; PDO on 8.3 handles it.
 
@@ -27,10 +30,14 @@ A PHP 5.6 client cannot complete a `caching_sha2_password` handshake, which matt
 
 ```
 public/index.php   front controller: Container -> RouteTable -> Router -> Response
-public/            everything served directly: the five static pages, css, js, images, ficha_tecnica
+public/            everything served directly: the four static pages, css, js, images, ficha_tecnica
+public/favicon.ico the logo, 16/32/48/64 in one .ico. It was a 1254px webp; ImageMagick
+                   trimmed the black border, then wrote the four sizes. The administrator
+                   keeps its own icon under public/administrator/.
 src/Domain/        immutable final readonly value objects
 src/Repository/    one interface per aggregate, with a Pdo* implementation beside it
 src/Catalogo/      assembles what a public listing needs
+src/Contacto/      the contact form's rules, as a pure validator
 src/Http/          Request, Response, Route, Router, Session, controllers
 src/Security/      Authenticator
 src/Upload/        FileValidator (pure, tested) + Uploader (needs a live request)
@@ -62,6 +69,16 @@ The three plugins the public site had carried since 2011 are gone. Each one call
 
 `public/js/basic.js` needs no library, so the product listing loads none at all.
 
+### The contact form
+
+`contactanos.html` was a mockup: no `<form>`, every input named `textfield`, and the two buttons were images with nothing behind them. It posts now, and the page had to stop being a file on disk to do it — every POST is checked against the session's CSRF token, and a static file cannot carry one. The URL did not change.
+
+- The page is `GET /contactanos.html`; the form posts to `POST /contactanos.php`, which answers JSON so the page can report the result without navigating away. The confirmation is a `<dialog>` built from the values the server echoes back, as text nodes: they are whatever a stranger typed.
+- `ContactoValidator` is pure and holds `LIMITES`, which is both the column widths and the `maxlength` the template renders, so the form and the table cannot drift apart. Nombre, email and comentarios are required — without them there is nobody to answer and nothing to answer about. The browser is asked first (`required`, `type="email"`), and the server asks again, because the browser is not the only thing that can post here.
+- A hidden `web` field is a honeypot. Anything that fills it gets an ordinary success back and nothing is written; saying what gave it away is how a bot learns not to do it again. **This is not a captcha**, and it stops only the laziest spam.
+- `contacto` is the one table in `utf8mb4`. The others are `utf8`, which cannot hold anything outside the basic plane — an emoji in a comment would fail the insert outright.
+- `fecha_registro` is `NOW()`, which is the *database* server's clock. Here that container runs five hours behind the application container, so the stamps are Lima time while PHP thinks in UTC. It matters the day somebody reads these rows back.
+
 ### Database quirks translated at the repository boundary
 
 - `colorproducto.id_color_1/2` are NOT NULL and store `0` for "no colour". `PdoColorRepository` maps that to `null` and uses `LEFT JOIN`, or a single-colour combination would vanish entirely.
@@ -69,7 +86,7 @@ The three plugins the public site had carried since 2011 are gone. Each one call
 
 ### Data model
 
-`vehiculo` (type) → `master` (class within a type) → `producto` (model) → `detalleproducto` (feature bullets, 6 slots in the UI) and `colorproducto` (4 one- or two-tone combinations, referencing `color`). `usuario` holds admin logins. The row counts are fixed in `FormDetallesController::FILAS` and `FormColoresController::FILAS`, read by both the form and the handler that receives it — they used to be separate literals in each.
+`vehiculo` (type) → `master` (class within a type) → `producto` (model) → `detalleproducto` (feature bullets, 6 slots in the UI) and `colorproducto` (4 one- or two-tone combinations, referencing `color`). `usuario` holds admin logins, and `contacto` the messages left on the public form; it stands on its own, with nothing pointing at it. The row counts are fixed in `FormDetallesController::FILAS` and `FormColoresController::FILAS`, read by both the form and the handler that receives it — they used to be separate literals in each.
 
 ## Tests
 
@@ -90,11 +107,17 @@ What the harness cannot see: it adds a CSRF token to every POST it sends, so a p
 
 The `action*.php` endpoints are covered only signed out, where they exit before touching the database. Their successful write paths are exercised by hand, not pinned — that still wants integration tests.
 
+`POST /contactanos.php` is deliberately **not** in the golden master for the same reason, only more so: the harness adds a token to every POST it sends, so capturing that route would store a contact message every time anyone ran it. Its rules live in `ContactoValidatorTest`, and the row it writes in `PdoContactoRepositoryTest`.
+
+A failing `verify-golden.sh` on a developer machine usually means the database has moved, not the code: the snapshots render live data, so one product edited through the administrator is drift. It only matches a freshly seeded database, which is what CI gives it. Re-capturing to make the red go away writes that test data into the reference.
+
 ## Known gaps
 
 - The new-product form's JavaScript compares `.val()` against `0`, so none of its validation alerts can fire. It behaved that way before the port, and making them fire changes what the administrator does.
 - **SQL injection is gone** (everything is a prepared statement) and **passwords are hashed**, but the admin password in the seed is still `root`/`root`. Change it outside the repository.
 - The successful write paths of the three `Guardar*` controllers have no automated coverage.
+- **Nothing reads the `contacto` table.** The messages are stored and nobody is told: no administrator screen, no email, no notification. Reading them means `SELECT * FROM contacto` by hand.
+- **The contact form has no captcha and no rate limit.** The honeypot is a speed bump; anything deliberate will walk past it and can write rows as fast as it can post.
 - **Four image paths in the data point at files that do not exist**, so B15, B12, B10 and B9 show broken zoom thumbnails, as do B15's three detail bullets. The rows name `images/zoom/productos_img1_small.jpg` and `_img2_small.jpg`, and the same two names under `images/detalle/`.
 
   Do not fix this by copying `public/images/productos_img1_small.jpg` and `_img2_small.jpg` into those directories. It was tried, and it works in the sense that every path resolves — but those two files are photographs of a blue cargo furgon, and all four models are motorcycles. A broken image is a visible defect; a van in the motorcycle listing is a confident lie. It needs real photographs for those four models, which is a content decision, or the rows repointed at images that already exist.
