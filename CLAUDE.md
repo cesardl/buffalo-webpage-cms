@@ -30,7 +30,10 @@ A PHP 5.6 client cannot complete a `caching_sha2_password` handshake, which matt
 
 ```
 public/index.php   front controller: Container -> RouteTable -> Router -> Response
-public/            everything served directly: the five static pages, css, js, images, ficha_tecnica
+public/            everything served directly: the four static pages, css, js, images, ficha_tecnica
+public/favicon.ico the logo, 16/32/48/64 in one .ico. It was a 1254px webp; ImageMagick
+                   trimmed the black border, then wrote the four sizes. The administrator
+                   keeps its own icon under public/administrator/.
 src/Domain/        immutable final readonly value objects
 src/Repository/    one interface per aggregate, with a Pdo* implementation beside it
 src/Catalogo/      assembles what a public listing needs

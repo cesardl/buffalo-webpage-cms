@@ -19,6 +19,7 @@ $contador = 1;
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>BUFFALO</title>
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
 <link href="css/buffaloestilo.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" type="text/css" href="css/scrollbar.css" />
 </head>
