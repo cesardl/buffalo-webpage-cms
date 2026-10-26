@@ -18,6 +18,7 @@
     --ink-soft: #5F6368;
     --accent: #C5221F;
     --accent-tint: #FCE8E6;
+    --aviso: #E37400;
     --barra: 56px;
     --menu: 240px;
 
@@ -332,6 +333,90 @@ body.consola {
 .mensaje {
     margin: 0;
     white-space: pre-wrap;
+}
+
+/* ---------- icons ---------- */
+
+/* Material Symbols, subset to the seven glyphs this console uses. The
+   console draws its actions the way the reference does: a glyph in a round
+   hit area, with the words moved into the tooltip and the label a screen
+   reader hears. */
+.material-symbols-outlined {
+    font-size: 20px;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+.solo-lectores {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* ---------- what a model has ---------- */
+
+.medios {
+    white-space: nowrap;
+}
+
+.medio {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    margin-right: 18px;
+    color: var(--ink);
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+}
+
+.medio:last-child {
+    margin-right: 0;
+}
+
+/* Nothing recorded: present but quiet, so a complete row reads as the
+   darker one. */
+.medio.es-vacio {
+    color: #BDC1C6;
+}
+
+/* Recorded, and the file is not there. Amber rather than the accent red,
+   which in this console means a request waiting. */
+.medio.es-roto {
+    color: var(--aviso);
+}
+
+/* ---------- icon actions ---------- */
+
+.columna-acciones {
+    width: 1%;
+}
+
+.acciones .accion {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    margin-right: 2px;
+    border-radius: 50%;
+    color: var(--ink-soft);
+    text-decoration: none;
+}
+
+.acciones .accion:hover {
+    background: var(--canvas);
+    color: var(--ink);
+}
+
+.acciones .accion.es-peligro:hover {
+    background: var(--accent-tint);
+    color: var(--accent);
 }
 
 /* ---------- state ---------- */

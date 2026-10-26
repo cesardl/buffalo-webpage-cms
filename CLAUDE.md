@@ -114,6 +114,21 @@ holds the tokens.
 - **`PdoResumenRepository` holds the only `GROUP BY` in `src/`.** Everywhere
   else reads whole rows and counts them in PHP, which is right when the rows
   are then displayed and wrong when only the totals are wanted.
+- **The console has its own icon**, `public/administrator/favicon.ico`, the
+  same mark in greyscale so a tab belonging to the administrator is not
+  mistaken for one belonging to the site. Desaturating it muddies the disc
+  into the silhouette, since red and black share a luminance; it is built
+  from the **red channel**, where the disc reads 243 and the animal 7.
+- **Icons are Material Symbols Outlined**, subset by `icon_names` to the
+  seven glyphs the console uses, with `display=block` so the ligature never
+  flashes its own name before the font arrives.
+- **The vehicle list says what a model has, not what it says.** The
+  description ran to a paragraph a row and pushed the actions off the right
+  edge; it is one click away under Editar. In its place three glyphs answer
+  what the list is for -- photo, zoom gallery, colour combinations. Recorded
+  and present are different things, and `Panel\Medios` stats the disk to
+  tell them apart: amber means a row names a file that is not there, which
+  is the data gap below, finally visible from inside the administrator.
 
 ### Database quirks translated at the repository boundary
 

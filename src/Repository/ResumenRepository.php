@@ -13,4 +13,7 @@ interface ResumenRepository
 
     /** @return array{nuevas: int, atendidas: int} */
     public function contactosPorEstado(): array;
+
+    /** @return array<int, int> colour combinations per product id, present only where there are any */
+    public function coloresPorProducto(): array;
 }

@@ -7,8 +7,11 @@ namespace Buffalo\Http\Controller;
 use Buffalo\Http\Controller;
 use Buffalo\Http\Request;
 use Buffalo\Http\Response;
+use Buffalo\Panel\EstadoMedios;
+use Buffalo\Panel\Medios;
 use Buffalo\Repository\MasterRepository;
 use Buffalo\Repository\ProductoRepository;
+use Buffalo\Repository\ResumenRepository;
 use Buffalo\View\Consola;
 use Buffalo\View\Template;
 
@@ -24,17 +27,22 @@ final readonly class VehiculosController implements Controller
         private Consola $consola,
         private ProductoRepository $productos,
         private MasterRepository $masters,
+        private ResumenRepository $resumen,
+        private Medios $medios,
     ) {
     }
 
     public function handle(Request $request): Response
     {
+        $productos = $this->productos->findAll();
+
         return Response::html($this->template->render('admin/vehiculos', $this->consola->pagina(
             'vehiculos',
             'Vehículos',
             [
-                'productos' => $this->productos->findAll(),
+                'productos' => $productos,
                 'clases' => $this->clasesPorId(),
+                'medios' => $this->mediosPorProducto($productos),
             ],
         )));
     }
@@ -54,5 +62,27 @@ final readonly class VehiculosController implements Controller
         }
 
         return $clases;
+    }
+
+    /**
+     * @param list<\Buffalo\Domain\Producto> $productos
+     *
+     * @return array<int, EstadoMedios>
+     */
+    private function mediosPorProducto(array $productos): array
+    {
+        // One grouped query for every product's colour combinations rather
+        // than one query per row.
+        $combinaciones = $this->resumen->coloresPorProducto();
+        $estados = [];
+
+        foreach ($productos as $producto) {
+            $estados[(int) $producto->id] = $this->medios->de(
+                $producto,
+                $combinaciones[$producto->id] ?? 0,
+            );
+        }
+
+        return $estados;
     }
 }

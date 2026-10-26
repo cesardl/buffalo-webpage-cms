@@ -69,6 +69,32 @@ final class PdoResumenRepositoryTest extends RepositoryTestCase
         self::assertSame(0, array_values($vacia)[0]->modelos);
     }
 
+    public function testCountsColourCombinationsPerProduct(): void
+    {
+        // Counted the long way round for comparison, so the test says the
+        // same thing whatever the data happens to hold.
+        $esperado = [];
+        foreach ($this->pdo->query('SELECT id_producto FROM colorproducto')->fetchAll() as $fila) {
+            $id = (int) $fila['id_producto'];
+            $esperado[$id] = ($esperado[$id] ?? 0) + 1;
+        }
+        ksort($esperado);
+
+        $actual = $this->repository->coloresPorProducto();
+        ksort($actual);
+
+        self::assertSame($esperado, $actual);
+    }
+
+    public function testAProductWithNoCombinationsIsSimplyAbsent(): void
+    {
+        $this->pdo->exec('DELETE FROM colorproducto');
+
+        // The caller reads it as `$mapa[$id] ?? 0`, so an empty map is the
+        // honest answer rather than a row of zeroes.
+        self::assertSame([], $this->repository->coloresPorProducto());
+    }
+
     public function testCountsContactRequestsByState(): void
     {
         $antes = $this->repository->contactosPorEstado();

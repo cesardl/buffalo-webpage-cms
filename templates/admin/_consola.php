@@ -28,7 +28,7 @@ $activo = static fn (string $clave): string => $menuActivo === $clave ? ' is-act
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" type="image/x-icon" href="../favicon.ico"/>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
     <title><?= e($titulo) ?> · Buffalo</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,13 +36,15 @@ $activo = static fn (string $clave): string => $menuActivo === $clave ? ' is-act
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
           integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
           crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&amp;icon_names=broken_image,collections,delete,edit,format_list_bulleted,image,palette&amp;display=block">
     <link rel="stylesheet" href="style/consola.css">
 <?= $cabeza ?>
 </head>
 <body class="consola">
 <header class="barra">
     <a class="marca" href="bienvenido.php">
-        <img src="../favicon.ico" width="20" height="20" alt="">
+        <img src="favicon.ico" width="20" height="20" alt="">
         <strong>Buffalo</strong> <span>Administración</span>
     </a>
     <div class="sesion">

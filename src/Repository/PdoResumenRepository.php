@@ -52,6 +52,18 @@ final readonly class PdoResumenRepository implements ResumenRepository
         ));
     }
 
+    public function coloresPorProducto(): array
+    {
+        $filas = $this->pdo->query(
+            'SELECT id_producto, COUNT(*) AS combinaciones
+               FROM colorproducto
+           GROUP BY id_producto
+           ORDER BY id_producto',
+        )->fetchAll();
+
+        return array_map(intval(...), array_column($filas, 'combinaciones', 'id_producto'));
+    }
+
     public function contactosPorEstado(): array
     {
         $filas = $this->pdo->query(

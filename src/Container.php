@@ -17,8 +17,8 @@ use Buffalo\Http\Controller\FormDetallesController;
 use Buffalo\Http\Controller\FormProductoController;
 use Buffalo\Http\Controller\GuardarColoresController;
 use Buffalo\Http\Controller\GuardarContactoController;
-use Buffalo\Http\Controller\GuardarEstadoContactoController;
 use Buffalo\Http\Controller\GuardarDetallesController;
+use Buffalo\Http\Controller\GuardarEstadoContactoController;
 use Buffalo\Http\Controller\GuardarProductoController;
 use Buffalo\Http\Controller\HealthController;
 use Buffalo\Http\Controller\LoginController;
@@ -28,6 +28,7 @@ use Buffalo\Http\Controller\VehiculoSelectController;
 use Buffalo\Http\Controller\VehiculosController;
 use Buffalo\Http\PhpSession;
 use Buffalo\Http\Session;
+use Buffalo\Panel\Medios;
 use Buffalo\Repository\ColorRepository;
 use Buffalo\Repository\ContactoRepository;
 use Buffalo\Repository\DetalleProductoRepository;
@@ -90,6 +91,11 @@ final class Container
     public function uploader(): Uploader
     {
         return new Uploader($this->publicDirectory);
+    }
+
+    public function medios(): Medios
+    {
+        return new Medios($this->publicDirectory);
     }
 
     public function productos(): ProductoRepository
@@ -178,6 +184,8 @@ final class Container
                 $this->consola(),
                 $this->productos(),
                 $this->masters(),
+                $this->resumen(),
+                $this->medios(),
             ),
             ContactosController::class => new ContactosController(
                 $this->template(),
