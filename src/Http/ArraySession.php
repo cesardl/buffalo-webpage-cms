@@ -16,6 +16,11 @@ final class ArraySession implements Session
         return $this->usuario;
     }
 
+    public function usuarioId(): ?int
+    {
+        return $this->id;
+    }
+
     public function logIn(int $id, string $usuario): void
     {
         $this->id = $id;

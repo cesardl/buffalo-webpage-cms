@@ -8,6 +8,9 @@ interface Session
 {
     public function usuario(): ?string;
 
+    /** Who is signed in, for the rows that record who did something. */
+    public function usuarioId(): ?int;
+
     public function logIn(int $id, string $usuario): void;
 
     public function logOut(): void;

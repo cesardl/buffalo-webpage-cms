@@ -10,12 +10,14 @@ use Buffalo\Http\Controller;
 use Buffalo\Http\Request;
 use Buffalo\Http\Response;
 use Buffalo\Repository\ColorRepository;
+use Buffalo\View\Consola;
 use Buffalo\View\Template;
 
 final readonly class GuardarColoresController implements Controller
 {
     public function __construct(
         private Template $template,
+        private Consola $consola,
         private ColorRepository $colores,
     ) {
     }
@@ -52,9 +54,14 @@ final readonly class GuardarColoresController implements Controller
             ++$guardados;
         }
 
-        return Response::html($this->template->render('admin/resultado', [
-            'encabezado' => 'Colores del vehiculo',
-            'mensajes' => ["Total procesado: {$guardados} combinacion(es)"],
-        ]));
+        return Response::html($this->template->render('admin/resultado', $this->consola->pagina(
+            'vehiculos',
+            'Colores guardados',
+            [
+                'encabezado' => 'Colores guardados',
+                'mensajes' => ["Se guardaron {$guardados} combinación(es)."],
+                'volver' => 'vehiculos.php',
+            ],
+        )));
     }
 }

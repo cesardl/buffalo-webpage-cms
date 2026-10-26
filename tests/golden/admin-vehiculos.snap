@@ -1,0 +1,147 @@
+# GET /administrator/vehiculos.php -> 200 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <title>Vehículos · Buffalo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+          crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20,400,0,0&amp;icon_names=broken_image,collections,delete,edit,format_list_bulleted,image,palette&amp;display=block">
+    <link rel="stylesheet" href="style/consola.css">
+</head>
+<body class="consola">
+<header class="barra">
+    <a class="marca" href="bienvenido.php">
+        <img src="favicon.ico" width="20" height="20" alt="">
+        <strong>Buffalo</strong> <span>Administración</span>
+    </a>
+    <div class="sesion">
+        root        <a href="index.php?param=1">Salir</a>
+    </div>
+</header>
+<nav class="menu" aria-label="Secciones">
+    <a class="menu-item is-active" href="vehiculos.php">Vehículos</a>
+    <a class="menu-item" href="contactos.php">
+        Solicitudes de contacto
+            </a>
+</nav>
+<main class="lienzo">
+<h1 class="titulo-pagina">Vehículos</h1>
+<p class="bajada">Los modelos publicados en el sitio.</p>
+
+<section class="tarjeta">
+    <div class="barra-acciones es-cabecera">
+        <a class="btn btn-primary" href="formProducto.php?action=N">Nuevo producto</a>
+    </div>
+
+    <div id="result"></div>
+
+            <table class="tabla" id="tabla-vehiculos" data-token="CSRF_TOKEN">
+            <thead>
+            <tr>
+                <th>Clase</th>
+                <th>Modelo</th>
+                <th>Medios</th>
+                <th class="columna-acciones">Acciones</th>
+            </tr>
+            </thead>
+            <tbody>
+                            <tr id="fila-1">
+                    <td>DE PASEO</td>
+                    <td>B5</td>
+                    <td class="medios">
+                        <span class="medio es-ok" title="Foto principal cargada"><span class="material-symbols-outlined" aria-hidden="true">image</span><span class="solo-lectores">Foto principal cargada</span></span><span class="medio es-ok" title="2 de 4 fotos de zoom"><span class="material-symbols-outlined" aria-hidden="true">collections</span><span class="medio-valor" aria-hidden="true">2/4</span><span class="solo-lectores">2 de 4 fotos de zoom</span></span><span class="medio es-ok" title="1 combinación de color"><span class="material-symbols-outlined" aria-hidden="true">palette</span><span class="medio-valor" aria-hidden="true">1</span><span class="solo-lectores">1 combinación de color</span></span>                    </td>
+                    <td class="acciones">
+                        <a class="accion" href="formProducto.php?accion=E&amp;id_producto=1&amp;id_master=1&amp;mod_prod=B5" title="Editar B5" aria-label="Editar B5"><span class="material-symbols-outlined" aria-hidden="true">edit</span></a>                        <a class="accion" href="formDetalles.php?id_producto=1&amp;mod_prod=B5" title="Detalles de B5" aria-label="Detalles de B5"><span class="material-symbols-outlined" aria-hidden="true">format_list_bulleted</span></a>                        <a class="accion" href="formColores.php?id_producto=1&amp;mod_prod=B5" title="Colores de B5" aria-label="Colores de B5"><span class="material-symbols-outlined" aria-hidden="true">palette</span></a>                        <a class="accion a_delete es-peligro" href="#1" title="Eliminar B5" aria-label="Eliminar B5"><span class="material-symbols-outlined" aria-hidden="true">delete</span></a>                    </td>
+                </tr>
+                            <tr id="fila-2">
+                    <td>DE TRABAJO</td>
+                    <td>B3CH</td>
+                    <td class="medios">
+                        <span class="medio es-ok" title="Foto principal cargada"><span class="material-symbols-outlined" aria-hidden="true">image</span><span class="solo-lectores">Foto principal cargada</span></span><span class="medio es-ok" title="2 de 4 fotos de zoom"><span class="material-symbols-outlined" aria-hidden="true">collections</span><span class="medio-valor" aria-hidden="true">2/4</span><span class="solo-lectores">2 de 4 fotos de zoom</span></span><span class="medio es-ok" title="2 combinaciones de color"><span class="material-symbols-outlined" aria-hidden="true">palette</span><span class="medio-valor" aria-hidden="true">2</span><span class="solo-lectores">2 combinaciones de color</span></span>                    </td>
+                    <td class="acciones">
+                        <a class="accion" href="formProducto.php?accion=E&amp;id_producto=2&amp;id_master=2&amp;mod_prod=B3CH" title="Editar B3CH" aria-label="Editar B3CH"><span class="material-symbols-outlined" aria-hidden="true">edit</span></a>                        <a class="accion" href="formDetalles.php?id_producto=2&amp;mod_prod=B3CH" title="Detalles de B3CH" aria-label="Detalles de B3CH"><span class="material-symbols-outlined" aria-hidden="true">format_list_bulleted</span></a>                        <a class="accion" href="formColores.php?id_producto=2&amp;mod_prod=B3CH" title="Colores de B3CH" aria-label="Colores de B3CH"><span class="material-symbols-outlined" aria-hidden="true">palette</span></a>                        <a class="accion a_delete es-peligro" href="#2" title="Eliminar B3CH" aria-label="Eliminar B3CH"><span class="material-symbols-outlined" aria-hidden="true">delete</span></a>                    </td>
+                </tr>
+                            <tr id="fila-3">
+                    <td>TODO TERRENO</td>
+                    <td>B15</td>
+                    <td class="medios">
+                        <span class="medio es-ok" title="Foto principal cargada"><span class="material-symbols-outlined" aria-hidden="true">image</span><span class="solo-lectores">Foto principal cargada</span></span><span class="medio es-roto" title="2 de 4 fotos de zoom, 2 sin archivo"><span class="material-symbols-outlined" aria-hidden="true">collections</span><span class="medio-valor" aria-hidden="true">2/4</span><span class="solo-lectores">2 de 4 fotos de zoom, 2 sin archivo</span></span><span class="medio es-ok" title="2 combinaciones de color"><span class="material-symbols-outlined" aria-hidden="true">palette</span><span class="medio-valor" aria-hidden="true">2</span><span class="solo-lectores">2 combinaciones de color</span></span>                    </td>
+                    <td class="acciones">
+                        <a class="accion" href="formProducto.php?accion=E&amp;id_producto=3&amp;id_master=3&amp;mod_prod=B15" title="Editar B15" aria-label="Editar B15"><span class="material-symbols-outlined" aria-hidden="true">edit</span></a>                        <a class="accion" href="formDetalles.php?id_producto=3&amp;mod_prod=B15" title="Detalles de B15" aria-label="Detalles de B15"><span class="material-symbols-outlined" aria-hidden="true">format_list_bulleted</span></a>                        <a class="accion" href="formColores.php?id_producto=3&amp;mod_prod=B15" title="Colores de B15" aria-label="Colores de B15"><span class="material-symbols-outlined" aria-hidden="true">palette</span></a>                        <a class="accion a_delete es-peligro" href="#3" title="Eliminar B15" aria-label="Eliminar B15"><span class="material-symbols-outlined" aria-hidden="true">delete</span></a>                    </td>
+                </tr>
+                            <tr id="fila-4">
+                    <td>TODO TERRENO</td>
+                    <td>B12</td>
+                    <td class="medios">
+                        <span class="medio es-ok" title="Foto principal cargada"><span class="material-symbols-outlined" aria-hidden="true">image</span><span class="solo-lectores">Foto principal cargada</span></span><span class="medio es-roto" title="2 de 4 fotos de zoom, 2 sin archivo"><span class="material-symbols-outlined" aria-hidden="true">collections</span><span class="medio-valor" aria-hidden="true">2/4</span><span class="solo-lectores">2 de 4 fotos de zoom, 2 sin archivo</span></span><span class="medio es-ok" title="1 combinación de color"><span class="material-symbols-outlined" aria-hidden="true">palette</span><span class="medio-valor" aria-hidden="true">1</span><span class="solo-lectores">1 combinación de color</span></span>                    </td>
+                    <td class="acciones">
+                        <a class="accion" href="formProducto.php?accion=E&amp;id_producto=4&amp;id_master=3&amp;mod_prod=B12" title="Editar B12" aria-label="Editar B12"><span class="material-symbols-outlined" aria-hidden="true">edit</span></a>                        <a class="accion" href="formDetalles.php?id_producto=4&amp;mod_prod=B12" title="Detalles de B12" aria-label="Detalles de B12"><span class="material-symbols-outlined" aria-hidden="true">format_list_bulleted</span></a>                        <a class="accion" href="formColores.php?id_producto=4&amp;mod_prod=B12" title="Colores de B12" aria-label="Colores de B12"><span class="material-symbols-outlined" aria-hidden="true">palette</span></a>                        <a class="accion a_delete es-peligro" href="#4" title="Eliminar B12" aria-label="Eliminar B12"><span class="material-symbols-outlined" aria-hidden="true">delete</span></a>                    </td>
+                </tr>
+                            <tr id="fila-9">
+                    <td>PISTERAS</td>
+                    <td>B10</td>
+                    <td class="medios">
+                        <span class="medio es-ok" title="Foto principal cargada"><span class="material-symbols-outlined" aria-hidden="true">image</span><span class="solo-lectores">Foto principal cargada</span></span><span class="medio es-roto" title="2 de 4 fotos de zoom, 2 sin archivo"><span class="material-symbols-outlined" aria-hidden="true">collections</span><span class="medio-valor" aria-hidden="true">2/4</span><span class="solo-lectores">2 de 4 fotos de zoom, 2 sin archivo</span></span><span class="medio es-ok" title="2 combinaciones de color"><span class="material-symbols-outlined" aria-hidden="true">palette</span><span class="medio-valor" aria-hidden="true">2</span><span class="solo-lectores">2 combinaciones de color</span></span>                    </td>
+                    <td class="acciones">
+                        <a class="accion" href="formProducto.php?accion=E&amp;id_producto=9&amp;id_master=4&amp;mod_prod=B10" title="Editar B10" aria-label="Editar B10"><span class="material-symbols-outlined" aria-hidden="true">edit</span></a>                        <a class="accion" href="formDetalles.php?id_producto=9&amp;mod_prod=B10" title="Detalles de B10" aria-label="Detalles de B10"><span class="material-symbols-outlined" aria-hidden="true">format_list_bulleted</span></a>                        <a class="accion" href="formColores.php?id_producto=9&amp;mod_prod=B10" title="Colores de B10" aria-label="Colores de B10"><span class="material-symbols-outlined" aria-hidden="true">palette</span></a>                        <a class="accion a_delete es-peligro" href="#9" title="Eliminar B10" aria-label="Eliminar B10"><span class="material-symbols-outlined" aria-hidden="true">delete</span></a>                    </td>
+                </tr>
+                            <tr id="fila-10">
+                    <td>PISTERAS</td>
+                    <td>B9</td>
+                    <td class="medios">
+                        <span class="medio es-ok" title="Foto principal cargada"><span class="material-symbols-outlined" aria-hidden="true">image</span><span class="solo-lectores">Foto principal cargada</span></span><span class="medio es-roto" title="2 de 4 fotos de zoom, 2 sin archivo"><span class="material-symbols-outlined" aria-hidden="true">collections</span><span class="medio-valor" aria-hidden="true">2/4</span><span class="solo-lectores">2 de 4 fotos de zoom, 2 sin archivo</span></span><span class="medio es-ok" title="2 combinaciones de color"><span class="material-symbols-outlined" aria-hidden="true">palette</span><span class="medio-valor" aria-hidden="true">2</span><span class="solo-lectores">2 combinaciones de color</span></span>                    </td>
+                    <td class="acciones">
+                        <a class="accion" href="formProducto.php?accion=E&amp;id_producto=10&amp;id_master=4&amp;mod_prod=B9" title="Editar B9" aria-label="Editar B9"><span class="material-symbols-outlined" aria-hidden="true">edit</span></a>                        <a class="accion" href="formDetalles.php?id_producto=10&amp;mod_prod=B9" title="Detalles de B9" aria-label="Detalles de B9"><span class="material-symbols-outlined" aria-hidden="true">format_list_bulleted</span></a>                        <a class="accion" href="formColores.php?id_producto=10&amp;mod_prod=B9" title="Colores de B9" aria-label="Colores de B9"><span class="material-symbols-outlined" aria-hidden="true">palette</span></a>                        <a class="accion a_delete es-peligro" href="#10" title="Eliminar B9" aria-label="Eliminar B9"><span class="material-symbols-outlined" aria-hidden="true">delete</span></a>                    </td>
+                </tr>
+                            <tr id="fila-5">
+                    <td>MODELO DE MOTOTAXI Y COLORES</td>
+                    <td>BF300</td>
+                    <td class="medios">
+                        <span class="medio es-ok" title="Foto principal cargada"><span class="material-symbols-outlined" aria-hidden="true">image</span><span class="solo-lectores">Foto principal cargada</span></span><span class="medio es-ok" title="4 de 4 fotos de zoom"><span class="material-symbols-outlined" aria-hidden="true">collections</span><span class="medio-valor" aria-hidden="true">4/4</span><span class="solo-lectores">4 de 4 fotos de zoom</span></span><span class="medio es-ok" title="4 combinaciones de color"><span class="material-symbols-outlined" aria-hidden="true">palette</span><span class="medio-valor" aria-hidden="true">4</span><span class="solo-lectores">4 combinaciones de color</span></span>                    </td>
+                    <td class="acciones">
+                        <a class="accion" href="formProducto.php?accion=E&amp;id_producto=5&amp;id_master=5&amp;mod_prod=BF300" title="Editar BF300" aria-label="Editar BF300"><span class="material-symbols-outlined" aria-hidden="true">edit</span></a>                        <a class="accion" href="formDetalles.php?id_producto=5&amp;mod_prod=BF300" title="Detalles de BF300" aria-label="Detalles de BF300"><span class="material-symbols-outlined" aria-hidden="true">format_list_bulleted</span></a>                        <a class="accion" href="formColores.php?id_producto=5&amp;mod_prod=BF300" title="Colores de BF300" aria-label="Colores de BF300"><span class="material-symbols-outlined" aria-hidden="true">palette</span></a>                        <a class="accion a_delete es-peligro" href="#5" title="Eliminar BF300" aria-label="Eliminar BF300"><span class="material-symbols-outlined" aria-hidden="true">delete</span></a>                    </td>
+                </tr>
+                            <tr id="fila-6">
+                    <td>DE CARGA</td>
+                    <td>BF500</td>
+                    <td class="medios">
+                        <span class="medio es-ok" title="Foto principal cargada"><span class="material-symbols-outlined" aria-hidden="true">image</span><span class="solo-lectores">Foto principal cargada</span></span><span class="medio es-ok" title="2 de 4 fotos de zoom"><span class="material-symbols-outlined" aria-hidden="true">collections</span><span class="medio-valor" aria-hidden="true">2/4</span><span class="solo-lectores">2 de 4 fotos de zoom</span></span><span class="medio es-ok" title="2 combinaciones de color"><span class="material-symbols-outlined" aria-hidden="true">palette</span><span class="medio-valor" aria-hidden="true">2</span><span class="solo-lectores">2 combinaciones de color</span></span>                    </td>
+                    <td class="acciones">
+                        <a class="accion" href="formProducto.php?accion=E&amp;id_producto=6&amp;id_master=6&amp;mod_prod=BF500" title="Editar BF500" aria-label="Editar BF500"><span class="material-symbols-outlined" aria-hidden="true">edit</span></a>                        <a class="accion" href="formDetalles.php?id_producto=6&amp;mod_prod=BF500" title="Detalles de BF500" aria-label="Detalles de BF500"><span class="material-symbols-outlined" aria-hidden="true">format_list_bulleted</span></a>                        <a class="accion" href="formColores.php?id_producto=6&amp;mod_prod=BF500" title="Colores de BF500" aria-label="Colores de BF500"><span class="material-symbols-outlined" aria-hidden="true">palette</span></a>                        <a class="accion a_delete es-peligro" href="#6" title="Eliminar BF500" aria-label="Eliminar BF500"><span class="material-symbols-outlined" aria-hidden="true">delete</span></a>                    </td>
+                </tr>
+                            <tr id="fila-7">
+                    <td>DE CARGA</td>
+                    <td>BF600</td>
+                    <td class="medios">
+                        <span class="medio es-ok" title="Foto principal cargada"><span class="material-symbols-outlined" aria-hidden="true">image</span><span class="solo-lectores">Foto principal cargada</span></span><span class="medio es-ok" title="2 de 4 fotos de zoom"><span class="material-symbols-outlined" aria-hidden="true">collections</span><span class="medio-valor" aria-hidden="true">2/4</span><span class="solo-lectores">2 de 4 fotos de zoom</span></span><span class="medio es-ok" title="2 combinaciones de color"><span class="material-symbols-outlined" aria-hidden="true">palette</span><span class="medio-valor" aria-hidden="true">2</span><span class="solo-lectores">2 combinaciones de color</span></span>                    </td>
+                    <td class="acciones">
+                        <a class="accion" href="formProducto.php?accion=E&amp;id_producto=7&amp;id_master=6&amp;mod_prod=BF600" title="Editar BF600" aria-label="Editar BF600"><span class="material-symbols-outlined" aria-hidden="true">edit</span></a>                        <a class="accion" href="formDetalles.php?id_producto=7&amp;mod_prod=BF600" title="Detalles de BF600" aria-label="Detalles de BF600"><span class="material-symbols-outlined" aria-hidden="true">format_list_bulleted</span></a>                        <a class="accion" href="formColores.php?id_producto=7&amp;mod_prod=BF600" title="Colores de BF600" aria-label="Colores de BF600"><span class="material-symbols-outlined" aria-hidden="true">palette</span></a>                        <a class="accion a_delete es-peligro" href="#7" title="Eliminar BF600" aria-label="Eliminar BF600"><span class="material-symbols-outlined" aria-hidden="true">delete</span></a>                    </td>
+                </tr>
+                            <tr id="fila-8">
+                    <td>DE PASAJEROS</td>
+                    <td>BF500 PASAJEROS</td>
+                    <td class="medios">
+                        <span class="medio es-ok" title="Foto principal cargada"><span class="material-symbols-outlined" aria-hidden="true">image</span><span class="solo-lectores">Foto principal cargada</span></span><span class="medio es-ok" title="2 de 4 fotos de zoom"><span class="material-symbols-outlined" aria-hidden="true">collections</span><span class="medio-valor" aria-hidden="true">2/4</span><span class="solo-lectores">2 de 4 fotos de zoom</span></span><span class="medio es-ok" title="1 combinación de color"><span class="material-symbols-outlined" aria-hidden="true">palette</span><span class="medio-valor" aria-hidden="true">1</span><span class="solo-lectores">1 combinación de color</span></span>                    </td>
+                    <td class="acciones">
+                        <a class="accion" href="formProducto.php?accion=E&amp;id_producto=8&amp;id_master=7&amp;mod_prod=BF500%20PASAJEROS" title="Editar BF500 PASAJEROS" aria-label="Editar BF500 PASAJEROS"><span class="material-symbols-outlined" aria-hidden="true">edit</span></a>                        <a class="accion" href="formDetalles.php?id_producto=8&amp;mod_prod=BF500%20PASAJEROS" title="Detalles de BF500 PASAJEROS" aria-label="Detalles de BF500 PASAJEROS"><span class="material-symbols-outlined" aria-hidden="true">format_list_bulleted</span></a>                        <a class="accion" href="formColores.php?id_producto=8&amp;mod_prod=BF500%20PASAJEROS" title="Colores de BF500 PASAJEROS" aria-label="Colores de BF500 PASAJEROS"><span class="material-symbols-outlined" aria-hidden="true">palette</span></a>                        <a class="accion a_delete es-peligro" href="#8" title="Eliminar BF500 PASAJEROS" aria-label="Eliminar BF500 PASAJEROS"><span class="material-symbols-outlined" aria-hidden="true">delete</span></a>                    </td>
+                </tr>
+                        </tbody>
+        </table>
+    </section>
+</main>
+<script src="https://code.jquery.com/jquery-4.0.0.min.js"
+        integrity="sha384-fgGyf7Mo7DURSOMnOy7ed+dkq5Job205Gnzu6QIg0BOHKaqt4D76Dt8VlDCzcMHV"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+<script src="scritps/vehiculos.js"></script></body>
+</html>

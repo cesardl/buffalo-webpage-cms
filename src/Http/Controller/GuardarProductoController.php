@@ -10,12 +10,14 @@ use Buffalo\Http\Request;
 use Buffalo\Http\Response;
 use Buffalo\Repository\ProductoRepository;
 use Buffalo\Upload\Uploader;
+use Buffalo\View\Consola;
 use Buffalo\View\Template;
 
 final readonly class GuardarProductoController implements Controller
 {
     public function __construct(
         private Template $template,
+        private Consola $consola,
         private ProductoRepository $productos,
         private Uploader $uploader,
     ) {
@@ -44,10 +46,15 @@ final readonly class GuardarProductoController implements Controller
         }
 
         if ($errores !== []) {
-            return Response::html($this->template->render('admin/resultado', [
-                'encabezado' => $request->postString('title'),
-                'mensajes' => $errores,
-            ]));
+            return Response::html($this->template->render('admin/resultado', $this->consola->pagina(
+                'vehiculos',
+                'No se guardó el producto',
+                [
+                    'encabezado' => 'No se guardó el producto',
+                    'mensajes' => $errores,
+                    'volver' => 'vehiculos.php',
+                ],
+            )));
         }
 
         $id = $request->postString('id_producto');
@@ -63,10 +70,15 @@ final readonly class GuardarProductoController implements Controller
             fichaTecnica: $ficha,
         ));
 
-        return Response::html($this->template->render('admin/resultado', [
-            'encabezado' => $request->postString('title'),
-            'mensajes' => [$nuevo ? 'Se inserto 1 producto' : 'Se actualizo 1 producto'],
-        ]));
+        return Response::html($this->template->render('admin/resultado', $this->consola->pagina(
+            'vehiculos',
+            'Producto guardado',
+            [
+                'encabezado' => 'Producto guardado',
+                'mensajes' => [$nuevo ? 'Se registró 1 producto.' : 'Se actualizó 1 producto.'],
+                'volver' => 'vehiculos.php',
+            ],
+        )));
     }
 
     /** @param list<string> $errores */

@@ -6,15 +6,26 @@ use function Buffalo\View\e;
 
 /** @var string $encabezado */
 /** @var list<string> $mensajes */
+/** @var string $volver where the link goes back to */
+/** @var string $titulo */
+/** @var string $menuActivo */
+/** @var string $usuario */
+/** @var int $nuevas */
 
 ob_start();
 ?>
-<h3><?= e($encabezado) ?></h3>
-<?php foreach ($mensajes as $mensaje) { ?>
-    <h2><?= e($mensaje) ?></h2><br>
-<?php } ?>
-<a href="bienvenido.php">&lt;&lt; Regresar</a>
+<h1 class="titulo-pagina"><?= e($encabezado) ?></h1>
+
+<section class="tarjeta">
+    <?php foreach ($mensajes as $mensaje) { ?>
+        <p><?= e($mensaje) ?></p>
+    <?php } ?>
+
+    <div class="barra-acciones">
+        <a class="btn btn-primary" href="<?= e($volver) ?>">Continuar</a>
+    </div>
+</section>
 <?php
 $contenido = (string) ob_get_clean();
-$titulo = 'Operación realizada';
-require __DIR__ . '/../layout.php';
+
+require __DIR__ . '/_consola.php';

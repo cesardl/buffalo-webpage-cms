@@ -10,98 +10,68 @@ use function Buffalo\View\e;
 /** @var int $productoId */
 /** @var list<DetalleProducto> $filas */
 /** @var string $token */
+/** @var string $titulo */
+/** @var string $menuActivo */
+/** @var string $usuario */
+/** @var int $nuevas */
 
-// Four extra spaces on every line, because the legacy page rendered inside an
-// else block. The unclosed <h3> below is in the original too, and is kept so
-// the comparison stays byte-level; closing it is a separate, visible change.
+ob_start();
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <link rel="shortcut icon" type="image/jpg" href="favicon.ico"/>
-        <link type="text/css" href="style/style.css" rel="stylesheet" media="screen"/>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-              integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-              crossorigin="anonymous">
-        <title>Formulario de detalles</title>
-    </head>
-    <body>
-    <div class="container pt-4">
+<h1 class="titulo-pagina">Detalles de <?= e($modelo) ?></h1>
+<p class="bajada">
+    Las viñetas que acompañan al modelo en el sitio.
+    <a href="vehiculos.php">Volver a vehículos</a>
+</p>
+
+<section class="tarjeta">
+    <form method="POST" action="actionDetalleProductoCtrl.php" enctype="multipart/form-data">
+        <input type="hidden" name="_token" value="<?= e($token) ?>"/>
+        <input type="hidden" id="id_producto" name="id_producto" value="<?= e((string) $productoId) ?>"/>
+
         <div class="row">
-            <div class="col"><h3>Detalles del Vehiculo <?= e($modelo) ?></div>
-            <div class="col-2 tdLabel">
-                <a href="bienvenido.php">&lt;&lt; Volver</a>
-            </div>
+            <?php foreach ($filas as $i => $detalle) { ?>
+                <div class="col-lg-6">
+                    <fieldset class="grupo">
+                        <legend>Detalle <?= $i + 1 ?></legend>
+                        <input type="hidden" name="id_det_prod<?= $i ?>" value="<?= e((string) ($detalle->id ?? 0)) ?>"/>
+
+                        <div class="mb-3">
+                            <label for="titulo<?= $i ?>">Título</label>
+                            <input type="text" id="titulo<?= $i ?>" name="titulo<?= $i ?>" class="form-control"
+                                   value="<?= e($detalle->titulo) ?>"/>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="descripcion<?= $i ?>">Descripción</label>
+                            <textarea id="descripcion<?= $i ?>" name="descripcion<?= $i ?>" rows="3"
+                                      class="form-control"><?= e($detalle->descripcion) ?></textarea>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="imagen<?= $i ?>">Imagen</label>
+                            <input type="hidden" name="v_imagen<?= $i ?>" value="<?= e($detalle->fotoDetalle) ?>"/>
+                            <input type="file" id="imagen<?= $i ?>" name="imagen<?= $i ?>" class="form-control"/>
+                            <?php if ($detalle->fotoDetalle !== '') { ?>
+                                <img src="../<?= e($detalle->fotoDetalle) ?>" class="miniatura mt-2" alt="Imagen del detalle"/>
+                            <?php } ?>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="delete<?= $i ?>" name="delete<?= $i ?>[]"/>
+                            <label class="form-check-label" for="delete<?= $i ?>">Eliminar este detalle</label>
+                        </div>
+                    </fieldset>
+                </div>
+            <?php } ?>
         </div>
-        <form method="POST" action="actionDetalleProductoCtrl.php" enctype="multipart/form-data">
-            <input type="hidden" name="_token" value="<?= e($token) ?>"/>
-            <input type="hidden" id="id_producto" name="id_producto" value="<?= e((string) $productoId) ?>"/>
-            <?php
-            foreach ($filas as $i => $detalle) {
-                if (!($i % 2)) {
-                    echo '<div class="row my-2">';
-                }
-                ?>
-                <div class="col">
-                    <input type="hidden" name="id_det_prod<?= $i ?>"
-                           value="<?= e((string) ($detalle->id ?? 0)) ?>"/>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="titulo<?= $i ?>">T&iacute;tulo</label></div>
-                        <div class="col"><input type="text" id="titulo<?= $i ?>" name="titulo<?= $i ?>"
-                                                class="form-control"
-                                                value="<?= e($detalle->titulo) ?>"/>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label
-                                    for="descripcion<?= $i ?>">Descripci&oacute;n</label>
-                        </div>
-                        <div class="col"><textarea id="descripcion<?= $i ?>" name="descripcion<?= $i ?>"
-                                                   class="form-control"
-                                                   rows="3"><?= e($detalle->descripcion) ?></textarea>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel">Im&aacute;gen</div>
-                        <div class="col">
-                            <input type="hidden" name="v_imagen<?= $i ?>"
-                                   value="<?= e($detalle->fotoDetalle) ?>"/>
-                            <input type="file" id="imagen<?= $i ?>" name="imagen<?= $i ?>"/>
-                            <?php
-                            if ($detalle->fotoDetalle !== '') {
-                                echo '<img src="../' . e($detalle->fotoDetalle)
-                                    . '" alt="Foto principal" style="width: 5%;" />';
-                            }
-                            ?>
-                        </div>
-                    </div>
-                    <div class="row my-2">
-                        <div class="col-2 tdLabel"><label for="delete<?= $i ?>">Eliminar</label></div>
-                        <div class="col">
-                            <input type="checkbox" id="delete<?= $i ?>" name="delete<?= $i ?>[]"/>
-                        </div>
-                    </div>
-                </div>
-                <?php
-                if ($i % 2) {
-                    echo '</div>';
-                }
-            }
-            ?>
-            <div class="row my-2">
-                <div class="col" style="text-align: center;">
-                    <input type="submit" value="Aceptar" name="aceptar" class="btn btn-primary"/>
-                </div>
-            </div>
-        </form>
-    </div>
-    <script src="https://code.jquery.com/jquery-4.0.0.min.js"
-            integrity="sha384-fgGyf7Mo7DURSOMnOy7ed+dkq5Job205Gnzu6QIg0BOHKaqt4D76Dt8VlDCzcMHV"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-            crossorigin="anonymous"></script>
-    </body>
-    </html>
-    
+
+        <div class="barra-acciones">
+            <input type="submit" value="Guardar detalles" name="aceptar" class="btn btn-primary"/>
+            <a class="btn btn-link" href="vehiculos.php">Cancelar</a>
+        </div>
+    </form>
+</section>
+<?php
+$contenido = (string) ob_get_clean();
+
+require __DIR__ . '/_consola.php';

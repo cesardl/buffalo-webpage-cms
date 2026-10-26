@@ -6,18 +6,22 @@ namespace Buffalo\Http;
 
 use Buffalo\Http\Controller\BienvenidoController;
 use Buffalo\Http\Controller\ContactanosController;
+use Buffalo\Http\Controller\ContactoDetalleController;
+use Buffalo\Http\Controller\ContactosController;
 use Buffalo\Http\Controller\FormColoresController;
 use Buffalo\Http\Controller\FormDetallesController;
 use Buffalo\Http\Controller\FormProductoController;
 use Buffalo\Http\Controller\GuardarColoresController;
 use Buffalo\Http\Controller\GuardarContactoController;
 use Buffalo\Http\Controller\GuardarDetallesController;
+use Buffalo\Http\Controller\GuardarEstadoContactoController;
 use Buffalo\Http\Controller\GuardarProductoController;
 use Buffalo\Http\Controller\HealthController;
 use Buffalo\Http\Controller\LoginController;
 use Buffalo\Http\Controller\ProductosController;
 use Buffalo\Http\Controller\VehiculoDeleteController;
 use Buffalo\Http\Controller\VehiculoSelectController;
+use Buffalo\Http\Controller\VehiculosController;
 
 /**
  * Paths deliberately match the legacy URLs. They are not pretty, but they are
@@ -59,6 +63,14 @@ final class RouteTable
             new Route('GET', self::LOGIN, Access::Public, LoginController::class),
             new Route('POST', '/administrator/bienvenido.php', Access::Public, BienvenidoController::class),
             new Route('GET', '/administrator/bienvenido.php', Access::Admin, BienvenidoController::class),
+
+            // The panel is what bienvenido.php answers now; the vehicle table
+            // it used to show has a URL of its own, and the inbox is beside it
+            // in the menu.
+            new Route('GET', '/administrator/vehiculos.php', Access::Admin, VehiculosController::class),
+            new Route('GET', '/administrator/contactos.php', Access::Admin, ContactosController::class),
+            new Route('GET', '/administrator/contacto.php', Access::Admin, ContactoDetalleController::class),
+            new Route('POST', '/administrator/actionContacto.php', Access::Admin, GuardarEstadoContactoController::class),
 
             new Route('GET', '/administrator/formProducto.php', Access::Admin, FormProductoController::class),
             new Route('GET', '/administrator/formDetalles.php', Access::Admin, FormDetallesController::class),

@@ -47,8 +47,12 @@ CREATE TABLE `contacto` (
   `ciudad` varchar(80) NOT NULL,
   `comentarios` varchar(1000) NOT NULL,
   `fecha_registro` datetime NOT NULL,
+  `estado` enum('nueva','atendida') NOT NULL default 'nueva',
+  `fecha_atencion` datetime default NULL,
+  `atendido_por` int(11) default NULL,
   PRIMARY KEY  (`id_contacto`),
-  KEY `contacto_fecha` (`fecha_registro`)
+  KEY `contacto_fecha` (`fecha_registro`),
+  KEY `contacto_estado` (`estado`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------

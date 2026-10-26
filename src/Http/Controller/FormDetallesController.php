@@ -8,8 +8,8 @@ use Buffalo\Domain\DetalleProducto;
 use Buffalo\Http\Controller;
 use Buffalo\Http\Request;
 use Buffalo\Http\Response;
-use Buffalo\Http\Session;
 use Buffalo\Repository\DetalleProductoRepository;
+use Buffalo\View\Consola;
 use Buffalo\View\Template;
 
 final readonly class FormDetallesController implements Controller
@@ -19,7 +19,7 @@ final readonly class FormDetallesController implements Controller
 
     public function __construct(
         private Template $template,
-        private Session $session,
+        private Consola $consola,
         private DetalleProductoRepository $detalles,
     ) {
     }
@@ -40,11 +40,16 @@ final readonly class FormDetallesController implements Controller
             );
         }
 
-        return Response::html($this->template->render('admin/detalles', [
-            'modelo' => $request->queryString('mod_prod'),
-            'productoId' => $productoId,
-            'filas' => $filas,
-            'token' => $this->session->csrfToken(),
-        ]));
+        $modelo = $request->queryString('mod_prod');
+
+        return Response::html($this->template->render('admin/detalles', $this->consola->pagina(
+            'vehiculos',
+            'Detalles de ' . $modelo,
+            [
+                'modelo' => $modelo,
+                'productoId' => $productoId,
+                'filas' => $filas,
+            ],
+        )));
     }
 }
